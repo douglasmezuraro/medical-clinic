@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.Date;
 
-public class PatientRecord {
+public class PatientRecord extends Base {
 
     private String symptoms;
     private String diagnosis;

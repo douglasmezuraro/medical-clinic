@@ -2,24 +2,15 @@ package Entities;
 
 import java.util.Date;
 
-public class Person {
+public class Person extends Base {
 
-    private int id;
     private String name;
     private String lastName;
     private Date birth;
     private String address;
     private String contact;
     private String email;
-    private long phone;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String phone;
 
     public String getName() {
         return name;
@@ -69,11 +60,11 @@ public class Person {
         this.email = email;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

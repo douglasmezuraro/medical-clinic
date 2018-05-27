@@ -3,7 +3,7 @@ package Entities;
 import java.sql.Time;
 import java.util.Date;
 
-public class Appointment {
+public class Appointment extends Base {
 
     private Date data;
     private Time hour;

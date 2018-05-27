@@ -2,7 +2,7 @@ package Entities;
 
 import java.util.List;
 
-public class Aggravation {
+public class Aggravation extends Base {
 
     private boolean smoker;
     private boolean drinker;
