@@ -2,11 +2,12 @@ package Boundary;
 
 import Entities.AgreementType;
 import Entities.Patient;
+import java.sql.Date;
 
 public class Patients extends Cadastrable<Patient> {
     
     protected void addOrUpdate(Patient patient) {
-        if(patient.getId() > 0) {
+        if(patient.getId() == 0) {
             System.out.println("Digite o id:");
             patient.setId(Integer.parseInt(input.nextLine()));
         }
@@ -16,10 +17,9 @@ public class Patients extends Cadastrable<Patient> {
         
         System.out.println("Digite o último nome:");
         patient.setLastName(input.nextLine());
-        
-        // TODO : Ver como faz o parse de 'String' pra 'Date'       
-        //System.out.println("Digite o nascimento:");
-        //s.setBirth(input.nextLine());
+           
+        System.out.println("Digite o nascimento (yyyy-mm-dd):");
+        patient.setBirth(Date.valueOf(input.nextLine()));
         
         System.out.println("Digite o endereço:");
         patient.setAddress(input.nextLine());
@@ -33,9 +33,8 @@ public class Patients extends Cadastrable<Patient> {
         System.out.println("Digite o telefone:");
         patient.setPhone(input.nextLine());
         
-//        System.out.println("Digite o tipo de convênio:");
-//        String s = input.nextLine().toUpperCase(); 
-//        patient.setAgreementType(AgreementType.valueOf(s));
+        System.out.println("Digite o tipo de convênio (1 - Particular / 2 - Plano de saúde):");
+        patient.setAgreementType(AgreementType.values()[Integer.parseInt(input.nextLine())]);
         
         if(!list.contains(patient))
             list.add(patient);

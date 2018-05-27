@@ -17,8 +17,7 @@ public class Secretaries extends Cadastrable<Secretary> {
         System.out.println("Digite o último nome:");
         secretary.setLastName(input.nextLine());
         
-        // TODO : Ver como faz o parse de 'String' pra 'Date'
-        System.out.println("Digite o nascimento:");
+        System.out.println("Digite o nascimento (yyyy-mm-dd):");
         secretary.setBirth(Date.valueOf(input.nextLine()));
         
         System.out.println("Digite o endereço:");

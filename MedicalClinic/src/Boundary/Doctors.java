@@ -1,6 +1,7 @@
 package Boundary;
 
 import Entities.Doctor;
+import java.sql.Date;
 
 public class Doctors extends Cadastrable<Doctor> {
    
@@ -16,9 +17,8 @@ public class Doctors extends Cadastrable<Doctor> {
         System.out.println("Digite o último nome:");
         doctor.setLastName(input.nextLine());
         
-        // TODO : Ver como faz o parse de 'String' pra 'Date'
-        //System.out.println("Digite o nascimento:");
-        //s.setBirth(input.nextLine());
+        System.out.println("Digite o nascimento (yyyy-mm-dd):");
+        doctor.setBirth(Date.valueOf(input.nextLine()));
         
         System.out.println("Digite o endereço:");
         doctor.setAddress(input.nextLine());
