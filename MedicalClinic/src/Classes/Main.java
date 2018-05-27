@@ -8,21 +8,22 @@ public class Main {
     private static Scanner input = new Scanner(System.in);
     private static Patients patients = new Patients();
     
-    private enum Menu {
+    private enum MenuAction {
         ManagePatients("Gerenciar pacientes"),
         ManageAppointment("Gerenciar consultas"),
         ManageAppointmentReport("Gerenciar relatórios de consultas"),
         ManagePatientRecords("Gerenciar prontuários de pacients"),
-        ManageMedicalReport("Gerenciar relatórios médicos");
+        ManageMedicalReport("Gerenciar relatórios médicos"),
+        Exit("Sair");
         
         private String description;
         
-        Menu(String description) {
+        MenuAction(String description) {
             this.description = description;
         }
     };
     
-    private enum CRUD {
+    private enum CadastrableAction {
         
         Create("Cadastrar"),
         Update("Atualizar"),
@@ -30,40 +31,40 @@ public class Main {
         
         private String description;
         
-        CRUD(String description) {
+        CadastrableAction(String description) {
             this.description = description;
         }
     }
     
-    public static void printMenu() {
-        for(Menu menu: Menu.values())
-            System.out.println((menu.ordinal() + 1) + " - " + menu.description);
+    public static void printMenuActions() {
+        for(MenuAction m: MenuAction.values())
+            System.out.println((m.ordinal() + 1) + " - " + m.description);
     }
     
-    public static void printCRUD() {
-        for(CRUD crud: CRUD.values())
-            System.out.println((crud.ordinal() + 1) + " - " + crud.description);
+    public static void printCadastrableActions() {
+        for(CadastrableAction c: CadastrableAction.values())
+            System.out.println((c.ordinal() + 1) + " - " + c.description);
     }
     
-    public static Menu getMenu() {
-        printMenu();
+    public static MenuAction getMenuAction() {
+        printMenuActions();
         System.out.println("Digite o número da opção que deseja:");
         
         int index = Integer.parseInt(input.nextLine());
-        return Menu.values()[index - 1];
+        return MenuAction.values()[index - 1];
     }
     
-    public static CRUD getCRUD() {
-        printCRUD();
+    public static CadastrableAction getCadastrableAction() {
+        printCadastrableActions();
         System.out.println("Digite o número da opção que deseja:");
         int index = Integer.parseInt(input.nextLine());
-        return CRUD.values()[index - 1];
+        return CadastrableAction.values()[index - 1];
     }
     
     public static void managePatients() {
-        CRUD crud = getCRUD();
+        CadastrableAction cadastrableAction = getCadastrableAction();
         
-        switch(crud) {
+        switch(cadastrableAction) {
             case Create:
                 patients.create();
                 break;
@@ -93,24 +94,29 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        Menu menu = getMenu();
-        switch(menu) {
-            case ManagePatients: 
-                managePatients();
-                break;
-            case ManageAppointment:
-                manageAppointment();
-                break;
-            case ManageAppointmentReport:
-                manageAppointmentReport();
-                break;
-            case ManagePatientRecords:
-                managePatientRecords();
-                break;
-            case ManageMedicalReport:
-                manageMedicalReport();
-                break;
-        }
+        MenuAction menuAction;
+        do {
+            menuAction = getMenuAction();
+            
+            switch(menuAction) {
+                case ManagePatients: 
+                    managePatients();
+                    break;
+                case ManageAppointment:
+                    manageAppointment();
+                    break;
+                case ManageAppointmentReport:
+                    manageAppointmentReport();
+                    break;
+                case ManagePatientRecords:
+                    managePatientRecords();
+                    break;
+                case ManageMedicalReport:
+                    manageMedicalReport();
+                    break;
+            }            
+            
+        } while(menuAction != MenuAction.Exit);
     }
     
 }
