@@ -40,14 +40,20 @@ public class Doctors extends Cadastrable<Doctor> {
         addOrUpdate(new Doctor());
     }    
     
-    public Doctor retrive() {
+    public Doctor retrieve() {
         System.out.println("Digite o id:");
         int id = Integer.parseInt(input.nextLine());
         return retrieve(id);
     }
     
-    public void update(Doctor doctor ){
+    public void update() {
+        Doctor doctor = retrieve();
         addOrUpdate(doctor);
     } 
+    
+    public void delete() {
+        Doctor doctor = retrieve();
+        delete(doctor);
+    }
     
 }

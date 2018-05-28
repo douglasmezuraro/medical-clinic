@@ -45,7 +45,7 @@ public class Patients extends Cadastrable<Patient> {
     }    
     
     public Patient retrieve() {
-        System.out.println("Digite o id:");
+        System.out.println("Digite o id que deseja procurar:");
         int id = Integer.parseInt(input.nextLine());
         return retrieve(id);
     }
@@ -59,4 +59,5 @@ public class Patients extends Cadastrable<Patient> {
         Patient patient = retrieve();
         delete(patient);
     }
+    
 }

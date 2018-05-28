@@ -46,8 +46,14 @@ public class Secretaries extends Cadastrable<Secretary> {
         return retrieve(id);
     }
     
-    public void update(Secretary secretary) {
+    public void update() {
+        Secretary secretary = retrieve();
         addOrUpdate(secretary);
     }
         
+    public void delete() {
+        Secretary secretary = retrieve();
+        delete(secretary);
+    }
+    
 }
