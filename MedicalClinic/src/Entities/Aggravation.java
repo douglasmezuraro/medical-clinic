@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aggravation extends Base {
@@ -10,6 +11,11 @@ public class Aggravation extends Base {
     private List<Surgery> surgeries;
     private List<Allergy> allergies;    
 
+    public Aggravation() {
+        surgeries = new ArrayList<>();
+        allergies = new ArrayList<>();
+    }
+    
     public boolean isSmoker() {
         return smoker;
     }

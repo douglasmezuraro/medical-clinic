@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Patient extends Person {
@@ -8,6 +9,11 @@ public class Patient extends Person {
     private List<PatientRecord> records;
     private AgreementType agreementType;
 
+    public Patient() {
+        aggravation = new Aggravation();
+        records = new ArrayList<>();
+    }
+    
     public Aggravation getAggravation() {
         return aggravation;
     }

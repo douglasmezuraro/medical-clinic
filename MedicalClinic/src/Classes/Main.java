@@ -9,16 +9,19 @@ public class Main {
     private static Patients patients = new Patients();
     
     private enum MenuAction {
-        ManagePatients("Gerenciar pacientes"),
-        ManageAppointment("Gerenciar consultas"),
-        ManageAppointmentReport("Gerenciar relatórios de consultas"),
-        ManagePatientRecords("Gerenciar prontuários de pacients"),
-        ManageMedicalReport("Gerenciar relatórios médicos"),
-        Exit("Sair");
+        ManagePatients(Actor.Secretary, "Gerenciar pacientes"),
+        ManageAppointments(Actor.Secretary, "Gerenciar consultas"),
+        ManageAppointmentReports(Actor.Secretary, "Gerenciar relatórios de consultas"),
+        ManageAggravations(Actor.Doctor, "Gerenciar agravamentos"),
+        ManagePatientRecords(Actor.Doctor, "Gerenciar prontuários de pacients"),
+        ManageMedicalReports(Actor.Doctor, "Gerenciar relatórios médicos"),
+        Exit(Actor.Both, "Sair");
         
+        private Actor actor;
         private String description;
         
-        MenuAction(String description) {
+        MenuAction(Actor actor, String description) {
+            this.actor = actor;
             this.description = description;
         }
     };
@@ -34,6 +37,12 @@ public class Main {
         CadastrableAction(String description) {
             this.description = description;
         }
+    }
+    
+    private enum Actor {
+        Both,
+        Secretary,
+        Doctor;
     }
     
     public static void printMenuActions() {
@@ -85,6 +94,10 @@ public class Main {
     
     }
     
+    public static void manageAggravations() {
+    
+    }
+    
     public static void managePatientRecords() {
     
     }
@@ -102,16 +115,19 @@ public class Main {
                 case ManagePatients: 
                     managePatients();
                     break;
-                case ManageAppointment:
+                case ManageAppointments:
                     manageAppointment();
                     break;
-                case ManageAppointmentReport:
+                case ManageAppointmentReports:
                     manageAppointmentReport();
+                    break;
+                case ManageAggravations:
+                    manageAggravations();
                     break;
                 case ManagePatientRecords:
                     managePatientRecords();
                     break;
-                case ManageMedicalReport:
+                case ManageMedicalReports:
                     manageMedicalReport();
                     break;
             }            

@@ -11,6 +11,11 @@ public class Appointment extends Base {
     private Patient patient;
     private AppointmentType appointmentType;
 
+    public Appointment() {
+        doctor = new Doctor();
+        patient = new Patient();
+    }
+    
     public Date getData() {
         return data;
     }
