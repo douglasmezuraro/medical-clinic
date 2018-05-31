@@ -32,6 +32,8 @@ public abstract class Crud<T extends Base> {
                 return element;
             }
         }
+        // TODO : lançar excessão de objeto não encontrado
+        // throw new ObjectNotFoundException();        
         return null;
     }
     
@@ -52,5 +54,14 @@ public abstract class Crud<T extends Base> {
     }
     
     protected abstract void createOrUpdate(T object);
+    
+    protected void add(T object) {
+        if (!list.contains(object)) {
+            list.add(object);
+        }
+        //else
+        // TODO : lançar excessão de objeto duplicado
+        // throw new DuplicateObjectException();   
+    }
     
 }
