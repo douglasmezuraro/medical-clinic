@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
        
     private static Actor actor = Actor.Undefined;
-    private static Scanner input = new Scanner(System.in);
+    private static CustomScanner input = new CustomScanner();
     private static Patients patients = new Patients();
     private static final String sLineBreak = "\n";
     
@@ -15,11 +15,9 @@ public class Main {
     public static MenuAction getMenuAction() {
         MenuAction action = MenuAction.ShowAgain;
        
-        println(action.toString(actor) + 
-                sLineBreak + 
-                " Digite o número da opção que deseja:");
+        println(action.toString(actor) + sLineBreak);
         
-        int index = Integer.parseInt(input.nextLine());
+        int index = input.readInt("Digite o número da opção que deseja:");
         action = MenuAction.values()[index - 1];
         
         if(action.getActor().equals(Actor.Undefined))
@@ -36,11 +34,9 @@ public class Main {
     public static CrudAction getCrudAction() {
         CrudAction action = CrudAction.Retrieve;
         
-        println(action.toString() +
-                sLineBreak +
-                "Digite o número da opção que deseja:");
+        println(action.toString() + sLineBreak);
         
-        int index = Integer.parseInt(input.nextLine());
+        int index = input.readInt("Digite o número da opção que deseja:");
         return CrudAction.values()[index - 1];
     }
     
@@ -59,7 +55,7 @@ public class Main {
             "Identifique-se:" + sLineBreak +
             actor.toString());
         
-        int index = Integer.parseInt(input.nextLine());
+        int index = input.readInt("");
         actor = Actor.values()[index - 1];
     }
     

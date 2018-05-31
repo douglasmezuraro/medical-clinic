@@ -7,31 +7,16 @@ public class Secretaries extends Crud<Secretary> {
 
     @Override
     public void createOrUpdate(Secretary object) {
-        if(object.getId() > 0) {
-            System.out.println("Digite o id:");
-            object.setId(Integer.parseInt(input.nextLine()));
-        }
-        
-        System.out.println("Digite o nome:");
-        object.setName(input.nextLine());
-        
-        System.out.println("Digite o último nome:");
-        object.setLastName(input.nextLine());
-        
-        System.out.println("Digite o nascimento (yyyy-mm-dd):");
-        object.setBirth(Date.valueOf(input.nextLine()));
-        
-        System.out.println("Digite o endereço:");
-        object.setAddress(input.nextLine());
-        
-        System.out.println("Digite o contato:");
-        object.setContact(input.nextLine());
-        
-        System.out.println("Digite o e-mail:");
-        object.setEmail(input.nextLine());
-        
-        System.out.println("Digite o telefone:");
-        object.setPhone(input.nextLine());
+        if(object.getId() > 0) 
+            object.setId(input.readInt("Digite o id:"));
+
+        object.setName(input.readString("Digite o nome:"));
+        object.setLastName(input.readString("Digite o último nome:"));
+        object.setBirth(input.readDate("Digite o nascimento (yyyy-mm-dd):"));
+        object.setAddress(input.readString("Digite o endereço:"));
+        object.setContact(input.readString("Digite o contato:"));
+        object.setEmail(input.readString("Digite o e-mail:"));
+        object.setPhone(input.readString("Digite o telefone:"));
         
         super.add(object);
     }
