@@ -5,32 +5,62 @@ import java.util.Scanner;
 
 public class Main {
        
+    private static Actor actor = Actor.Undefined;
     private static Scanner input = new Scanner(System.in);
     private static Patients patients = new Patients();
-    private static String sLineBreak = "\n";
-     
+    private static final String sLineBreak = "\n";
+    
+    /* Métodos utéis */
+    
     public static MenuAction getMenuAction() {
-        MenuAction action = MenuAction.Exit;
+        MenuAction action = MenuAction.ShowAgain;
        
-        System.out.println(
-                action.toString() + 
+        println(action.toString(actor) + 
                 sLineBreak + 
                 " Digite o número da opção que deseja:");
         
         int index = Integer.parseInt(input.nextLine());
-        return MenuAction.values()[index - 1];
+        action = MenuAction.values()[index - 1];
+        
+        if(action.getActor().equals(Actor.Undefined))
+            return action;
+        
+        if(!action.getActor().equals(actor)) { 
+            System.out.println("Ação não permitida!");
+            action = MenuAction.ShowAgain;
+        }
+        
+        return action;
     }
     
     public static CrudAction getCrudAction() {
         CrudAction action = CrudAction.Retrieve;
         
-        System.out.println(
-                action.toString() +
+        println(action.toString() +
                 sLineBreak +
                 "Digite o número da opção que deseja:");
         
         int index = Integer.parseInt(input.nextLine());
         return CrudAction.values()[index - 1];
+    }
+    
+    public static void println(String string) {
+        System.out.println("");
+        for(int i = 0; i <= 50; i++)
+            System.out.print("-");
+        System.out.println("");
+        System.out.println(string);
+    }
+    
+    /* Ações principais */
+    
+    public static void loggin() {
+        println(
+            "Identifique-se:" + sLineBreak +
+            actor.toString());
+        
+        int index = Integer.parseInt(input.nextLine());
+        actor = Actor.values()[index - 1];
     }
     
     public static void managePatients() {
@@ -69,12 +99,21 @@ public class Main {
     
     }
     
+    public static void showAgain() {
+    
+    }
+    
+    /* Main */
+    
     public static void main(String[] args) {
-        MenuAction menuAction;
+        MenuAction action;
         do {
-            menuAction = getMenuAction();
+            action = getMenuAction();
             
-            switch(menuAction) {
+            switch(action) {
+                case Loggin:
+                    loggin();
+                    break;
                 case ManagePatients: 
                     managePatients();
                     break;
@@ -93,9 +132,12 @@ public class Main {
                 case ManageMedicalReports:
                     manageMedicalReport();
                     break;
+                case ShowAgain:
+                    showAgain();
+                    break;
             }            
             
-        } while(menuAction != MenuAction.Exit);
+        } while(!action.equals(MenuAction.Exit));
     }
     
 }
