@@ -43,9 +43,13 @@ public class CustomScanner {
         return Double.parseDouble(readString(question));
     }
     
-    public Date readDate(String question) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
-        return format.parse(readString(question));
+    public Date readDate(String question) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+            return format.parse(readString(question));
+        } catch(ParseException e) {
+            return null;
+        }
     }
     
     public Time readTime(String question) {
