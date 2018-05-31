@@ -3,9 +3,10 @@ package Boundary;
 import Entities.Doctor;
 import java.sql.Date;
 
-public class Doctors extends Cadastrable<Doctor> {
+public class Doctors extends Crud<Doctor> {
    
-    protected void addOrUpdate(Doctor doctor) {
+    @Override
+    protected void createOrUpdate(Doctor doctor) {
         if(doctor.getId() > 0) {
             System.out.println("Digite o id:");
             doctor.setId(Integer.parseInt(input.nextLine()));
@@ -36,24 +37,8 @@ public class Doctors extends Cadastrable<Doctor> {
             list.add(doctor);
     }
     
+    @Override
     public void create() {
-        addOrUpdate(new Doctor());
-    }    
-    
-    public Doctor retrieve() {
-        System.out.println("Digite o id:");
-        int id = Integer.parseInt(input.nextLine());
-        return retrieve(id);
+        createOrUpdate(new Doctor());
     }
-    
-    public void update() {
-        Doctor doctor = retrieve();
-        addOrUpdate(doctor);
-    } 
-    
-    public void delete() {
-        Doctor doctor = retrieve();
-        delete(doctor);
-    }
-    
 }

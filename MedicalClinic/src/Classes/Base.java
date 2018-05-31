@@ -1,4 +1,4 @@
-package Entities;
+package Classes;
 
 public class Base {
     

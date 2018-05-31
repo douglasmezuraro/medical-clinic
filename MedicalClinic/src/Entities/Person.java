@@ -1,5 +1,6 @@
 package Entities;
 
+import Classes.Base;
 import java.util.Date;
 
 public class Person extends Base {

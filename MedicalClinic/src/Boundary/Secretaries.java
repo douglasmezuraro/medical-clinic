@@ -3,9 +3,10 @@ package Boundary;
 import Entities.Secretary;
 import java.sql.Date;
 
-public class Secretaries extends Cadastrable<Secretary> {
-    
-    protected void addOrUpdate(Secretary secretary) {
+public class Secretaries extends Crud<Secretary> {
+
+    @Override
+    public void createOrUpdate(Secretary secretary) {
         if(secretary.getId() > 0) {
             System.out.println("Digite o id:");
             secretary.setId(Integer.parseInt(input.nextLine()));
@@ -36,24 +37,9 @@ public class Secretaries extends Cadastrable<Secretary> {
             list.add(secretary);
     }
     
+    @Override
     public void create() {
-        addOrUpdate(new Secretary());
+        createOrUpdate(new Secretary());
     }    
-    
-    public Secretary retrieve() {
-        System.out.println("Digite o id:");
-        int id = Integer.parseInt(input.nextLine());
-        return retrieve(id);
-    }
-    
-    public void update() {
-        Secretary secretary = retrieve();
-        addOrUpdate(secretary);
-    }
-        
-    public void delete() {
-        Secretary secretary = retrieve();
-        delete(secretary);
-    }
-    
+      
 }

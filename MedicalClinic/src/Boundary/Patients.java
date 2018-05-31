@@ -5,9 +5,10 @@ import Entities.Patient;
 import java.sql.Date;
 import java.lang.Exception;
 
-public class Patients extends Cadastrable<Patient> {
+public class Patients extends Crud<Patient> {
 
-    protected void addOrUpdate(Patient patient) {
+    @Override
+    protected void createOrUpdate(Patient patient) {
 
         boolean validValue = false;
 
@@ -126,38 +127,8 @@ public class Patients extends Cadastrable<Patient> {
         }
     }
 
+    @Override
     public void create() {
-        addOrUpdate(new Patient());
+        createOrUpdate(new Patient());
     }
-
-    public Patient retrieve() {
-        System.out.println("Digite o id que deseja procurar:");
-
-        boolean idValid = false;
-        int id = 0;
-
-        while (!idValid) {
-            try {
-                id = Integer.parseInt(input.nextLine());
-                idValid = true;
-
-            } catch (Exception ex) {
-                System.out.println("ERRO! Digite o id válido que deseja procurar:");
-                idValid  = false;
-            }
-        }
-
-        return retrieve(id);
-    }
-
-    public void update() {
-        Patient patient = retrieve();
-        addOrUpdate(patient);
-    }
-
-    public void delete() {
-        Patient patient = retrieve();
-        delete(patient);
-    }
-
 }
