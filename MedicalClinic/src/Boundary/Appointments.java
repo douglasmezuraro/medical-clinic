@@ -1,8 +1,6 @@
 package Boundary;
 
 import Entities.Appointment;
-import java.sql.Date;
-import java.sql.Time;
 
 public class Appointments extends Crud<Appointment> {
     
@@ -19,14 +17,11 @@ public class Appointments extends Crud<Appointment> {
         object.setData(input.readDate("Digite a data (yyyy-mm-dd):"));
         object.setHour(input.readTime("Digite a hora (hh:mm:ss):"));
         object.setDoctor(doctors.retrieve());
-        object.setPatient(patients.retrieve());
-        
-        System.out.println();
-        
+        object.setPatient(patients.retrieve());   
     }
     
     @Override
-    protected void create() {
+    public void create() {
         createOrUpdate(new Appointment());
     }
     

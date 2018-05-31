@@ -1,7 +1,6 @@
 package Boundary;
 
 import Entities.Secretary;
-import java.sql.Date;
 
 public class Secretaries extends Crud<Secretary> {
 

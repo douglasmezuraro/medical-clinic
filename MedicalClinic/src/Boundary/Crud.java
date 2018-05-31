@@ -18,7 +18,7 @@ public abstract class Crud<T extends Base> {
     }
     
     protected int askForId(CrudAction action) {
-        return input.readInt("Digite o id que deseja " + action.name() + ": ");
+        return input.readInt("Digite o id que deseja " + action.getDescription() + ": ");
     }
     
     protected abstract void create();

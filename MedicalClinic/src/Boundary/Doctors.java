@@ -1,7 +1,6 @@
 package Boundary;
 
 import Entities.Doctor;
-import java.sql.Date;
 
 public class Doctors extends Crud<Doctor> {
    
