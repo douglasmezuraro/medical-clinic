@@ -4,6 +4,10 @@ import Entities.Secretary;
 
 public class Secretaries extends Crud<Secretary> {
 
+    public Secretaries() {
+        description = "secretário(a)";
+    }
+    
     @Override
     public void createOrUpdate(Secretary object) {
         if(object.getId() > 0) 

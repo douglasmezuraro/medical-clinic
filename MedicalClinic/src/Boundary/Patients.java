@@ -1,12 +1,13 @@
 package Boundary;
 
-import Entities.AgreementType;
 import Entities.Patient;
-import java.sql.Date;
-import java.lang.Exception;
 
 public class Patients extends Crud<Patient> {
 
+    public Patients() {
+        description = "paciente";
+    }
+    
     @Override
     protected void createOrUpdate(Patient object) {
 

@@ -11,6 +11,7 @@ public abstract class Crud<T extends Base> {
     // TODO : após finalizar trabalho tornar essa property 'protected'
     public List<T> list; 
     protected CustomScanner input; 
+    protected String description;
     
     public Crud() {
         list = new ArrayList<>();
@@ -18,7 +19,8 @@ public abstract class Crud<T extends Base> {
     }
     
     protected int askForId(CrudAction action) {
-        return input.readInt("Digite o id que deseja " + action.getDescription() + ": ");
+        return input.readInt(
+            "Digite o id do(a) " + description + " que deseja " + action.getDescription() + ": ");
     }
     
     protected abstract void create();

@@ -4,6 +4,10 @@ import Entities.Doctor;
 
 public class Doctors extends Crud<Doctor> {
    
+    public Doctors() {
+        description = "médico(a)";
+    }
+    
     @Override
     protected void createOrUpdate(Doctor object) {
         if(object.getId() > 0)

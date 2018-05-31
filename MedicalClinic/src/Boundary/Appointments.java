@@ -10,6 +10,7 @@ public class Appointments extends Crud<Appointment> {
     public Appointments(Doctors doctors, Patients patients) {
         this.doctors = doctors;
         this.patients = patients;
+        this.description = "consulta";
     }
     
     @Override
