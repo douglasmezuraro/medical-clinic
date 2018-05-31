@@ -1,7 +1,9 @@
 package Classes;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class CustomScanner {
@@ -41,8 +43,9 @@ public class CustomScanner {
         return Double.parseDouble(readString(question));
     }
     
-    public Date readDate(String question) {
-        return Date.valueOf(readString(question));
+    public Date readDate(String question) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+        return format.parse(readString(question));
     }
     
     public Time readTime(String question) {
