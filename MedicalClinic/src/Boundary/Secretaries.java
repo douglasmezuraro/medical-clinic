@@ -33,20 +33,28 @@ public class Secretaries extends Crud<Secretary> {
         createOrUpdate(new Secretary());
     }    
     
-    public String getAppointmentReport(List<Appointment> appointents) {
+    public String getAppointmentReport(List<Appointment> appointents, 
+            boolean hasEmail, boolean hasPhone) {
+        
         String report = "";
         
-        for(Appointment a: appointents) {
+        for(Appointment appointment: appointents) {
             Date tomorrow = Date.valueOf(LocalDate.now().plusDays(1));
-    
-            if(a.getData().compareTo(tomorrow) == 0) {
-                report += "Data: " + a.getData() + ";" +
-                          "Hora: " + a.getHour() + "; " +
-                          "Médico(a): " + a.getDoctor().getName() + "; " +
-                          "Paciente:" + a.getPatient().getName() + ";" +
-                          "Tipo da consulta" + a.getAppointmentType().getDescription() + ";" + "\n";
-            }
             
+            if(appointment.getData().compareTo(tomorrow) != 0)
+                continue;
+            
+            if(hasEmail && appointment.getPatient().getEmail().isEmpty())
+                continue;
+            
+            if(hasPhone && appointment.getPatient().getPhone().isEmpty())
+                continue;
+                
+            report += "Data: " + appointment.getData() + ";" +
+                      "Hora: " + appointment.getHour() + "; " +
+                      "Médico(a): " + appointment.getDoctor().getName() + "; " +
+                      "Paciente:" + appointment.getPatient().getName() + ";" +
+                      "Tipo da consulta" + appointment.getAppointmentType().getDescription() + ";" + "\n";            
         }
         
         return report.toUpperCase();

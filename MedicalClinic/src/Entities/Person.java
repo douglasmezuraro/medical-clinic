@@ -13,6 +13,11 @@ public class Person extends Base {
     private String email;
     private String phone;
 
+    public Person() {
+        email = "";
+        phone = "";
+    }
+    
     public String getName() {
         return name;
     }

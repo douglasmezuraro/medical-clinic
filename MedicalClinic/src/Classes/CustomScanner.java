@@ -18,7 +18,7 @@ public class CustomScanner {
         try {
             System.out.println(question);
             return input.nextLine();
-        } catch (Exception e) {
+        } catch(Exception e) {
             return null;
         }
     }
@@ -26,17 +26,15 @@ public class CustomScanner {
     public byte readByte(String question) {
         try {
             return Byte.parseByte(readString(question));
-        } catch (Exception e) {
-            {
-                return 0;
-            }
+        } catch(Exception e) {
+            return 0;
         }
     }
 
     public short readShort(String question) {
         try {
             return Short.parseShort(readString(question));
-        } catch (Exception e) {
+        } catch(Exception e) {
             return 0;
         }
     }
@@ -44,24 +42,23 @@ public class CustomScanner {
     public int readInt(String question) {
         try {
             return Integer.parseInt(readString(question));
-        }catch (Exception e){
+        } catch(Exception e) {
             return 0;
         }
     }
 
     public long readLong(String question) {
-        try{
+        try {
             return Long.parseLong(readString(question));
-        } catch (Exception e) {
+        } catch(Exception e) {
             return 0;
-        }
-        
+        }    
     }
 
     public float readFloat(String question) {
         try {
             return Float.parseFloat(readString(question));
-        }catch (Exception e){
+        } catch(Exception e) {
             return 0;
         }
     }
@@ -69,7 +66,7 @@ public class CustomScanner {
     public double readDouble(String question) {
         try {
             return Double.parseDouble(readString(question));
-        }catch (Exception e){
+        } catch(Exception e) {
             return 0;
         }
     }
@@ -78,16 +75,31 @@ public class CustomScanner {
         try {
             SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
             return format.parse(readString(question));
-        } catch (ParseException e) {
+        } catch(ParseException e) {
             return null;
         }
     }
 
     public Time readTime(String question) {
-        try{
+        try {
             return Time.valueOf(readString(question));
-        } catch(Exception e){
+        } catch(Exception e) {
             return null;
+        }
+    }
+    
+    public boolean readBoolean(String question) {
+        try {
+            String value = readString(question).toUpperCase();
+            String[] values = {"1", "SIM", "S", "YES", "Y"};
+            
+            for(String s: values) 
+                if(s.equalsIgnoreCase(value))
+                    return true;
+            
+            return false;
+        } catch(Exception e) {
+            return false;
         }
     }
 

@@ -98,7 +98,13 @@ public class Main {
     }
     
     public static void manageAppointmentReport() {
-        println(secretaries.getAppointmentReport(appointments.list));
+        boolean hasEmail = input.readBoolean("Filtrar apenas quem tem e-mail?");
+        boolean hasPhone = input.readBoolean("Filtrar apenas quem tem celular?");
+        
+        println(secretaries.getAppointmentReport(
+                appointments.list, 
+                hasEmail, 
+                hasPhone));
     }
     
     public static void manageAggravations() {
