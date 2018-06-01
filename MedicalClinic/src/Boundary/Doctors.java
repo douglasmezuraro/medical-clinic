@@ -15,7 +15,7 @@ public class Doctors extends Crud<Doctor> {
 
         object.setName(input.readString("Digite o nome:"));
         object.setLastName(input.readString("Digite o último nome:"));
-        object.setBirth(input.readDate("Digite o nascimento (yyyy-mm-dd):"));
+        object.setBirth(input.readDate("Digite o nascimento (dd/mm/aaaa):"));
         object.setAddress(input.readString("Digite o endereço:"));
         object.setContact(input.readString("Digite o contato:"));
         object.setEmail(input.readString("Digite o e-mail:"));

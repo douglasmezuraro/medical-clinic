@@ -4,9 +4,14 @@ import Boundary.Appointments;
 import Boundary.Doctors;
 import Boundary.Patients;
 import Boundary.Secretaries;
+import Entities.Appointment;
+import Entities.AppointmentType;
 import Entities.Doctor;
+import Entities.Patient;
 import Entities.Secretary;
 import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
 
 public class Main {
     
@@ -93,7 +98,7 @@ public class Main {
     }
     
     public static void manageAppointmentReport() {
-    
+        println(secretaries.getAppointmentReport(appointments.list));
     }
     
     public static void manageAggravations() {
@@ -115,25 +120,52 @@ public class Main {
     /* Mocks */
     
     public static void populate() {
-        Doctor doctor = new Doctor();
-        doctor.setId(1);
-        doctor.setName("Douglas");
-        doctor.setLastName("Mezuraro");
-        doctor.setAddress("Avenida Horácio Raccanello");
-        doctor.setBirth(Date.valueOf("1996-06-18"));
-        doctor.setEmail("douglasmez@gmail.com");
-        doctor.setPhone("(44)99947-7765");
-        doctors.list.add(doctor);
+        Doctor d1 = new Doctor();
+        d1.setId(1);
+        d1.setName("Doctor #" + d1.getId());
+        doctors.list.add(d1);
         
-        Secretary secretary = new Secretary();
-        secretary.setId(1);
-        secretary.setName("Fulano");
-        secretary.setLastName("de Tal");
-        secretary.setAddress("Avenida Brasil");
-        secretary.setBirth(Date.valueOf("1976-02-10"));
-        secretary.setEmail("fulanodetal@outlook.com");
-        secretary.setPhone("(44)99931-1932");
-        secretaries.list.add(secretary);        
+        Doctor d2 = new Doctor();
+        d2.setId(2);
+        d2.setName("Doctor #" + d2.getId());
+        doctors.list.add(d2);
+        
+        Patient p1 = new Patient();
+        p1.setId(1);
+        p1.setName("Patient #" + p1.getId());
+        
+        Patient p2 = new Patient();
+        p2.setId(2);
+        p2.setName("Patient #" + p2.getId());        
+        
+        Secretary s1 = new Secretary();
+        s1.setId(1);
+        s1.setName("Secretary #" + s1.getId());
+        secretaries.list.add(s1);       
+        
+        Appointment a1 = new Appointment();
+        a1.setAppointmentType(AppointmentType.accompaniment);
+        a1.setData(Date.valueOf(LocalDate.now().plusDays(1)));
+        a1.setHour(Time.valueOf("13:30:00"));
+        a1.setDoctor(d1);
+        a1.setPatient(p1);
+        appointments.list.add(a1);
+        
+        Appointment a2 = new Appointment();
+        a2.setAppointmentType(AppointmentType.regular);
+        a2.setData(Date.valueOf(LocalDate.now().plusDays(2)));
+        a2.setHour(Time.valueOf("14:00:00"));
+        a2.setDoctor(d2);
+        a2.setPatient(p2);
+        appointments.list.add(a2);
+        
+        Appointment a3 = new Appointment();
+        a3.setAppointmentType(AppointmentType.regular);
+        a3.setData(Date.valueOf(LocalDate.now().plusDays(1)));
+        a3.setHour(Time.valueOf("14:00:00"));
+        a3.setDoctor(d2);
+        a3.setPatient(p2);
+        appointments.list.add(a3);
     }
     
     /* Main */

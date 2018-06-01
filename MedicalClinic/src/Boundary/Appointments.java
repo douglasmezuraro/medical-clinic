@@ -15,7 +15,7 @@ public class Appointments extends Crud<Appointment> {
     
     @Override
     protected void createOrUpdate(Appointment object) {
-        object.setData(input.readDate("Digite a data (yyyy-mm-dd):"));
+        object.setData(input.readDate("Digite a data (dd/mm/aaaa):"));
         object.setHour(input.readTime("Digite a hora (hh:mm:ss):"));
         object.setDoctor(doctors.retrieve());
         object.setPatient(patients.retrieve());   
