@@ -36,7 +36,7 @@ public abstract class Crud<T extends Base> {
         return id;
     }
     
-    protected abstract int create();
+    public abstract int create();
     
     private T retrieve(CrudAction action) {
         int id = askForId(action);

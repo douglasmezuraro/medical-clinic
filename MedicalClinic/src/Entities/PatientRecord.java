@@ -31,5 +31,14 @@ public class PatientRecord extends Base {
     public void setTreatmentPrescription(String treatmentPrescription) {
         this.treatmentPrescription = treatmentPrescription;
     }
+    
+    @Override
+    public String toString() {
+        return String.format(
+            "SINTOMAS: %s\nDIAGNÓSTICO: %s\nTRATAMENTO: %s",
+            symptoms,
+            diagnosis,
+            treatmentPrescription).toUpperCase();
+    }
 
 }

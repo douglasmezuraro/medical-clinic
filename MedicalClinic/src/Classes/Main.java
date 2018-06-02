@@ -1,13 +1,16 @@
 package Classes;
 
 import Boundary.Appointments;
+import Boundary.Crud;
 import Boundary.Doctors;
+import Boundary.PatientRecords;
 import Boundary.Patients;
 import Boundary.Secretaries;
 import Entities.Appointment;
 import Entities.AppointmentType;
 import Entities.Doctor;
 import Entities.Patient;
+import Entities.PatientRecord;
 import Entities.Secretary;
 import java.sql.Date;
 import java.sql.Time;
@@ -25,6 +28,7 @@ public class Main {
     private static Doctors doctors = new Doctors();
     private static Secretaries secretaries = new Secretaries();
     private static Appointments appointments = new Appointments(doctors, patients);
+    private static PatientRecords patientRecords = new PatientRecords();
     
     /* Métodos utéis */
     
@@ -75,29 +79,22 @@ public class Main {
         actor = Actor.values()[index - 1];
     }
     
-    public static void managePatients() {
+    public static <T extends Crud> void manageCrud(T crud) {
         switch(getCrudAction()) {
-            case Create   : println("Id gerado: " + patients.create());
-                            break;
-            case Retrieve : println(patients.retrieve().toString());
-                            break;
-            case Update   : patients.update();
-                            break;
-            case Delete   : patients.delete();
-                            break;
-        }
-    }
-    
-    public static void manageAppointment() {
-        switch(getCrudAction()) {
-            case Create   : println("Id gerado: " + appointments.create());
-                            break;
-            case Retrieve : println(appointments.retrieve().toString());
-                            break;
-            case Update   : appointments.update();
-                            break;
-            case Delete   : appointments.delete();
-                            break;
+            case Create:
+                println("ID gerado: " + crud.create());
+                break;
+            case Retrieve:
+                Base object = crud.retrieve();
+                if(object != null);
+                    println(object.toString());
+                break;
+            case Update:
+                crud.update();
+                break;
+            case Delete:
+                crud.delete();
+                break;
         }
     }
     
@@ -111,23 +108,6 @@ public class Main {
                 hasPhone));
     }
     
-    public static void manageAggravations() {
-    
-    }
-    
-    public static void managePatientRecords() {
-        switch(getCrudAction()) {
-            case Create   : println("Id gerado: " + appointments.create());
-                            break;
-            case Retrieve : println(appointments.retrieve().toString());
-                            break;
-            case Update   : appointments.update();
-                            break;
-            case Delete   : appointments.delete();
-                            break;
-        }
-    }
-    
     public static void manageMedicalReport() {
     
     }
@@ -136,7 +116,7 @@ public class Main {
     
     }
     
-    /* Mocks */
+    /* Mocks - TODO: Remover esse método após finalizar trabalho */
     
     public static void populate() {
         Doctor d1 = new Doctor();
@@ -191,7 +171,7 @@ public class Main {
         a3.setPatient(p2);
         appointments.list.add(a3);
     }
-    
+
     /* Main */
     public static void main(String[] args) {
         populate();
@@ -205,19 +185,19 @@ public class Main {
                     loggin();
                     break;
                 case ManagePatients: 
-                    managePatients();
+                    manageCrud(patients);
                     break;
                 case ManageAppointments:
-                    manageAppointment();
+                    manageCrud(appointments);
                     break;
                 case ManageAppointmentReports:
                     manageAppointmentReport();
                     break;
                 case ManageAggravations:
-                    manageAggravations();
+                    //manageCrud(aggravations);
                     break;
                 case ManagePatientRecords:
-                    managePatientRecords();
+                    manageCrud(patientRecords);
                     break;
                 case ManageMedicalReports:
                     manageMedicalReport();
