@@ -1,22 +1,15 @@
 package Entities;
 
 import Classes.Base;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Aggravation extends Base {
 
     private boolean smoker;
     private boolean drinker;
     private boolean heartDicease;
-    private List<Surgery> surgeries;
-    private List<Allergy> allergies;    
+    private String surgeries;
+    private String allergies;    
 
-    public Aggravation() {
-        surgeries = new ArrayList<>();
-        allergies = new ArrayList<>();
-    }
-    
     public boolean isSmoker() {
         return smoker;
     }
@@ -41,19 +34,19 @@ public class Aggravation extends Base {
         this.heartDicease = heartDicease;
     }
 
-    public List<Surgery> getSurgeries() {
+    public String getSurgeries() {
         return surgeries;
     }
 
-    public void setSurgeries(List<Surgery> surgeries) {
+    public void setSurgeries(String surgeries) {
         this.surgeries = surgeries;
     }
 
-    public List<Allergy> getAllergies() {
+    public String getAllergies() {
         return allergies;
     }
 
-    public void setAllergies(List<Allergy> allergies) {
+    public void setAllergies(String allergies) {
         this.allergies = allergies;
     }
 
