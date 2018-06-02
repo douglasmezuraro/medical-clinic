@@ -73,7 +73,7 @@ public class CustomScanner {
 
     public Date readDate(String question) {
         try {
-            SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             return format.parse(readString(question));
         } catch(ParseException e) {
             return null;
@@ -102,5 +102,5 @@ public class CustomScanner {
             return false;
         }
     }
-
+    
 }

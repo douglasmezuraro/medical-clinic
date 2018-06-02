@@ -1,8 +1,12 @@
 package Classes;
 
-public class Base {
+public abstract class Base {
     
-    private int id = 0;
+    protected int id;
+    
+    protected Base() {
+        id = 0;
+    }
 
     public int getId() {
         return id;

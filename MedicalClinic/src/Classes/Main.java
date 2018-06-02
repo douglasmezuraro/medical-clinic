@@ -40,7 +40,7 @@ public class Main {
             return action;
         
         if(!action.getActor().equals(actor)) { 
-            System.out.println("Ação não permitida!");
+            println("Ação não permitida!");
             action = MenuAction.ShowAgain;
         }
         
@@ -58,8 +58,8 @@ public class Main {
     
     public static void println(String string) {
         System.out.println("");
-        for(int i = 0; i <= 50; i++)
-            System.out.print("-");
+        for(int i = 0; i <= 75; i++)
+            System.out.print("*");
         System.out.println("");
         System.out.println(string);
     }
@@ -77,23 +77,27 @@ public class Main {
     
     public static void managePatients() {
         switch(getCrudAction()) {
-            case Create: patients.create();
-                         break;
-            case Update: patients.update();
-                         break;
-            case Delete: patients.delete();
-                         break;
+            case Create   : patients.create();
+                            break;
+            case Retrieve : println(patients.retrieve().toString());
+                            break;
+            case Update   : patients.update();
+                            break;
+            case Delete   : patients.delete();
+                            break;
         }
     }
     
     public static void manageAppointment() {
         switch(getCrudAction()) {
-            case Create: appointments.create();
-                         break;
-            case Update: appointments.update();
-                         break;
-            case Delete: appointments.delete();
-                         break;
+            case Create   : appointments.create();
+                            break;
+            case Retrieve : println(appointments.retrieve().toString());
+                            break;
+            case Update   : appointments.update();
+                            break;
+            case Delete   : appointments.delete();
+                            break;
         }
     }
     
@@ -139,10 +143,12 @@ public class Main {
         Patient p1 = new Patient();
         p1.setId(1);
         p1.setName("Patient #" + p1.getId());
+        patients.list.add(p1);
         
         Patient p2 = new Patient();
         p2.setId(2);
         p2.setName("Patient #" + p2.getId());        
+        patients.list.add(p2);
         
         Secretary s1 = new Secretary();
         s1.setId(1);
@@ -150,6 +156,7 @@ public class Main {
         secretaries.list.add(s1);       
         
         Appointment a1 = new Appointment();
+        a1.setId(1);
         a1.setAppointmentType(AppointmentType.accompaniment);
         a1.setData(Date.valueOf(LocalDate.now().plusDays(1)));
         a1.setHour(Time.valueOf("13:30:00"));
@@ -158,6 +165,7 @@ public class Main {
         appointments.list.add(a1);
         
         Appointment a2 = new Appointment();
+        a2.setId(2);
         a2.setAppointmentType(AppointmentType.regular);
         a2.setData(Date.valueOf(LocalDate.now().plusDays(2)));
         a2.setHour(Time.valueOf("14:00:00"));
@@ -166,6 +174,7 @@ public class Main {
         appointments.list.add(a2);
         
         Appointment a3 = new Appointment();
+        a3.setId(3);
         a3.setAppointmentType(AppointmentType.regular);
         a3.setData(Date.valueOf(LocalDate.now().plusDays(1)));
         a3.setHour(Time.valueOf("14:00:00"));

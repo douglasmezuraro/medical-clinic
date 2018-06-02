@@ -3,7 +3,7 @@ package Entities;
 import Classes.Base;
 import java.util.Date;
 
-public class Person extends Base {
+public abstract class Person extends Base {
 
     private String name;
     private String lastName;
@@ -12,11 +12,6 @@ public class Person extends Base {
     private String contact;
     private String email;
     private String phone;
-
-    public Person() {
-        email = "";
-        phone = "";
-    }
     
     public String getName() {
         return name;
@@ -73,5 +68,18 @@ public class Person extends Base {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
+    
+    @Override
+    public String toString() {
+        return String.format(
+            "NOME: %s\nSOBRENOME: %s\nNASCIMENTO: %tH\nENDEREÇO: %s\nCONTATO: %s\nE-MAIL: %s\nTELEFONE: %s", 
+            name,
+            lastName,
+            birth,
+            address,
+            contact,
+            email,
+            phone).toUpperCase();
+    }
+    
 }
