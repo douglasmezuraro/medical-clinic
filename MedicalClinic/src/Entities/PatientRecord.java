@@ -1,13 +1,12 @@
 package Entities;
 
 import Classes.Base;
-import java.util.Date;
 
 public class PatientRecord extends Base {
 
     private String symptoms;
     private String diagnosis;
-    private Date treatmentPrescription;
+    private String treatmentPrescription;
 
     public String getSymptoms() {
         return symptoms;
@@ -25,11 +24,11 @@ public class PatientRecord extends Base {
         this.diagnosis = diagnosis;
     }
 
-    public Date getTreatmentPrescription() {
+    public String getTreatmentPrescription() {
         return treatmentPrescription;
     }
 
-    public void setTreatmentPrescription(Date treatmentPrescription) {
+    public void setTreatmentPrescription(String treatmentPrescription) {
         this.treatmentPrescription = treatmentPrescription;
     }
 

@@ -23,7 +23,20 @@ public abstract class Crud<T extends Base> {
             "Digite o id do(a) " + description + " que deseja " + action.getDescription() + ": ");
     }
     
-    protected abstract void create();
+    private int generateId() {
+        int id = 1;
+        if(!list.isEmpty()) {
+            for(T object: list) {
+                if(object.getId() > 0)
+                    id = object.getId();
+            }
+            id += 1;
+        }
+        
+        return id;
+    }
+    
+    protected abstract int create();
     
     private T retrieve(CrudAction action) {
         int id = askForId(action);
@@ -54,13 +67,16 @@ public abstract class Crud<T extends Base> {
             list.remove(object);
     }
     
-    protected abstract void createOrUpdate(T object);
+    protected abstract int createOrUpdate(T object);
     
-    protected void add(T object) {
+    protected int add(T object) {
         if (!list.contains(object)) {
+            object.setId(generateId());
             list.add(object);
+            return object.getId();
         }
-        //else
+        else
+            return 0;
         // TODO : lançar excessão de objeto duplicado
         // throw new DuplicateObjectException();   
     }

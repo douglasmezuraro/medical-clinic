@@ -11,12 +11,14 @@ public class Secretaries extends Crud<Secretary> {
     public Secretaries() {
         description = "secretário(a)";
     }
+
+    @Override
+    public int create() {
+        return createOrUpdate(new Secretary());
+    }    
     
     @Override
-    public void createOrUpdate(Secretary object) {
-        if(object.getId() > 0) 
-            object.setId(input.readInt("Digite o id:"));
-
+    public int createOrUpdate(Secretary object) {
         object.setName(input.readString("Digite o nome:"));
         object.setLastName(input.readString("Digite o último nome:"));
         object.setBirth(input.readDate("Digite o nascimento (dd/mm/aaaa):"));
@@ -25,13 +27,8 @@ public class Secretaries extends Crud<Secretary> {
         object.setEmail(input.readString("Digite o e-mail:"));
         object.setPhone(input.readString("Digite o telefone:"));
         
-        super.add(object);
+        return super.add(object);
     }
-    
-    @Override
-    public void create() {
-        createOrUpdate(new Secretary());
-    }    
     
     public String getAppointmentReport(List<Appointment> appointents, 
             boolean hasEmail, boolean hasPhone) {

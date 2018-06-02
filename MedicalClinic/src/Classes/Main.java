@@ -77,7 +77,7 @@ public class Main {
     
     public static void managePatients() {
         switch(getCrudAction()) {
-            case Create   : patients.create();
+            case Create   : println("Id gerado: " + patients.create());
                             break;
             case Retrieve : println(patients.retrieve().toString());
                             break;
@@ -90,7 +90,7 @@ public class Main {
     
     public static void manageAppointment() {
         switch(getCrudAction()) {
-            case Create   : appointments.create();
+            case Create   : println("Id gerado: " + appointments.create());
                             break;
             case Retrieve : println(appointments.retrieve().toString());
                             break;
@@ -116,7 +116,16 @@ public class Main {
     }
     
     public static void managePatientRecords() {
-    
+        switch(getCrudAction()) {
+            case Create   : println("Id gerado: " + appointments.create());
+                            break;
+            case Retrieve : println(appointments.retrieve().toString());
+                            break;
+            case Update   : appointments.update();
+                            break;
+            case Delete   : appointments.delete();
+                            break;
+        }
     }
     
     public static void manageMedicalReport() {

@@ -14,16 +14,17 @@ public class Appointments extends Crud<Appointment> {
     }
     
     @Override
-    protected void createOrUpdate(Appointment object) {
-        object.setData(input.readDate("Digite a data (dd/mm/aaaa):"));
-        object.setHour(input.readTime("Digite a hora (hh:mm:ss):"));
-        object.setDoctor(doctors.retrieve());
-        object.setPatient(patients.retrieve());   
+    public int create() {
+        return createOrUpdate(new Appointment());
     }
     
     @Override
-    public void create() {
-        createOrUpdate(new Appointment());
+    protected int createOrUpdate(Appointment object) {
+        object.setData(input.readDate("Digite a data (dd/mm/aaaa):"));
+        object.setHour(input.readTime("Digite a hora (hh:mm:ss):"));
+        object.setDoctor(doctors.retrieve());
+        object.setPatient(patients.retrieve());
+        return super.add(object);
     }
     
 }
