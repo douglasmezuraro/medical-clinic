@@ -21,8 +21,8 @@ public class Patients extends Crud<Patient> {
         object.setBirth(input.readDate("Digite o nascimento (dd/mm/aaaa):"));
         object.setAddress(input.readString("Digite o endereço:"));
         object.setContact(input.readString("Digite o contato:"));
-        object.setEmail(input.readString("Digite o e-mail:"));
-        object.setPhone(input.readString("Digite o telefone:"));        
+        object.getEmail().setAddress(input.readString("Digite o e-mail:"));
+        object.getPhone().setNumber(input.readString("Digite o telefone:"));        
         object.setAgreementType(AgreementType.values()[input.readInt("Digite o tipo de convênio (1 - Particular / 2 - Plano de saúde):") - 1]);
 
         return super.add(object);

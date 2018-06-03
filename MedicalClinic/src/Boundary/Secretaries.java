@@ -24,8 +24,8 @@ public class Secretaries extends Crud<Secretary> {
         object.setBirth(input.readDate("Digite o nascimento (dd/mm/aaaa):"));
         object.setAddress(input.readString("Digite o endereço:"));
         object.setContact(input.readString("Digite o contato:"));
-        object.setEmail(input.readString("Digite o e-mail:"));
-        object.setPhone(input.readString("Digite o telefone:"));
+        object.getEmail().setAddress(input.readString("Digite o e-mail:"));
+        object.getPhone().setNumber(input.readString("Digite o telefone:"));
         
         return super.add(object);
     }
@@ -41,10 +41,10 @@ public class Secretaries extends Crud<Secretary> {
             if(appointment.getData().compareTo(tomorrow) != 0)
                 continue;
             
-            if(hasEmail && appointment.getPatient().getEmail().isEmpty())
+            if(hasEmail && appointment.getPatient().getEmail().getAddress().isEmpty())
                 continue;
             
-            if(hasPhone && appointment.getPatient().getPhone().isEmpty())
+            if(hasPhone && appointment.getPatient().getPhone().getNumber().isEmpty())
                 continue;
                 
             report += "Data: " + appointment.getData() + ";" +

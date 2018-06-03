@@ -10,8 +10,13 @@ public abstract class Person extends Base {
     private Date birth;
     private String address;
     private String contact;
-    private String email;
-    private String phone;
+    private Email email;
+    private Phone phone;
+    
+    public Person() {
+        email = new Email();
+        phone = new Phone();
+    }
     
     public String getName() {
         return name;
@@ -53,19 +58,19 @@ public abstract class Person extends Base {
         this.contact = contact;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(Email email) {
         this.email = email;
     }
 
-    public String getPhone() {
+    public Phone getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(Phone phone) {
         this.phone = phone;
     }
     
@@ -80,6 +85,6 @@ public abstract class Person extends Base {
             contact,
             email,
             phone).toUpperCase();
-    }
+    }    
     
 }
