@@ -1,34 +1,19 @@
 package Classes;
 
-import Boundary.Appointments;
 import Boundary.Crud;
-import Boundary.Doctors;
-import Boundary.PatientRecords;
-import Boundary.Patients;
-import Boundary.Secretaries;
-import Entities.Appointment;
-import Entities.AppointmentType;
-import Entities.Doctor;
-import Entities.Patient;
-import Entities.PatientRecord;
-import Entities.Secretary;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
+import Entities.Person;
 
 public class Main {
     
     // Constantes
     private static final String sLineBreak = "\n";
     // Objetos utéis
+    private static Person logged;
     private static Actor actor = Actor.Undefined;
     private static CustomScanner input = new CustomScanner();
-    // Objetos de cadastro
-    private static Patients patients = new Patients();
-    private static Doctors doctors = new Doctors();
-    private static Secretaries secretaries = new Secretaries();
-    private static Appointments appointments = new Appointments(doctors, patients);
-    private static PatientRecords patientRecords = new PatientRecords();
+    // Database
+    private static DataBase dataBase = new DataBase();
+
     
     /* Métodos utéis */
     
@@ -77,6 +62,14 @@ public class Main {
         
         int index = input.readInt("");
         actor = Actor.values()[index - 1];
+        switch(actor) {
+            case Secretary:
+                logged = dataBase.getSecretaries().retrieve();
+                break;
+            case Doctor:
+                logged = dataBase.getDoctors().retrieve();
+                break;
+        }
     }
     
     public static <T extends Crud> void manageCrud(T crud) {
@@ -99,82 +92,35 @@ public class Main {
     }
     
     public static void manageAppointmentReport() {
-        boolean hasEmail = input.readBoolean("Filtrar apenas quem tem e-mail?");
-        boolean hasPhone = input.readBoolean("Filtrar apenas quem tem celular?");
-        
-        println(secretaries.getAppointmentReport(
-                appointments.list, 
-                hasEmail, 
-                hasPhone));
+        println(dataBase.getSecretaries().getAppointmentReport(
+                dataBase.getAppointments().list));
+    }
+    
+    public static void sentEmail() {
+        String email = input.readString("Digite o e-mail do destinatário:");
+        String message = input.readString("Digte a mensagem:");
+        Person receiver = dataBase.getPersonByEmail(email);
+        logged.getEmail().sentMessage(receiver.getEmail(), message);
+    }
+    
+    public static void sentSMS() {
+        String phone = input.readString("Digite o número do destinatário:");
+        String message = input.readString("Digite a mensagem: ");
+        Person receiver = dataBase.getPersonByPhone(phone);
+        logged.getPhone().sentMessage(receiver.getPhone(), message);
     }
     
     public static void manageMedicalReport() {
-    
+        new Exception("Não implementado!");
     }
     
     public static void showAgain() {
-    
-    }
-    
-    /* Mocks - TODO: Remover esse método após finalizar trabalho */
-    
-    public static void populate() {
-        Doctor d1 = new Doctor();
-        d1.setId(1);
-        d1.setName("Doctor #" + d1.getId());
-        doctors.list.add(d1);
-        
-        Doctor d2 = new Doctor();
-        d2.setId(2);
-        d2.setName("Doctor #" + d2.getId());
-        doctors.list.add(d2);
-        
-        Patient p1 = new Patient();
-        p1.setId(1);
-        p1.setName("Patient #" + p1.getId());
-        patients.list.add(p1);
-        
-        Patient p2 = new Patient();
-        p2.setId(2);
-        p2.setName("Patient #" + p2.getId());        
-        patients.list.add(p2);
-        
-        Secretary s1 = new Secretary();
-        s1.setId(1);
-        s1.setName("Secretary #" + s1.getId());
-        secretaries.list.add(s1);       
-        
-        Appointment a1 = new Appointment();
-        a1.setId(1);
-        a1.setAppointmentType(AppointmentType.accompaniment);
-        a1.setData(Date.valueOf(LocalDate.now().plusDays(1)));
-        a1.setHour(Time.valueOf("13:30:00"));
-        a1.setDoctor(d1);
-        a1.setPatient(p1);
-        appointments.list.add(a1);
-        
-        Appointment a2 = new Appointment();
-        a2.setId(2);
-        a2.setAppointmentType(AppointmentType.regular);
-        a2.setData(Date.valueOf(LocalDate.now().plusDays(2)));
-        a2.setHour(Time.valueOf("14:00:00"));
-        a2.setDoctor(d2);
-        a2.setPatient(p2);
-        appointments.list.add(a2);
-        
-        Appointment a3 = new Appointment();
-        a3.setId(3);
-        a3.setAppointmentType(AppointmentType.regular);
-        a3.setData(Date.valueOf(LocalDate.now().plusDays(1)));
-        a3.setHour(Time.valueOf("14:00:00"));
-        a3.setDoctor(d2);
-        a3.setPatient(p2);
-        appointments.list.add(a3);
+        new Exception("Não implementado!");
     }
 
     /* Main */
     public static void main(String[] args) {
-        populate();
+        dataBase.Populate();
         
         MenuAction action;
         do {
@@ -185,10 +131,10 @@ public class Main {
                     loggin();
                     break;
                 case ManagePatients: 
-                    manageCrud(patients);
+                    manageCrud(dataBase.getPatients());
                     break;
                 case ManageAppointments:
-                    manageCrud(appointments);
+                    manageCrud(dataBase.getAppointments());
                     break;
                 case ManageAppointmentReports:
                     manageAppointmentReport();
@@ -197,10 +143,16 @@ public class Main {
                     //manageCrud(aggravations);
                     break;
                 case ManagePatientRecords:
-                    manageCrud(patientRecords);
+                    manageCrud(dataBase.getPatientRecords());
                     break;
                 case ManageMedicalReports:
                     manageMedicalReport();
+                    break;
+                case SentEmail:
+                    sentEmail();
+                    break;
+                case SentSMS:
+                    sentSMS();
                     break;
                 case ShowAgain:
                     showAgain();

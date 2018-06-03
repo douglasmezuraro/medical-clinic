@@ -8,6 +8,8 @@ public enum MenuAction {
     ManageAggravations("Gerenciar agravamentos", Actor.Doctor),
     ManagePatientRecords("Gerenciar prontuários de pacients", Actor.Doctor),
     ManageMedicalReports("Gerenciar relatórios médicos", Actor.Doctor),
+    SentEmail("Enviar e-mails", Actor.Undefined),
+    SentSMS("Enviar SMS", Actor.Undefined),
     ShowAgain("Mostrar novamente", Actor.Undefined),
     Exit("Sair", Actor.Undefined);
 

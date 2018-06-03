@@ -30,8 +30,7 @@ public class Secretaries extends Crud<Secretary> {
         return super.add(object);
     }
     
-    public String getAppointmentReport(List<Appointment> appointents, 
-            boolean hasEmail, boolean hasPhone) {
+    public String getAppointmentReport(List<Appointment> appointents) {
         
         String report = "";
         
@@ -41,9 +40,11 @@ public class Secretaries extends Crud<Secretary> {
             if(appointment.getData().compareTo(tomorrow) != 0)
                 continue;
             
+            boolean hasEmail = input.readBoolean("Filtrar apenas quem tem e-mail?");
             if(hasEmail && appointment.getPatient().getEmail().getAddress().isEmpty())
                 continue;
             
+            boolean hasPhone = input.readBoolean("Filtrar apenas quem tem celular?");
             if(hasPhone && appointment.getPatient().getPhone().getNumber().isEmpty())
                 continue;
                 

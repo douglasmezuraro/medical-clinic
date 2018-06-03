@@ -3,7 +3,7 @@ package Entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Messenger {
+public abstract class Messenger {
     
     private List<Message> sent;
     private List<Message> received;
@@ -20,5 +20,9 @@ public class Messenger {
     public List<Message> getReceived() {
         return received;
     }
+    
+    public void sentMessage(Messenger receiver, Message message) {
+        receiver.getReceived().add(message);  
+    };
     
 }
