@@ -15,92 +15,130 @@ public class CustomScanner {
     }
 
     public String readString(String question) {
-        try {
-            System.out.println(question);
-            return input.nextLine();
-        } catch(Exception e) {
-            return null;
+
+        String sreturn = null;
+        while (sreturn != null || !sreturn.isEmpty()) {
+            try {
+                System.out.println(question);
+                sreturn = input.nextLine();
+            } catch (Exception e) {
+                sreturn = null;
+            }
         }
+        return sreturn;
     }
 
     public byte readByte(String question) {
-        try {
-            return Byte.parseByte(readString(question));
-        } catch(Exception e) {
-            return 0;
+        byte sreturn = 0;
+        while (sreturn != 0) {
+            try {
+                sreturn = Byte.parseByte(readString(question));
+            } catch (Exception e) {
+                sreturn = 0;
+            }
         }
+        return sreturn;
     }
 
     public short readShort(String question) {
-        try {
-            return Short.parseShort(readString(question));
-        } catch(Exception e) {
-            return 0;
+        short sreturn = 999;
+        while (sreturn != 999) {
+            try {
+                sreturn = Short.parseShort(readString(question));
+            } catch (Exception e) {
+                sreturn = 999;
+            }
         }
+        return sreturn;
     }
 
     public int readInt(String question) {
-        try {
-            return Integer.parseInt(readString(question));
-        } catch(Exception e) {
-            return 0;
+        int sreturn = 999999;
+        while (sreturn != 999999) {
+            try {
+                sreturn = Integer.parseInt(readString(question));
+            } catch (Exception e) {
+                sreturn = 999999;
+            }
         }
+        return sreturn;
     }
 
     public long readLong(String question) {
-        try {
-            return Long.parseLong(readString(question));
-        } catch(Exception e) {
-            return 0;
-        }    
+        long sreturn = 9999999;
+        while (sreturn != 999999) {
+            try {
+                sreturn = Long.parseLong(readString(question));
+            } catch (Exception e) {
+                sreturn = 0;
+            }
+        }
+        return sreturn;
     }
 
     public float readFloat(String question) {
-        try {
-            return Float.parseFloat(readString(question));
-        } catch(Exception e) {
-            return 0;
+        float sreturn = 999999;
+        while (sreturn != 999999) {
+            try {
+                sreturn = Float.parseFloat(readString(question));
+            } catch (Exception e) {
+                sreturn = 0;
+            }
         }
+        return sreturn;
     }
 
     public double readDouble(String question) {
-        try {
-            return Double.parseDouble(readString(question));
-        } catch(Exception e) {
-            return 0;
+        double sreturn = 999999;
+        while (sreturn != 999999) {
+            try {
+                sreturn = Double.parseDouble(readString(question));
+            } catch (Exception e) {
+                sreturn = 0;
+            }
         }
+        return sreturn;
     }
 
     public Date readDate(String question) {
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-            return format.parse(readString(question));
-        } catch(ParseException e) {
-            return null;
+        Date sreturn = null;
+        while (sreturn != null) {
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                sreturn = format.parse(readString(question));
+            } catch (ParseException e) {
+                sreturn = null;
+            }
         }
+        return sreturn;
     }
 
     public Time readTime(String question) {
-        try {
-            return Time.valueOf(readString(question));
-        } catch(Exception e) {
-            return null;
+        Time sreturn = null;
+        while (sreturn != null) {
+            try {
+                sreturn = Time.valueOf(readString(question));
+            } catch (Exception e) {
+                sreturn = null;
+            }
         }
+        return sreturn;
     }
-    
+
     public boolean readBoolean(String question) {
         try {
             String value = readString(question).toUpperCase();
             String[] values = {"1", "SIM", "S", "YES", "Y"};
-            
-            for(String s: values) 
-                if(s.equalsIgnoreCase(value))
+
+            for (String s : values) {
+                if (s.equalsIgnoreCase(value)) {
                     return true;
-            
+                }
+            }
             return false;
-        } catch(Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
-    
+
 }
