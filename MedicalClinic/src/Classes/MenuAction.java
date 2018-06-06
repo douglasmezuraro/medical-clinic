@@ -5,6 +5,8 @@ import Entities.PersonType;
 
 public enum MenuAction {
     Loggin("Logar", PersonType.values()),
+    ManageSecretaries("Gerenciar secretários(as)", PersonType.values()),
+    ManageDoctors("Gerenciar médicos(as)", PersonType.values()),
     ManagePatients("Gerenciar pacientes", new PersonType[]{PersonType.Secretary}),
     ManageAppointments("Gerenciar consultas", new PersonType[]{PersonType.Secretary}),
     ManageAppointmentReports("Gerenciar relatórios de consultas", new PersonType[]{PersonType.Secretary}),

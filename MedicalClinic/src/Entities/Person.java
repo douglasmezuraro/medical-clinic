@@ -74,4 +74,17 @@ public abstract class Person extends Base {
         this.phone = phone;
     }
    
+    @Override
+    public String toString() {
+        return String.format(
+            "NOME: %s\nSOBRENOME: %s\nNASCIMENTO: %tH\nENDEREÇO: %s\nCONTATO: %s\nE-MAIL: %s\nTELEFONE: %s", 
+            name,
+            lastName,
+            birth,
+            address,
+            contact,
+            email.getAddress(),
+            phone.getNumber()).toUpperCase();
+    } 
+    
 }

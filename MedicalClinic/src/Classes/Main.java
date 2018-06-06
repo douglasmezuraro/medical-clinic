@@ -132,6 +132,12 @@ public class Main {
                 case Loggin:
                     loggin();
                     break;
+                case ManageSecretaries:
+                    manageCrud(dataBase.getSecretaries());
+                    break;
+                case ManageDoctors:
+                    manageCrud(dataBase.getDoctors());
+                    break;
                 case ManagePatients: 
                     manageCrud(dataBase.getPatients());
                     break;
