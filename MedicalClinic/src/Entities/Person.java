@@ -5,13 +5,13 @@ import java.util.Date;
 
 public abstract class Person extends Base {
 
-    private String name;
-    private String lastName;
-    private Date birth;
-    private String address;
-    private String contact;
-    private Email email;
-    private Phone phone;
+    protected String name;
+    protected String lastName;
+    protected Date birth;
+    protected String address;
+    protected String contact;
+    protected Email email;
+    protected Phone phone;
     
     public Person() {
         email = new Email();
@@ -73,7 +73,7 @@ public abstract class Person extends Base {
     public void setPhone(Phone phone) {
         this.phone = phone;
     }
-    
+   
     @Override
     public String toString() {
         return String.format(
@@ -83,8 +83,8 @@ public abstract class Person extends Base {
             birth,
             address,
             contact,
-            email,
-            phone).toUpperCase();
-    }    
+            email.getAddress(),
+            phone.getNumber()).toUpperCase();
+    } 
     
 }
