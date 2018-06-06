@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.Arrays;
+import Entities.PersonType;
 import Boundary.Crud;
 import Entities.Person;
 
@@ -9,7 +11,7 @@ public class Main {
     private static final String sLineBreak = "\n";
     // Objetos utéis
     private static Person logged;
-    private static Actor actor = Actor.Undefined;
+    private static PersonType actor = PersonType.Undefined;
     private static CustomScanner input = new CustomScanner();
     // Database
     private static DataBase dataBase = new DataBase();
@@ -25,10 +27,10 @@ public class Main {
         int index = input.readInt("Digite o número da opção que deseja:");
         action = MenuAction.values()[index - 1];
         
-        if(action.getActor().equals(Actor.Undefined))
+        if(Arrays.equals(action.getPersonTypes(), PersonType.values()))
             return action;
         
-        if(!action.getActor().equals(actor)) { 
+        if(!Arrays.asList(action.getPersonTypes()).contains(actor)) { 
             println("Ação não permitida!");
             action = MenuAction.ShowAgain;
         }
@@ -61,7 +63,7 @@ public class Main {
             actor.toString());
         
         int index = input.readInt("");
-        actor = Actor.values()[index - 1];
+        actor = PersonType.values()[index - 1];
         switch(actor) {
             case Secretary:
                 logged = dataBase.getSecretaries().retrieve();
