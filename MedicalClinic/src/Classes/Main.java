@@ -1,7 +1,5 @@
 package Classes;
 
-import java.util.Arrays;
-import Entities.PersonType;
 import Boundary.Crud;
 import Entities.Person;
 
@@ -11,7 +9,7 @@ public class Main {
     private static final String sLineBreak = "\n";
     // Objetos utéis
     private static Person logged;
-    private static PersonType actor = PersonType.Undefined;
+    private static Actor actor = Actor.Undefined;
     private static CustomScanner input = new CustomScanner();
     // Database
     private static DataBase dataBase = new DataBase();
@@ -27,10 +25,10 @@ public class Main {
         int index = input.readInt("Digite o número da opção que deseja:");
         action = MenuAction.values()[index - 1];
         
-        if(Arrays.equals(action.getPersonTypes(), PersonType.values()))
+        if(action.getActor().equals(Actor.Undefined))
             return action;
         
-        if(!Arrays.asList(action.getPersonTypes()).contains(actor)) { 
+        if(!action.getActor().equals(actor)) { 
             println("Ação não permitida!");
             action = MenuAction.ShowAgain;
         }
@@ -63,7 +61,7 @@ public class Main {
             actor.toString());
         
         int index = input.readInt("");
-        actor = PersonType.values()[index - 1];
+        actor = Actor.values()[index - 1];
         switch(actor) {
             case Secretary:
                 logged = dataBase.getSecretaries().retrieve();
@@ -131,12 +129,6 @@ public class Main {
             switch(action) {
                 case Loggin:
                     loggin();
-                    break;
-                case ManageSecretaries:
-                    manageCrud(dataBase.getSecretaries());
-                    break;
-                case ManageDoctors:
-                    manageCrud(dataBase.getDoctors());
                     break;
                 case ManagePatients: 
                     manageCrud(dataBase.getPatients());
