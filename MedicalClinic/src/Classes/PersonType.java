@@ -1,6 +1,6 @@
 package Classes;
 
-public enum Actor {
+public enum PersonType {
     
     Undefined("Indefinido"),
     Secretary("Secretário"),
@@ -8,7 +8,7 @@ public enum Actor {
     
     private String description;
     
-    Actor(String description) {
+    PersonType(String description) {
         this.description = description;
     }
 
@@ -23,7 +23,7 @@ public enum Actor {
     @Override
     public String toString() {
         String value = "";
-        for(Actor actor: Actor.values()) {
+        for(PersonType actor: PersonType.values()) {
             if(!value.isEmpty()) 
                 value = value + "\n";
             value = value + (actor.ordinal() + 1) + " - " + actor.description;
