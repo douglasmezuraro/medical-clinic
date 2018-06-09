@@ -12,13 +12,13 @@ public class Phone extends Messenger {
         this.number = number;
     }
     
-    public void sentMessage(Phone receiver, String message) {
+    public void newMessage(Phone receiver, String message) {
         Message newMessage = new Message();
         newMessage.setMessage(message);
         newMessage.setSender(number);
         newMessage.setReceiver(receiver.getNumber());
         
-        super.sentMessage(receiver, newMessage);
+        super.newMessage(receiver, newMessage);
     }
     
 }

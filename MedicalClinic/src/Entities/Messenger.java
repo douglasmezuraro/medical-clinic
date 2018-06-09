@@ -5,13 +5,18 @@ import java.util.List;
 
 public abstract class Messenger {
     
-    private List<Message> sent;
-    private List<Message> received;
+    protected List<Message> sent;
+    protected List<Message> received;
 
-    public Messenger() {
+    protected Messenger() {
         sent = new ArrayList<>();
         received = new ArrayList<>();
     }
+    
+    protected void newMessage(Messenger receiver, Message message) {
+        this.sent.add(message);
+        receiver.getReceived().add(message); 
+    } 
 
     public List<Message> getSent() {
         return sent;
@@ -20,9 +25,5 @@ public abstract class Messenger {
     public List<Message> getReceived() {
         return received;
     }
-    
-    public void sentMessage(Messenger receiver, Message message) {
-        receiver.getReceived().add(message);  
-    };
     
 }

@@ -91,6 +91,7 @@ public class DataBase {
         d1.setId(1);
         d1.setName("Doctor #" + d1.getId());
         d1.getEmail().setAddress("douglasmez@gmail.com");
+        d1.getPhone().setNumber("666");
         doctors.getList().add(d1);
         
         Doctor d2 = new Doctor();
@@ -111,6 +112,7 @@ public class DataBase {
         Secretary s1 = new Secretary();
         s1.setId(1);
         s1.getEmail().setAddress("teste@teste.com");
+        s1.getPhone().setNumber("333");
         s1.setName("Secretary #" + s1.getId());
         secretaries.getList().add(s1);       
         

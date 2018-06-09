@@ -118,7 +118,7 @@ public class Main {
             return;
         }
         
-        loggedPerson.getEmail().sentMessage(receiver.getEmail(), message);
+        loggedPerson.getEmail().newMessage(receiver.getEmail(), message);
     }
     
     public static void sentSMS() {
@@ -131,7 +131,7 @@ public class Main {
             return;
         }
         
-        loggedPerson.getPhone().sentMessage(receiver.getPhone(), message);
+        loggedPerson.getPhone().newMessage(receiver.getPhone(), message);
     }
     
     public static void manageMedicalReport() {
