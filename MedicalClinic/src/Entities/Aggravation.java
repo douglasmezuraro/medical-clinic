@@ -1,7 +1,5 @@
 package Entities;
 
-import Classes.Base;
-
 public class Aggravation extends Base {
 
     private boolean smoker;

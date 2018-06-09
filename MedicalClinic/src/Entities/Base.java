@@ -1,4 +1,4 @@
-package Classes;
+package Entities;
 
 public abstract class Base {
     

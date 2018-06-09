@@ -1,8 +1,13 @@
-package Classes;
+package Boundary;
 
+import Entities.Base;
 import java.util.Arrays;
 import Entities.PersonType;
-import Boundary.Crud;
+import Cruds.Crud;
+import Utils.CrudAction;
+import Utils.CustomScanner;
+import Utils.DataBase;
+import Utils.MenuAction;
 import Entities.Person;
 
 public class Main {

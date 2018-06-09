@@ -1,7 +1,5 @@
 package Entities;
 
-import Classes.Base;
-
 public class PatientRecord extends Base {
 
     private String symptoms;

@@ -1,6 +1,5 @@
 package Entities;
 
-import Classes.Base;
 import java.sql.Time;
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package Classes;
+package Utils;
 
 import java.util.Date;
 import java.sql.Time;

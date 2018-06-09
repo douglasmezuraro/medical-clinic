@@ -1,10 +1,10 @@
-package Boundary;
+package Cruds;
 
-import Classes.CrudAction;
+import Utils.CrudAction;
 import java.util.ArrayList;
 import java.util.List;
-import Classes.Base;
-import Classes.CustomScanner;
+import Entities.Base;
+import Utils.CustomScanner;
 
 public abstract class Crud<T extends Base> {
     

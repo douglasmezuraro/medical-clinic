@@ -1,6 +1,5 @@
 package Entities;
 
-import Classes.Base;
 import java.util.Date;
 
 public abstract class Person extends Base {

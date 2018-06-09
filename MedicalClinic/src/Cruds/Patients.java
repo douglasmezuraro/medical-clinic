@@ -1,4 +1,4 @@
-package Boundary;
+package Cruds;
 
 import Entities.AgreementType;
 import Entities.Patient;

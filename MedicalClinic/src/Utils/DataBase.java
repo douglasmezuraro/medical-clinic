@@ -1,10 +1,10 @@
-package Classes;
+package Utils;
 
-import Boundary.Appointments;
-import Boundary.Doctors;
-import Boundary.PatientRecords;
-import Boundary.Patients;
-import Boundary.Secretaries;
+import Cruds.Appointments;
+import Cruds.Doctors;
+import Cruds.PatientRecords;
+import Cruds.Patients;
+import Cruds.Secretaries;
 import Entities.Appointment;
 import Entities.AppointmentType;
 import Entities.Doctor;

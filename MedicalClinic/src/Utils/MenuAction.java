@@ -1,4 +1,4 @@
-package Classes;
+package Utils;
 
 import java.util.Arrays;
 import Entities.PersonType;
