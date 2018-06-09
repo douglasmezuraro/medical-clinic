@@ -24,6 +24,7 @@ public class Appointments extends Crud<Appointment> {
         object.setHour(input.readTime("Digite a hora (hh:mm:ss):"));
         object.setDoctor(doctors.retrieve());
         object.setPatient(patients.retrieve());
+       
         return super.add(object);
     }
     

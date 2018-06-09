@@ -2,8 +2,8 @@ package Entities;
 
 public enum AgreementType {
       
-    particular("PARTICULAR"),
-    healthInsurance("PLANO DE SAUDE");
+    particular("Particular"),
+    healthInsurance("Plano de saúde");
     
     private String description;
     

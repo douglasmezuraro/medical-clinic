@@ -2,9 +2,9 @@ package Entities;
 
 public class PatientRecord extends Base {
 
-    private String symptoms;
-    private String diagnosis;
-    private String treatmentPrescription;
+    private String symptoms = "";
+    private String diagnosis = "";
+    private String treatmentPrescription = "";
 
     public String getSymptoms() {
         return symptoms;

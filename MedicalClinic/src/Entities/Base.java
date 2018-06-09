@@ -2,12 +2,8 @@ package Entities;
 
 public abstract class Base {
     
-    protected int id;
+    protected int id = 0;
     
-    protected Base() {
-        id = 0;
-    }
-
     public int getId() {
         return id;
     }

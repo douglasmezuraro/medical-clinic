@@ -2,11 +2,7 @@ package Entities;
 
 public class Email extends Messenger {
    
-    private String address;
-    
-    public Email() {
-        address = "";
-    }
+    private String address = "";
 
     public String getAddress() {
         return address;

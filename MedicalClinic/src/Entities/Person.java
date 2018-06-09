@@ -12,7 +12,7 @@ public abstract class Person extends Base {
     protected Email email;
     protected Phone phone;
     
-    public Person() {
+    protected Person() {
         email = new Email();
         phone = new Phone();
     }

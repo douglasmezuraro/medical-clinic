@@ -2,10 +2,10 @@ package Entities;
 
 public class Message {
     
-    private String sender;
-    private String receiver;
-    private String message;
-
+    private String sender = "";
+    private String receiver = "";
+    private String message = "";
+    
     public String getSender() {
         return sender;
     }

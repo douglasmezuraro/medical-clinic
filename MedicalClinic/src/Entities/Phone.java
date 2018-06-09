@@ -2,11 +2,7 @@ package Entities;
 
 public class Phone extends Messenger {
     
-    private String number;
-    
-    public Phone() {
-        number = "";
-    }
+    private String number = "";
 
     public String getNumber() {
         return number;
