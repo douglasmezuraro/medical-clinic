@@ -13,11 +13,12 @@ public class Email extends Messenger {
     }
     
     public void sentMessage(Email receiver, String message) {
-        Message m = new Message();
-        m.setMessage(message);
-        m.setSender(address);
-        m.setReceiver(receiver.getAddress());
-        super.sentMessage(receiver, m);
+        Message newMessage = new Message();
+        newMessage.setMessage(message);
+        newMessage.setSender(address);
+        newMessage.setReceiver(receiver.getAddress());
+        
+        super.sentMessage(receiver, newMessage);
     }
     
 }
