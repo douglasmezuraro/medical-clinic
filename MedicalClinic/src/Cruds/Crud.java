@@ -8,8 +8,7 @@ import Utils.CustomScanner;
 
 public abstract class Crud<T extends Base> {
     
-    // TODO : após finalizar trabalho tornar essa property 'protected'
-    public List<T> list; 
+    protected List<T> list; 
     protected CustomScanner input; 
     protected String description;
     
@@ -18,22 +17,29 @@ public abstract class Crud<T extends Base> {
         input = new CustomScanner();
     }
     
+    public List<T> getList() {
+        return list;
+    }
+    
     protected int askForId(CrudAction action) {
-        return input.readInt(
-            "Digite o id do(a) " + description + " que deseja " + action.getDescription() + ": ");
+        return input.readInt(String.format(
+            "Digite o id do(a) %s que deseja %s:", 
+            description, 
+            action.getDescription()));          
     }
     
     private int generateId() {
-        int id = 1;
-        if(!list.isEmpty()) {
-            for(T object: list) {
-                if(object.getId() > 0)
-                    id = object.getId();
-            }
-            id += 1;
-        }
+        int higherId = 0;
         
-        return id;
+        for(T object: list) {
+            if(object.getId() > higherId) {
+                higherId = object.getId();
+            }
+        }
+
+        higherId += 1;
+        
+        return higherId;
     }
     
     public abstract int create();
@@ -46,8 +52,7 @@ public abstract class Crud<T extends Base> {
                 return element;
             }
         }
-        // TODO : lançar excessão de objeto não encontrado
-        // throw new ObjectNotFoundException();        
+    
         return null;
     }
     
@@ -75,10 +80,7 @@ public abstract class Crud<T extends Base> {
             list.add(object);
             return object.getId();
         }
-        else
-            return 0;
-        // TODO : lançar excessão de objeto duplicado
-        // throw new DuplicateObjectException();   
+        else return 0;
     }
     
 }

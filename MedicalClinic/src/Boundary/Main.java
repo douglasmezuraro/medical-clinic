@@ -15,8 +15,8 @@ public class Main {
     // Constantes
     private static final String sLineBreak = "\n";
     // Objetos utéis
-    private static Person logged;
-    private static PersonType actor = PersonType.Undefined;
+    private static Person loggedPerson;
+    private static PersonType loggedPersonType = PersonType.Undefined;
     private static CustomScanner input = new CustomScanner();
     // Database
     private static DataBase dataBase = new DataBase();
@@ -27,7 +27,7 @@ public class Main {
     public static MenuAction getMenuAction() {
         MenuAction action = MenuAction.ShowAgain;
        
-        println(action.toString(actor) + sLineBreak);
+        println(action.toString(loggedPersonType) + sLineBreak);
         
         int index = input.readInt("Digite o número da opção que deseja:");
         action = MenuAction.values()[index - 1];
@@ -36,7 +36,7 @@ public class Main {
             return action;
         }
         
-        if(!Arrays.asList(action.getPersonType()).contains(actor)) { 
+        if(!Arrays.asList(action.getPersonType()).contains(loggedPersonType)) { 
             println("Ação não permitida!");
             action = MenuAction.ShowAgain;
         }
@@ -64,19 +64,25 @@ public class Main {
     /* Ações principais */
     
     public static void loggin() {
-        println(
-            "Identifique-se:" + sLineBreak +
-            actor.toString());
+        int index = input.readInt("Identifique-se:" + sLineBreak + loggedPersonType.toString());
         
-        int index = input.readInt("");
-        actor = PersonType.values()[index - 1];
-        switch(actor) {
+        loggedPersonType = PersonType.values()[index - 1];
+       
+        switch(loggedPersonType) {
             case Secretary:
-                logged = dataBase.getSecretaries().retrieve();
+                loggedPerson = dataBase.getSecretaries().retrieve();
                 break;
             case Doctor:
-                logged = dataBase.getDoctors().retrieve();
+                loggedPerson = dataBase.getDoctors().retrieve();
                 break;
+        }
+        
+        if(loggedPersonType == PersonType.Undefined)
+            return;
+        
+        if(loggedPerson == null) {
+            loggedPersonType = PersonType.Undefined;
+            println("Id não encontrado, tente novamente!");
         }
     }
     
@@ -101,21 +107,21 @@ public class Main {
     
     public static void manageAppointmentReport() {
         println(dataBase.getSecretaries().getAppointmentReport(
-                dataBase.getAppointments().list));
+                dataBase.getAppointments().getList()));
     }
     
     public static void sentEmail() {
         String email = input.readString("Digite o e-mail do destinatário:");
         String message = input.readString("Digte a mensagem:");
         Person receiver = dataBase.getPersonByEmail(email);
-        logged.getEmail().sentMessage(receiver.getEmail(), message);
+        loggedPerson.getEmail().sentMessage(receiver.getEmail(), message);
     }
     
     public static void sentSMS() {
         String phone = input.readString("Digite o número do destinatário:");
         String message = input.readString("Digite a mensagem: ");
         Person receiver = dataBase.getPersonByPhone(phone);
-        logged.getPhone().sentMessage(receiver.getPhone(), message);
+        loggedPerson.getPhone().sentMessage(receiver.getPhone(), message);
     }
     
     public static void manageMedicalReport() {
@@ -123,7 +129,7 @@ public class Main {
     }
     
     public static void showAgain() {
-        new Exception("Não implementado!");
+       
     }
 
     /* Main */

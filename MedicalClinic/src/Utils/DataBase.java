@@ -52,16 +52,16 @@ public class DataBase {
     }
     
     public Person getPersonByEmail(String email) {
-        for(Person p: patients.list) 
+        for(Person p: patients.getList()) 
             if(p.getEmail().getAddress().equalsIgnoreCase(email))
                 return p;
         
-        for(Person p: doctors.list) 
+        for(Person p: doctors.getList()) 
             if(p.getEmail().getAddress().equalsIgnoreCase(email))
                 return p;
         
         
-        for(Person p: secretaries.list) 
+        for(Person p: secretaries.getList()) 
             if(p.getEmail().getAddress().equalsIgnoreCase(email))
                 return p;
         
@@ -69,16 +69,16 @@ public class DataBase {
     }
     
     public Person getPersonByPhone(String phone) {
-        for(Person p: patients.list) 
+        for(Person p: patients.getList()) 
             if(p.getPhone().getNumber().equalsIgnoreCase(phone))
                 return p;
         
-        for(Person p: doctors.list) 
+        for(Person p: doctors.getList()) 
             if(p.getPhone().getNumber().equalsIgnoreCase(phone))
                 return p;
         
         
-        for(Person p: secretaries.list) 
+        for(Person p: secretaries.getList()) 
             if(p.getPhone().getNumber().equalsIgnoreCase(phone))
                 return p;
         
@@ -91,28 +91,28 @@ public class DataBase {
         d1.setId(1);
         d1.setName("Doctor #" + d1.getId());
         d1.getEmail().setAddress("douglasmez@gmail.com");
-        doctors.list.add(d1);
+        doctors.getList().add(d1);
         
         Doctor d2 = new Doctor();
         d2.setId(2);
         d2.setName("Doctor #" + d2.getId());
-        doctors.list.add(d2);
+        doctors.getList().add(d2);
         
         Patient p1 = new Patient();
         p1.setId(1);
         p1.setName("Patient #" + p1.getId());
-        patients.list.add(p1);
+        patients.getList().add(p1);
         
         Patient p2 = new Patient();
         p2.setId(2);
         p2.setName("Patient #" + p2.getId());        
-        patients.list.add(p2);
+        patients.getList().add(p2);
         
         Secretary s1 = new Secretary();
         s1.setId(1);
         s1.getEmail().setAddress("teste@teste.com");
         s1.setName("Secretary #" + s1.getId());
-        secretaries.list.add(s1);       
+        secretaries.getList().add(s1);       
         
         Appointment a1 = new Appointment();
         a1.setId(1);
@@ -121,7 +121,7 @@ public class DataBase {
         a1.setHour(Time.valueOf("13:30:00"));
         a1.setDoctor(d1);
         a1.setPatient(p1);
-        appointments.list.add(a1);
+        appointments.getList().add(a1);
         
         Appointment a2 = new Appointment();
         a2.setId(2);
@@ -130,7 +130,7 @@ public class DataBase {
         a2.setHour(Time.valueOf("14:00:00"));
         a2.setDoctor(d2);
         a2.setPatient(p2);
-        appointments.list.add(a2);
+        appointments.getList().add(a2);
         
         Appointment a3 = new Appointment();
         a3.setId(3);
@@ -139,7 +139,7 @@ public class DataBase {
         a3.setHour(Time.valueOf("14:00:00"));
         a3.setDoctor(d2);
         a3.setPatient(p2);
-        appointments.list.add(a3);
+        appointments.getList().add(a3);
     }
     
 }
