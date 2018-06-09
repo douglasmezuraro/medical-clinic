@@ -1,26 +1,31 @@
 package Classes;
 
+import java.util.Arrays;
+import Entities.PersonType;
+
 public enum MenuAction {
-    Loggin("Logar", PersonType.Undefined),
-    ManagePatients("Gerenciar pacientes", PersonType.Secretary),
-    ManageAppointments("Gerenciar consultas", PersonType.Secretary),
-    ManageAppointmentReports("Gerenciar relatórios de consultas", PersonType.Secretary),
-    ManageAggravations("Gerenciar agravamentos", PersonType.Doctor),
-    ManagePatientRecords("Gerenciar prontuários de pacients", PersonType.Doctor),
-    ManageMedicalReports("Gerenciar relatórios médicos", PersonType.Doctor),
-    SentEmail("Enviar e-mails", PersonType.Undefined),
-    SentSMS("Enviar SMS", PersonType.Undefined),
-    ShowAgain("Mostrar novamente", PersonType.Undefined),
-    Exit("Sair", PersonType.Undefined);
+    Loggin("Logar", PersonType.values()),
+    ManageSecretaries("Gerenciar secretários(as)", PersonType.values()),
+    ManageDoctors("Gerenciar médicos(as)", PersonType.values()),
+    ManagePatients("Gerenciar pacientes", new PersonType[]{PersonType.Secretary}),
+    ManageAppointments("Gerenciar consultas", new PersonType[]{PersonType.Secretary}),
+    ManageAppointmentReports("Gerenciar relatórios de consultas", new PersonType[]{PersonType.Secretary}),
+    ManageAggravations("Gerenciar agravamentos", new PersonType[]{PersonType.Doctor}),
+    ManagePatientRecords("Gerenciar prontuários de pacients", new PersonType[]{PersonType.Doctor}),
+    ManageMedicalReports("Gerenciar relatórios médicos", new PersonType[]{PersonType.Doctor}),
+    SentEmail("Enviar e-mails", new PersonType[]{PersonType.Secretary, PersonType.Doctor}),
+    SentSMS("Enviar SMS", new PersonType[]{PersonType.Secretary, PersonType.Doctor}),
+    ShowAgain("Mostrar novamente", PersonType.values()),
+    Exit("Sair", PersonType.values());
 
     private String description;
-    private PersonType actor;
+    private PersonType[] personTypes;
 
-    MenuAction(String description, PersonType actor) {
+    MenuAction(String description, PersonType[] personTypes) {
         this.description = description;
-        this.actor = actor;
+        this.personTypes = personTypes;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -29,24 +34,25 @@ public enum MenuAction {
         this.description = description;
     }
 
-    public PersonType getPersonType() {
-        return actor;
+    public PersonType[] getPersonType() {
+        return personTypes;
     }
 
-    public void setPersonType(PersonType actor) {
-        this.actor = actor;
+    public void setPersonType(PersonType[] personType) {
+        this.personTypes = personTypes;
     }
-    
-    public String toString(PersonType actor) {
+
+    public String toString(PersonType personType) {
         String value = "";
-        for(MenuAction action: MenuAction.values()) {
-            if(action.actor.equals(actor) || action.actor.equals(PersonType.Undefined)) {
-                if(!value.isEmpty()) 
+        for (MenuAction action : MenuAction.values()) {
+            if (Arrays.asList(action.personTypes).contains(personType)) {
+                if (!value.isEmpty()) {
                     value = value + "\n";
-                value = value + (action.ordinal() + 1) + " - " + action.description;
+                }
+                value = value + "[" + (action.ordinal() + 1) + "]" + action.description;
             }
         }
         return value;
     }
-    
+
 };

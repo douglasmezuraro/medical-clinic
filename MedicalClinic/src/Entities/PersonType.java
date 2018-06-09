@@ -1,4 +1,4 @@
-package Classes;
+package Entities;
 
 public enum PersonType {
     

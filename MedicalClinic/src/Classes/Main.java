@@ -1,5 +1,7 @@
 package Classes;
 
+import java.util.Arrays;
+import Entities.PersonType;
 import Boundary.Crud;
 import Entities.Person;
 
@@ -25,10 +27,11 @@ public class Main {
         int index = input.readInt("Digite o número da opção que deseja:");
         action = MenuAction.values()[index - 1];
         
-        if(action.getPersonType().equals(PersonType.Undefined))
+        if(Arrays.equals(action.getPersonType(),PersonType.values())){
             return action;
+        }
         
-        if(!action.getPersonType().equals(actor)) { 
+        if(!Arrays.asList(action.getPersonType()).contains(actor)) { 
             println("Ação não permitida!");
             action = MenuAction.ShowAgain;
         }
@@ -130,6 +133,12 @@ public class Main {
                 case Loggin:
                     loggin();
                     break;
+                 case ManageSecretaries: 
+                    manageCrud(dataBase.getSecretaries());
+                    break;
+                case ManageDoctors:
+                    manageCrud(dataBase.getDoctors());
+                    break;    
                 case ManagePatients: 
                     manageCrud(dataBase.getPatients());
                     break;
