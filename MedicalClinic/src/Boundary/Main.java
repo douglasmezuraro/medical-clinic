@@ -116,6 +116,12 @@ public class Main {
         String email = input.readString("Digite o e-mail do destinatário:");
         String message = input.readString("Digte a mensagem:");
         Person receiver = dataBase.getPersonByEmail(email);
+        
+        if(receiver == null) {
+            println("E-mail do destinatário não encontrado");
+            return;
+        }
+        
         loggedPerson.getEmail().sentMessage(receiver.getEmail(), message);
     }
     
@@ -123,6 +129,12 @@ public class Main {
         String phone = input.readString("Digite o número do destinatário:");
         String message = input.readString("Digite a mensagem: ");
         Person receiver = dataBase.getPersonByPhone(phone);
+        
+        if(receiver == null) {
+            println("Telefone do destinatário não encontrado");
+            return;
+        }
+        
         loggedPerson.getPhone().sentMessage(receiver.getPhone(), message);
     }
     
