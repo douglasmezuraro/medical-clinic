@@ -1,4 +1,4 @@
-package Entities;
+package Utils;
 
 public enum PersonType {
     
@@ -23,11 +23,13 @@ public enum PersonType {
     @Override
     public String toString() {
         String value = "";
-        for(PersonType actor: PersonType.values()) {
+        
+        for(PersonType personType: PersonType.values()) {
             if(!value.isEmpty()) 
-                value = value + "\n";
-            value = value + (actor.ordinal() + 1) + " - " + actor.description;
+                value += "\n";
+            value += String.format("[%d] %s", (personType.ordinal() + 1), personType.description);
         }
+        
         return value;
     }
 }

@@ -1,10 +1,9 @@
 package Utils;
 
 import java.util.Arrays;
-import Entities.PersonType;
 
 public enum MenuAction {
-    Loggin("Logar", PersonType.values()),
+    Login("Logar", PersonType.values()),
     ManageSecretaries("Gerenciar secretários(as)", PersonType.values()),
     ManageDoctors("Gerenciar médicos(as)", PersonType.values()),
     ManagePatients("Gerenciar pacientes", new PersonType[]{PersonType.Secretary}),
@@ -39,19 +38,21 @@ public enum MenuAction {
     }
 
     public void setPersonType(PersonType[] personType) {
-        this.personTypes = personTypes;
+        this.personTypes = personType;
     }
 
     public String toString(PersonType personType) {
         String value = "";
-        for (MenuAction action : MenuAction.values()) {
-            if (Arrays.asList(action.personTypes).contains(personType)) {
-                if (!value.isEmpty()) {
-                    value = value + "\n";
-                }
-                value = value + "[" + (action.ordinal() + 1) + "]" + action.description;
+        
+        for(MenuAction action : MenuAction.values()) {
+            if(Arrays.asList(action.personTypes).contains(personType)) {
+                if(!value.isEmpty()) 
+                    value += "\n";
+                
+                value += String.format("[%d] %s", (action.ordinal() + 1), action.description);
             }
         }
+        
         return value;
     }
 

@@ -2,7 +2,7 @@ package Boundary;
 
 import Entities.Base;
 import java.util.Arrays;
-import Entities.PersonType;
+import Utils.PersonType;
 import Cruds.Crud;
 import Utils.CrudAction;
 import Utils.CustomScanner;
@@ -63,7 +63,7 @@ public class Main {
     
     /* Ações principais */
     
-    public static void loggin() {
+    public static void login() {
         int index = input.readInt("Identifique-se:" + sLineBreak + loggedPersonType.toString());
         
         loggedPersonType = PersonType.values()[index - 1];
@@ -89,12 +89,14 @@ public class Main {
     public static <T extends Crud> void manageCrud(T crud) {
         switch(getCrudAction()) {
             case Create:
-                println("ID gerado: " + crud.create());
+                println(String.format("ID gerado: %d", crud.create()));
                 break;
             case Retrieve:
                 Base object = crud.retrieve();
-                if(object != null);
+                
+                if(object != null)
                     println(object.toString());
+                
                 break;
             case Update:
                 crud.update();
@@ -141,8 +143,8 @@ public class Main {
             action = getMenuAction();
             
             switch(action) {
-                case Loggin:
-                    loggin();
+                case Login:
+                    login();
                     break;
                  case ManageSecretaries: 
                     manageCrud(dataBase.getSecretaries());
