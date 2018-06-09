@@ -1,14 +1,10 @@
 package Boundary;
 
-import Entities.Base;
-import java.util.Arrays;
-import Utils.PersonType;
+import Utils.*;
 import Cruds.Crud;
-import Utils.CrudAction;
-import Utils.CustomScanner;
-import Utils.DataBase;
-import Utils.MenuAction;
+import Entities.Base;
 import Entities.Person;
+import java.util.Arrays;
 
 public class Main {
     
