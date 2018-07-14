@@ -1,4 +1,4 @@
-package Entities;
+package model;
 
 public class PatientRecord extends Base {
 

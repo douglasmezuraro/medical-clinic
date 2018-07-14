@@ -1,15 +1,20 @@
-package Entities;
+package model;
 
-public abstract class Base {
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public abstract class Base implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    protected Integer id = 0;
     
-    protected int id = 0;
-    
-    public int getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
     
 }

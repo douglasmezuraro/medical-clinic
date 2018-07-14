@@ -1,4 +1,4 @@
-package Entities;
+package model;
 
 public class Secretary extends Person {
    

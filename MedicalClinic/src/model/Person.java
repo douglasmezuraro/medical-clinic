@@ -1,15 +1,38 @@
-package Entities;
+package model;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import utils.Constants;
 
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Person extends Base {
-
+    
+    @Column(length = Constants.SHORT_DESCRIPTION)
     protected String name;
+    
+    @Column(length = Constants.SHORT_DESCRIPTION)
     protected String lastName;
+   
+    @Temporal(TemporalType.DATE)
     protected Date birth;
+    
+    @Column(length = Constants.LONG_DESCRIPTION)
     protected String address;
+    
+    @Column(length = Constants.DESCRIPTION)
     protected String contact;
+    
+    @Transient
     protected Email email;
+    
+    @Transient
     protected Phone phone;
     
     protected Person() {
@@ -72,18 +95,5 @@ public abstract class Person extends Base {
     public void setPhone(Phone phone) {
         this.phone = phone;
     }
-    
-    @Override
-    public String toString() {
-        return String.format(
-            "NOME: %s\nSOBRENOME: %s\nNASCIMENTO: %tH\nENDEREÇO: %s\nCONTATO: %s\nE-MAIL: %s\nTELEFONE: %s", 
-            name,
-            lastName,
-            birth,
-            address,
-            contact,
-            email.getAddress(),
-            phone.getNumber()).toUpperCase();
-    }    
-    
+      
 }

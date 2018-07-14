@@ -1,8 +1,12 @@
-package Entities;
+package model;
+
+import javax.persistence.Column;
+import utils.Constants;
 
 public class Email extends Messenger {
    
-    private String address = "";
+    @Column(length = Constants.DESCRIPTION)
+    private String address;
 
     public String getAddress() {
         return address;

@@ -1,4 +1,4 @@
-package Entities;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public abstract class Messenger {
     }
     
     protected void newMessage(Messenger receiver, Message message) {
-        this.sent.add(message);
+        sent.add(message);
         receiver.getReceived().add(message); 
     } 
 

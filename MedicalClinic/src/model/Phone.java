@@ -1,8 +1,12 @@
-package Entities;
+package model;
+
+import javax.persistence.Column;
+import utils.Constants;
 
 public class Phone extends Messenger {
     
-    private String number = "";
+    @Column(length = Constants.PHONE)
+    private String number;
 
     public String getNumber() {
         return number;
