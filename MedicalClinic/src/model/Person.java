@@ -28,18 +28,7 @@ public abstract class Person extends Base {
     
     @Column(length = Constants.DESCRIPTION)
     protected String contact;
-    
-    @Transient
-    protected Email email;
-    
-    @Transient
-    protected Phone phone;
-    
-    protected Person() {
-        email = new Email();
-        phone = new Phone();
-    }
-    
+   
     public String getName() {
         return name;
     }
@@ -78,22 +67,6 @@ public abstract class Person extends Base {
 
     public void setContact(String contact) {
         this.contact = contact;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Phone phone) {
-        this.phone = phone;
     }
       
 }
