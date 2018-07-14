@@ -14,6 +14,13 @@ public class DAO<T extends Base> implements IDAO<T> {
     protected DAO(Class<T> model) {
         this.model = model;
     }
+        
+    protected void executeWithTransaction(Runnable method) {
+        manager.getTransaction().begin();
+        method.run();
+        manager.flush();
+        manager.getTransaction().commit();        
+    }
     
     @Override
     public void connect() {
@@ -29,26 +36,23 @@ public class DAO<T extends Base> implements IDAO<T> {
 
     @Override
     public void add(T model) {
-        manager.getTransaction().begin();
-        manager.persist(model);
-        manager.flush();
-        manager.getTransaction().commit(); 
+        executeWithTransaction(() -> {
+            manager.persist(model);
+        });
     }
 
     @Override
     public void update(T model) {
-        manager.getTransaction().begin();
-        manager.merge(model);
-        manager.flush();
-        manager.getTransaction().commit();
+        executeWithTransaction(() -> {
+            manager.merge(model);
+        });
     }
 
     @Override
     public void remove(T model) {
-        manager.getTransaction().begin();
-        manager.remove(model);
-        manager.flush();
-        manager.getTransaction().commit();
+        executeWithTransaction(() -> {
+            manager.remove(model);
+        });
     }
 
     @Override
