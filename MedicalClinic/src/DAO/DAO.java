@@ -7,8 +7,8 @@ import model.Base;
 
 public class DAO<T extends Base> implements IDAO<T> {
 
-    private EntityManagerFactory emf;
-    private EntityManager em;
+    private EntityManagerFactory factory;
+    private EntityManager manager;
     private final Class<T> model;
     
     protected DAO(Class<T> model) {
@@ -17,43 +17,43 @@ public class DAO<T extends Base> implements IDAO<T> {
     
     @Override
     public void connect() {
-        emf = Persistence.createEntityManagerFactory("MedicalClinicPU");
-        em = emf.createEntityManager();
+        factory = Persistence.createEntityManagerFactory("MedicalClinicPU");
+        manager = factory.createEntityManager();
     }
 
     @Override
     public void disconnect() {
-        em.close();
-        emf.close();
+        manager.close();
+        factory.close();
     }
 
     @Override
     public void add(T model) {
-        em.getTransaction().begin();
-        em.persist(model);
-        em.flush();
-        em.getTransaction().commit(); 
+        manager.getTransaction().begin();
+        manager.persist(model);
+        manager.flush();
+        manager.getTransaction().commit(); 
     }
 
     @Override
     public void update(T model) {
-        em.getTransaction().begin();
-        em.merge(model);
-        em.flush();
-        em.getTransaction().commit();
+        manager.getTransaction().begin();
+        manager.merge(model);
+        manager.flush();
+        manager.getTransaction().commit();
     }
 
     @Override
     public void remove(T model) {
-        em.getTransaction().begin();
-        em.remove(model);
-        em.flush();
-        em.getTransaction().commit();
+        manager.getTransaction().begin();
+        manager.remove(model);
+        manager.flush();
+        manager.getTransaction().commit();
     }
 
     @Override
     public T find(Integer id) {
-        return em.find(model, id);
+        return manager.find(model, id);
     }
     
 }
