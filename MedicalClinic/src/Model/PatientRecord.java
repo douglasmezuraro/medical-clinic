@@ -1,10 +1,22 @@
-package model;
+package Model;
 
+import Classes.Constants;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PATIENTRECORDS")
 public class PatientRecord extends Base {
 
-    private String symptoms = "";
-    private String diagnosis = "";
-    private String treatmentPrescription = "";
+    @Column(length = Constants.LONG_DESCRIPTION)
+    private String symptoms;
+    
+    @Column(length = Constants.LONG_DESCRIPTION)
+    private String diagnosis;
+    
+    @Column(length = Constants.LONG_DESCRIPTION)
+    private String treatmentPrescription;
 
     public String getSymptoms() {
         return symptoms;
@@ -28,15 +40,6 @@ public class PatientRecord extends Base {
 
     public void setTreatmentPrescription(String treatmentPrescription) {
         this.treatmentPrescription = treatmentPrescription;
-    }
-    
-    @Override
-    public String toString() {
-        return String.format(
-            "SINTOMAS: %s\nDIAGNÓSTICO: %s\nTRATAMENTO: %s",
-            symptoms,
-            diagnosis,
-            treatmentPrescription).toUpperCase();
     }
 
 }

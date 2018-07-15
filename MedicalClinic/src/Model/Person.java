@@ -1,17 +1,13 @@
-package model;
+package Model;
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import utils.Constants;
+import Classes.Constants;
+import javax.persistence.MappedSuperclass;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public abstract class Person extends Base {
     
     @Column(length = Constants.SHORT_DESCRIPTION)

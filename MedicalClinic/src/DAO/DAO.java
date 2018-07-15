@@ -1,37 +1,41 @@
 package DAO;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import model.Base;
+import Model.Base;
+import java.util.List;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 public class DAO<T extends Base> implements IDAO<T> {
 
-    private EntityManagerFactory factory;
+    @PersistenceContext
     private EntityManager manager;
+    
     private final Class<T> model;
     
-    protected DAO(Class<T> model) {
+    protected DAO(Class<T> model) {        
         this.model = model;
     }
         
     protected void executeWithTransaction(Runnable method) {
+        connect();
         manager.getTransaction().begin();
         method.run();
         manager.flush();
         manager.getTransaction().commit();        
+        disconnect();
     }
     
     @Override
     public void connect() {
-        factory = Persistence.createEntityManagerFactory("MedicalClinicPU");
-        manager = factory.createEntityManager();
+        manager = Persistence.createEntityManagerFactory("MedicalClinicPU").createEntityManager();
     }
 
     @Override
     public void disconnect() {
         manager.close();
-        factory.close();
     }
 
     @Override
@@ -58,6 +62,14 @@ public class DAO<T extends Base> implements IDAO<T> {
     @Override
     public T find(Integer id) {
         return manager.find(model, id);
+    }
+    
+    @Override
+    public List<T> findAll() {
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(model);
+        query.from(model);
+        return manager.createQuery(query).getResultList();
     }
     
 }

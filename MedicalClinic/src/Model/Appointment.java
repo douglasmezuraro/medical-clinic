@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 import java.sql.Time;
 import java.util.Date;
@@ -54,20 +54,6 @@ public class Appointment extends Base {
 
     public void setAppointmentType(AppointmentType appointmentType) {
         this.appointmentType = appointmentType;
-    }
-    
-    @Override
-    public String toString() {
-        return String.format(
-            "CONSULTA ID: %dDATA: %tF\nHORA: %tH\nPACIENTE: %s %s\nMÉDICO(A): %s %s\nTIPO: %s",
-            id,
-            data,
-            hour,
-            patient.getName(),
-            patient.getLastName(),
-            doctor.getName(),
-            doctor.getLastName(),
-            appointmentType.getDescription()).toUpperCase();
     }
     
 }
