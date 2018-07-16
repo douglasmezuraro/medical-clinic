@@ -117,7 +117,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void PatientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientsMenuItemActionPerformed
-        new PatientsView().setVisible(true);
+       new PatientsView().setVisible(true);
     }//GEN-LAST:event_PatientsMenuItemActionPerformed
 
     public static void applySkin(String name) {
@@ -144,8 +144,6 @@ public class Main extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(() -> { new Main().setVisible(true); });
         
-        Patient p = new Patient();
-        new Secretary().addPatient(p);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
