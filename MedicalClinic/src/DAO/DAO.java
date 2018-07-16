@@ -18,7 +18,7 @@ public class DAO<T extends Base> implements IDAO<T> {
         EntityManagerSingleton.getInstance().getEntityManager().getTransaction().begin();
         method.run();
         EntityManagerSingleton.getInstance().getEntityManager().flush();
-        EntityManagerSingleton.getInstance().getEntityManager().getTransaction().commit();        
+        EntityManagerSingleton.getInstance().getEntityManager().getTransaction().commit(); 
     }
    
     @Override

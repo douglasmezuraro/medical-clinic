@@ -23,6 +23,5 @@ public class EntityManagerSingleton {
     public EntityManager getEntityManager() {
         return entityManager;
     }
-    
-    
+     
 }

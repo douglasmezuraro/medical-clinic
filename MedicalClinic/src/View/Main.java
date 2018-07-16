@@ -1,5 +1,8 @@
 package View;
 
+import Model.Patient;
+import Model.Secretary;
+
 public class Main extends javax.swing.JFrame {
 
     public Main() {
@@ -24,6 +27,11 @@ public class Main extends javax.swing.JFrame {
 
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Pacientes");
+        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(openMenuItem);
 
         menuBar.add(fileMenu);
@@ -53,6 +61,11 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+       
+        new PatientsView().setVisible(true);
+    }//GEN-LAST:event_openMenuItemActionPerformed
+
     public static void setLookAndFeel(String name) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -78,6 +91,15 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
         });
+        
+        Patient p = new Patient();
+        
+        p.setName("Douglas");
+        p.setLastName("Mezuraro");
+        p.setAddress("Rua toledo, 812");
+        p.setContact("Vera");
+        Secretary s = new Secretary();
+        s.addPatient(p);        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
