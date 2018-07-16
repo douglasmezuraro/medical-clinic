@@ -1,5 +1,6 @@
 package View;
 
+import Classes.EntityManagerSingleton;
 import Model.Patient;
 import Model.Secretary;
 
@@ -98,8 +99,9 @@ public class Main extends javax.swing.JFrame {
         p.setLastName("Mezuraro");
         p.setAddress("Rua toledo, 812");
         p.setContact("Vera");
-        Secretary s = new Secretary();
-        s.addPatient(p);        
+        
+       Secretary n =  new Secretary();
+       n.addPatient(p);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

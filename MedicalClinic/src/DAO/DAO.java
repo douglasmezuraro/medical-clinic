@@ -1,14 +1,13 @@
 package DAO;
 
-import Model.Base;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import Classes.EntityManagerSingleton;
 
-public class DAO<T extends Base> implements IDAO<T> {
+public abstract class DAO<T> implements IDAO<T> {
     
-    private final Class<T> model;
+    private Class<T> model;
     
     protected DAO(Class<T> model) {        
         this.model = model;

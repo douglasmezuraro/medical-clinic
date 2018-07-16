@@ -1,9 +1,8 @@
 package DAO;
 
-import Model.Base;
 import java.util.List;
 
-public interface IDAO<T extends Base> {
+public interface IDAO<T> {
     
     public void add(T model);
     public void update(T model);
