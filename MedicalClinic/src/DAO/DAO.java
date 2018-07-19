@@ -39,11 +39,11 @@ public abstract class DAO<T> implements IDAO<T> {
     }
 
     @Override
-    public void remove(T model) {
+    public void remove(Integer id) {
         executeWithTransaction(() -> {
             EntityManagerSingleton.getInstance()
                                   .getEntityManager()
-                                  .remove(model);
+                                  .remove(find(id));
         });
     }
 

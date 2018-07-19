@@ -27,8 +27,8 @@ public class Secretary extends Person {
         patientsDAO.update(patient);
     }
     
-    public void removePatient(Patient patient) {
-        patientsDAO.remove(patient);
+    public void removePatient(Integer id) {
+        patientsDAO.remove(id);
     }
     
     public Patient findPatient(Integer id) {

@@ -2,10 +2,13 @@ package Classes;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 public class EntityManagerSingleton {
     
     private static EntityManagerSingleton instance;
+        
+    @PersistenceContext
     private final EntityManager entityManager;
     
     private EntityManagerSingleton() {

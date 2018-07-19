@@ -1,8 +1,6 @@
 package View;
 
-import Classes.EntityManagerSingleton;
-import Model.Patient;
-import Model.Secretary;
+import Controller.PatientsController;
 
 public class Main extends javax.swing.JFrame {
 
@@ -63,8 +61,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-       
-        new PatientsView().setVisible(true);
+        PatientsController controller = new PatientsController();
+        controller.showView();
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     public static void setLookAndFeel(String name) {
@@ -87,21 +85,11 @@ public class Main extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) {
-        setLookAndFeel("Nimbus");
+        setLookAndFeel("Windows");
   
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
         });
-        
-        Patient p = new Patient();
-        
-        p.setName("Douglas");
-        p.setLastName("Mezuraro");
-        p.setAddress("Rua toledo, 812");
-        p.setContact("Vera");
-        
-       Secretary n =  new Secretary();
-       n.addPatient(p);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
