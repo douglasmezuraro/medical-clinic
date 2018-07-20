@@ -1,6 +1,11 @@
 package View;
 
+import Classes.EntityManagerSingleton;
 import Controller.PatientsController;
+import DAO.PatientsDAO;
+import Model.Patient;
+import java.time.Instant;
+import java.util.Date;
 
 public class Main extends javax.swing.JFrame {
 
@@ -90,6 +95,16 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
         });
+        
+        Patient p = new Patient();
+        p.setName("Douglas");
+        p.setLastName("Mezuraro");
+        p.setContact("Teste");
+        p.setAddress("Rua teste");
+        p.setBirth(Date.from(Instant.now()));
+        
+        PatientsDAO dao = new PatientsDAO();
+        dao.add(p);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,10 +11,11 @@ import javax.persistence.MappedSuperclass;
 public abstract class Base implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    protected Integer id = 0;
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id = 0l;
     
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
     

@@ -27,11 +27,11 @@ public class Secretary extends Person {
         patientsDAO.update(patient);
     }
     
-    public void removePatient(Integer id) {
-        patientsDAO.remove(id);
+    public void removePatient(Patient patient) {
+        patientsDAO.remove(patient);
     }
     
-    public Patient findPatient(Integer id) {
+    public Patient findPatient(Long id) {
         return patientsDAO.find(id);
     }
     

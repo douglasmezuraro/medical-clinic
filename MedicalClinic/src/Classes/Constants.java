@@ -6,6 +6,7 @@ public final class Constants {
     public static final int DESCRIPTION = SHORT_DESCRIPTION * 2;
     public static final int LONG_DESCRIPTION = DESCRIPTION * 2;
     public static final int PHONE = 11;
+    public static final String EMPTY_STRING = "";
 
 }
     
