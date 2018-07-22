@@ -1,4 +1,4 @@
-package Classes;
+package Utils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

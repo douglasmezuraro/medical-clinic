@@ -1,6 +1,6 @@
 package Model;
 
-import Classes.Constants;
+import Utils.Constants;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

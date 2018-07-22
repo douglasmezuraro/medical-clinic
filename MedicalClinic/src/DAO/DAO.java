@@ -3,7 +3,7 @@ package DAO;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import Classes.EntityManagerSingleton;
+import Utils.EntityManagerSingleton;
 
 public abstract class DAO<T> implements IDAO<T> {
     

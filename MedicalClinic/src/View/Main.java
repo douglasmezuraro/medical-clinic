@@ -1,6 +1,6 @@
 package View;
 
-import Classes.EntityManagerSingleton;
+import Utils.EntityManagerSingleton;
 import Controller.PatientsController;
 import DAO.PatientsDAO;
 import Model.Patient;
@@ -30,7 +30,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        fileMenu.setText("Cadastros");
 
         openMenuItem.setMnemonic('o');
         openMenuItem.setText("Pacientes");

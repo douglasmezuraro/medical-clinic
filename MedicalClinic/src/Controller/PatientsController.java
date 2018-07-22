@@ -1,6 +1,5 @@
 package Controller;
 
-import Classes.Constants;
 import Model.Patient;
 import Model.Secretary;
 import View.PatientsView;
@@ -14,25 +13,24 @@ public class PatientsController {
     public PatientsController() {
         view = new PatientsView();
         secretary = new Secretary();
-        bindEvents();
+        bindListeners();
     }
     
-    public final void bindEvents() {
-        view.getSearchButton().addActionListener((l) -> {
-            model = secretary.findPatient(Long.parseLong(view.getIdTextField().getText()));
-            modelToView();
+    public final void bindListeners() {
+        view.getSearchButton().addActionListener((actionListener) -> {
+            model = secretary.findPatient(view.getId());
+            view.modelToView(model);
         });      
         
-        view.getRemoveButton().addActionListener((l) -> {
+        view.getRemoveButton().addActionListener((actionListener) -> {
             if(model != null) {
                 secretary.removePatient(model);
-                clearView();
+                view.clearView();
             }
         });
         
-        view.getEditButton().addActionListener((l) -> {
-            viewToModel();
-            secretary.updatePatient(model);
+        view.getEditButton().addActionListener((actionListener) -> {
+            secretary.updatePatient(view.viewToModel(model));
         });
     }
     
@@ -40,34 +38,4 @@ public class PatientsController {
         view.setVisible(true);
     }
     
-    public void modelToView() {
-        if(model != null) {
-            view.getIdTextField().setText(model.getId().toString());
-            view.getNameTextField().setText(model.getName());
-            view.getLastNameTextField().setText(model.getLastName());
-            view.getContactTextField().setText(model.getContact());
-            view.getBirthFormattedField().setText(model.getBirth().toString());
-            view.getAddressTextField().setText(model.getAddress());
-        }
-    }
-    
-    public void viewToModel() {
-        if(model != null) {
-            model.setName(view.getNameTextField().getText());
-            model.setLastName(view.getLastNameTextField().getText());
-            model.setContact(view.getContactTextField().getText());
-            model.setAddress(view.getAddressTextField().getText());
-        }
-    }
-    
-    public void clearView() {
-        view.getIdTextField().setText(Constants.EMPTY_STRING);
-        view.getNameTextField().setText(Constants.EMPTY_STRING);
-        view.getLastNameTextField().setText(Constants.EMPTY_STRING);
-        view.getContactTextField().setText(Constants.EMPTY_STRING);
-        view.getBirthFormattedField().setText(Constants.EMPTY_STRING);
-        view.getAddressTextField().setText(Constants.EMPTY_STRING);        
-    }
-    
-  
 }

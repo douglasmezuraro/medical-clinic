@@ -1,81 +1,43 @@
 package View;
 
+import Utils.Constants;
+import Model.Patient;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 public class PatientsView extends javax.swing.JFrame {
-
-    public JButton getEditButton() {
-        return EditButton;
-    }
-
-    public JButton getNewButton() {
-        return NewButton;
-    }
-
-    public JButton getRemoveButton() {
-        return RemoveButton;
-    }
-
-    public JButton getSaveButton() {
-        return SaveButton;
-    }
-
-    public JButton getSearchButton() {
-        return SearchButton;
-    }
-
-    public JTextField getAddressTextField() {
-        return AddressTextField;
-    }
-
-    public void setAddressTextField(JTextField AddressTextField) {
-        this.AddressTextField = AddressTextField;
-    }
-
-    public JFormattedTextField getBirthFormattedField() {
-        return BirthFormattedField;
-    }
-
-    public void setBirthFormattedField(JFormattedTextField BirthFormattedField) {
-        this.BirthFormattedField = BirthFormattedField;
-    }
-
-    public JTextField getContactTextField() {
-        return ContactTextField;
-    }
-
-    public void setContactTextField(JTextField ContactTextField) {
-        this.ContactTextField = ContactTextField;
-    }
-
-    public JTextField getIdTextField() {
-        return IdTextField;
-    }
-
-    public void setIdTextField(JTextField IdTextField) {
-        this.IdTextField = IdTextField;
-    }
-
-    public JTextField getLastNameTextField() {
-        return LastNameTextField;
-    }
-
-    public void setLastNameTextField(JTextField LastNameTextField) {
-        this.LastNameTextField = LastNameTextField;
-    }
-
-    public JTextField getNameTextField() {
-        return NameTextField;
-    }
-
-    public void setNameTextField(JTextField NameTextField) {
-        this.NameTextField = NameTextField;
-    }
-
+    
     public PatientsView() {
         initComponents();
+    }
+    
+    public void modelToView(Patient model) {
+        if(model == null)
+            return;
+        
+        IdTextField.setText(model.getId().toString());
+        NameTextField.setText(model.getName());
+        LastNameTextField.setText(model.getLastName());
+        ContactTextField.setText(model.getContact());
+        BirthFormattedField.setText(model.getBirth().toString());
+        AddressTextField.setText(model.getAddress());
+    }
+
+    public Patient viewToModel(Patient model) {
+        model.setName(NameTextField.getText());
+        model.setLastName(LastNameTextField.getText());
+        model.setContact(ContactTextField.getText());
+        model.setAddress(AddressTextField.getText());
+
+        return model;
+    }
+
+    public void clearView() {
+        IdTextField.setText(Constants.EMPTY_STRING);
+        NameTextField.setText(Constants.EMPTY_STRING);
+        LastNameTextField.setText(Constants.EMPTY_STRING);
+        ContactTextField.setText(Constants.EMPTY_STRING);
+        BirthFormattedField.setText(Constants.EMPTY_STRING);
+        AddressTextField.setText(Constants.EMPTY_STRING);        
     }
 
     @SuppressWarnings("unchecked")
@@ -239,4 +201,29 @@ public class PatientsView extends javax.swing.JFrame {
     private javax.swing.JButton SaveButton;
     private javax.swing.JButton SearchButton;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getEditButton() {
+        return EditButton;
+    }
+
+    public JButton getNewButton() {
+        return NewButton;
+    }
+
+    public JButton getRemoveButton() {
+        return RemoveButton;
+    }
+
+    public JButton getSaveButton() {
+        return SaveButton;
+    }
+
+    public JButton getSearchButton() {
+        return SearchButton;
+    }
+    
+    public Long getId() {
+        return Model.Base.parseId(IdTextField.getText());
+    }
+    
 }

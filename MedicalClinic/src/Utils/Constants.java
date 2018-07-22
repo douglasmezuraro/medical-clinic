@@ -1,4 +1,4 @@
-package Classes;
+package Utils;
 
 public final class Constants {
     
@@ -7,6 +7,7 @@ public final class Constants {
     public static final int LONG_DESCRIPTION = DESCRIPTION * 2;
     public static final int PHONE = 11;
     public static final String EMPTY_STRING = "";
+    public static final long DEFAULT_ID = 0;
 
 }
     

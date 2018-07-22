@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import Classes.Constants;
+import Utils.Constants;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
