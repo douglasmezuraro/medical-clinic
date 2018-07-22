@@ -69,4 +69,8 @@ public abstract class DAO<T> implements IDAO<T> {
                                      .getResultList();
     }
     
+    public boolean isEmpty() {
+        return findAll().isEmpty();
+    }
+    
 }

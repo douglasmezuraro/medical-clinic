@@ -9,5 +9,6 @@ public interface IDAO<T> {
     public void remove(T model);
     public T find(Long id);
     public List<T> findAll();
+    public abstract void seed();
             
 }

@@ -57,6 +57,8 @@ public class PatientsView extends javax.swing.JFrame {
         ContactTextField = new javax.swing.JTextField();
         IdLabel = new javax.swing.JLabel();
         IdTextField = new javax.swing.JTextField();
+        Agreement = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         SearchButton = new javax.swing.JButton();
         NewButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
@@ -79,6 +81,10 @@ public class PatientsView extends javax.swing.JFrame {
 
         IdLabel.setText("Código");
 
+        Agreement.setText("Convênio");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         SearchButton.setText("Consultar");
 
         NewButton.setText("Novo");
@@ -97,24 +103,6 @@ public class PatientsView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EditorPanelLayout.createSequentialGroup()
-                        .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BirthLabel)
-                            .addComponent(AddressLabel)
-                            .addComponent(ContactLabel)
-                            .addComponent(LastNameLabel)
-                            .addComponent(IdLabel)
-                            .addComponent(NameLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                            .addComponent(NameTextField)
-                            .addComponent(LastNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ContactTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BirthFormattedField)
-                            .addGroup(EditorPanelLayout.createSequentialGroup()
-                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(EditorPanelLayout.createSequentialGroup()
                         .addComponent(SearchButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NewButton)
@@ -124,7 +112,27 @@ public class PatientsView extends javax.swing.JFrame {
                         .addComponent(RemoveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SaveButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(EditorPanelLayout.createSequentialGroup()
+                        .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BirthLabel)
+                            .addComponent(AddressLabel)
+                            .addComponent(ContactLabel)
+                            .addComponent(LastNameLabel)
+                            .addComponent(IdLabel)
+                            .addComponent(NameLabel)
+                            .addComponent(Agreement))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                            .addComponent(NameTextField)
+                            .addComponent(LastNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ContactTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BirthFormattedField)
+                            .addGroup(EditorPanelLayout.createSequentialGroup()
+                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         EditorPanelLayout.setVerticalGroup(
@@ -154,7 +162,11 @@ public class PatientsView extends javax.swing.JFrame {
                 .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ContactLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Agreement))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchButton)
                     .addComponent(NewButton)
@@ -184,6 +196,7 @@ public class PatientsView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddressLabel;
     private javax.swing.JTextField AddressTextField;
+    private javax.swing.JLabel Agreement;
     private javax.swing.JFormattedTextField BirthFormattedField;
     private javax.swing.JLabel BirthLabel;
     private javax.swing.JLabel ContactLabel;
@@ -200,6 +213,7 @@ public class PatientsView extends javax.swing.JFrame {
     private javax.swing.JButton RemoveButton;
     private javax.swing.JButton SaveButton;
     private javax.swing.JButton SearchButton;
+    private javax.swing.JComboBox<String> jComboBox1;
     // End of variables declaration//GEN-END:variables
 
     public JButton getEditButton() {

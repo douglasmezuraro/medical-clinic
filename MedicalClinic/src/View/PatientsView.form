@@ -45,28 +45,6 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="BirthLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="AddressLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="ContactLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="LastNameLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="IdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="NameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="AddressTextField" pref="422" max="32767" attributes="0"/>
-                              <Component id="NameTextField" max="32767" attributes="0"/>
-                              <Component id="LastNameTextField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="ContactTextField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="BirthFormattedField" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="IdTextField" min="-2" pref="108" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="SearchButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -78,6 +56,30 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SaveButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="BirthLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="AddressLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="ContactLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="LastNameLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="IdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="NameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="Agreement" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="AddressTextField" pref="422" max="32767" attributes="0"/>
+                              <Component id="NameTextField" max="32767" attributes="0"/>
+                              <Component id="LastNameTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="ContactTextField" alignment="1" max="32767" attributes="0"/>
+                              <Component id="BirthFormattedField" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="IdTextField" min="-2" pref="108" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="jComboBox1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -117,7 +119,12 @@
                       <Component id="ContactTextField" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="ContactLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="105" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Agreement" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="79" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="SearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="NewButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -177,6 +184,26 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="IdTextField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="Agreement">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Conv&#xea;nio"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox1">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="SearchButton">
           <Properties>

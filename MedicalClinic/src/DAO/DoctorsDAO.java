@@ -8,4 +8,7 @@ public class DoctorsDAO extends DAO<Doctor> {
         super(Doctor.class);
     } 
     
+    @Override
+    public void seed() {}
+    
 }

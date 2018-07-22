@@ -7,10 +7,10 @@
     <class>Model.Allergy</class>
     <class>Model.PatientRecord</class>
     <class>Model.Surgery</class>
-    <class>Model.AgreementType</class>
     <class>Model.AppointmentType</class>
     <class>Actors.Doctor</class>
     <class>Actors.Secretary</class>
+    <class>Model.Agreement</class>
     <validation-mode>NONE</validation-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>

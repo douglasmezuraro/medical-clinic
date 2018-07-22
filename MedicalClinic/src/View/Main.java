@@ -1,10 +1,7 @@
 package View;
 
 import Controller.PatientsController;
-import DAO.PatientsDAO;
-import Model.Patient;
-import java.time.Instant;
-import java.util.Date;
+import DAO.AgreementsDAO;
 
 public class Main extends javax.swing.JFrame {
 
@@ -13,6 +10,15 @@ public class Main extends javax.swing.JFrame {
         
         // Maximiza o form
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        
+        seed();
+    }
+    
+    /**
+     *  Popula elementos iniciais no banco de dados
+     */
+    public static void seed() {
+        new AgreementsDAO().seed();
     }
 
     @SuppressWarnings("unchecked")

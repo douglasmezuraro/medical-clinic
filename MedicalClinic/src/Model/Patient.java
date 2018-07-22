@@ -25,7 +25,7 @@ public class Patient extends Person {
     private List<PatientRecord> records;
     
     @OneToOne(cascade = CascadeType.ALL)
-    private AgreementType agreementType;
+    private Agreement agreementType;
 
     public Patient() {
         aggravation = new Aggravation();
@@ -48,11 +48,11 @@ public class Patient extends Person {
         this.records = records;
     }
 
-    public AgreementType getAgreementType() {
+    public Agreement getAgreementType() {
         return agreementType;
     }
 
-    public void setAgreementType(AgreementType agreementType) {
+    public void setAgreementType(Agreement agreementType) {
         this.agreementType = agreementType;
     }
 
