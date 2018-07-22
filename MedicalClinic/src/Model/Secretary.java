@@ -1,15 +1,9 @@
 package Model;
 
 import DAO.PatientsDAO;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 
-@Entity
-@Table(name = "SECRETARIES")
-public class Secretary extends Person {
+public class Secretary {
   
-    @Transient
     private final PatientsDAO patientsDAO;
     //private final AppointmentsDAO appointmentsDAO;
 

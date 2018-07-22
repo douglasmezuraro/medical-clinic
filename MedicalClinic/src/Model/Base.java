@@ -13,7 +13,7 @@ public abstract class Base implements Serializable {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id = 0l;
+    protected Long id;
     
     public Long getId() {
         return id;

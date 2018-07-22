@@ -11,6 +11,9 @@ public class Main extends javax.swing.JFrame {
 
     public Main() {
         initComponents();
+        
+        // Maximiza o form
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")

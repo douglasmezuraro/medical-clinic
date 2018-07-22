@@ -11,6 +11,7 @@
     <class>Model.Surgery</class>
     <class>Model.AgreementType</class>
     <class>Model.AppointmentType</class>
+    <validation-mode>NONE</validation-mode>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

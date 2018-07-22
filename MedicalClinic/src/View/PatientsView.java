@@ -109,7 +109,7 @@ public class PatientsView extends javax.swing.JFrame {
 
         BirthLabel.setText("Nascimento");
 
-        BirthFormattedField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        BirthFormattedField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         AddressLabel.setText("Endereço");
 
