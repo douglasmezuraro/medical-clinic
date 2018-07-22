@@ -1,5 +1,7 @@
 package Model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -7,12 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "PATIENTS")
 public class Patient extends Person {
 
-    @OneToOne
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+
+    @Transient
     private Aggravation aggravation;
     
     @OneToMany
@@ -48,6 +54,14 @@ public class Patient extends Person {
 
     public void setAgreement(Agreement agreement) {
         this.agreement = agreement;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

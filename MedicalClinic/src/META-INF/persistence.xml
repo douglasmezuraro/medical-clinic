@@ -9,7 +9,6 @@
     <class>Model.Surgery</class>
     <class>Model.AppointmentType</class>
     <class>Model.Agreement</class>
-    <class>Utils.CustomRender</class>
     <class>Model.Doctor</class>
     <class>Model.Secretary</class>
     <validation-mode>NONE</validation-mode>

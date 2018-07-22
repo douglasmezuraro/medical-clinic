@@ -43,6 +43,10 @@ public class Secretary extends Person {
     }
     
     // Consultas
+    public Appointment newAppointment() {
+        return new Appointment();
+    }
+    
     public void addAppointment(Appointment appointment) {
         appointmentsDAO.add(appointment);
     }

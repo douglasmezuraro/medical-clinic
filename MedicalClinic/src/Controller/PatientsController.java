@@ -10,10 +10,9 @@ public class PatientsController {
     private final Secretary secretary;
     private Patient model;
     
-    public PatientsController() {
-        view = new PatientsView();
-        secretary = new Secretary();
-        bindListeners();
+    public PatientsController(Secretary secretary) {
+        this.secretary = secretary;
+        view = new PatientsView();        
     }
     
     public final void bindListeners() {
@@ -25,7 +24,7 @@ public class PatientsController {
         
         view.getRemoveButton().addActionListener((actionListener) -> {
             secretary.removePatient(model);
-            view.clearView();
+            view.clear();
             controlButtons();
         });
         
@@ -43,6 +42,7 @@ public class PatientsController {
     
     public void showView() {
         view.setVisible(true);
+        bindListeners();
         controlButtons();
     }
     

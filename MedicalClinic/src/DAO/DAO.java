@@ -1,5 +1,6 @@
 package DAO;
 
+import Interface.IDAO;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

@@ -2,6 +2,7 @@ package View;
 
 import Controller.AppointmentsController;
 import Controller.PatientsController;
+import Model.Secretary;
 
 public class Main extends javax.swing.JFrame {
 
@@ -101,12 +102,12 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsMenuItemActionPerformed
-        PatientsController controller = new PatientsController();
+        PatientsController controller = new PatientsController(new Secretary());
         controller.showView();
     }//GEN-LAST:event_patientsMenuItemActionPerformed
 
     private void appointmentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsMenuItemActionPerformed
-        AppointmentsController controller = new AppointmentsController();
+        AppointmentsController controller = new AppointmentsController(new Secretary());
         controller.showView();
     }//GEN-LAST:event_appointmentsMenuItemActionPerformed
 

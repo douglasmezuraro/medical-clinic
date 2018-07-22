@@ -1,11 +1,13 @@
 package View;
 
+import Interface.IView;
 import Model.Agreement;
 import Utils.Constants;
 import Model.Patient;
+import java.util.Date;
 import javax.swing.JButton;
 
-public class PatientsView extends javax.swing.JFrame {
+public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
 
     public PatientsView() {
         initComponents();
@@ -15,9 +17,20 @@ public class PatientsView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    @Override
+    public Long getId() {
+        return Model.Base.parseId(idTextField.getText());
+    }
+    
+    @Override
+    public void setId(Long id) {
+        idTextField.setText(id.toString());
+    }    
+    
+    @Override
     public void modelToView(Patient model) {
-        if (model == null) {
-            clearView();
+        if(model == null) {
+            clear();
             return;
         }
 
@@ -30,17 +43,20 @@ public class PatientsView extends javax.swing.JFrame {
         agreementComboBox.setSelectedItem((Agreement) model.getAgreement());
     }
 
+    @Override
     public Patient viewToModel(Patient model) {
         model.setName(nameTextField.getText());
         model.setLastName(lastNameTextField.getText());
         model.setContact(contactTextField.getText());
         model.setAddress(addressTextField.getText());
+        model.setBirth((Date)birthFormattedField.getValue());
         model.setAgreement((Agreement) agreementComboBox.getSelectedItem());
 
         return model;
     }
 
-    public void clearView() {
+    @Override
+    public void clear() {
         idTextField.setText(Constants.EMPTY_STRING);
         nameTextField.setText(Constants.EMPTY_STRING);
         lastNameTextField.setText(Constants.EMPTY_STRING);
@@ -248,14 +264,6 @@ public class PatientsView extends javax.swing.JFrame {
 
     public JButton getRetrieveButton() {
         return retrieveButton;
-    }
-
-    public Long getId() {
-        return Model.Base.parseId(idTextField.getText());
-    }
-    
-    public void setId(Long id) {
-        idTextField.setText(id.toString());
     }
 
 }

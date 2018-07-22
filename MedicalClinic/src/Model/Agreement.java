@@ -1,12 +1,9 @@
 package Model;
 
 import Utils.Constants;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "AGREEMENTS")
