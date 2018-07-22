@@ -42,6 +42,7 @@ public class PatientRecordsController {
     
     public void showView() {
         view.setVisible(true);
+        view.clear();
         bindListeners();
         controlButtons();
     }

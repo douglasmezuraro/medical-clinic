@@ -42,6 +42,7 @@ public class AppointmentsController {
     
     public void showView() {
         view.setVisible(true);
+        view.clear();
         bindListeners();
         controlButtons();
     }

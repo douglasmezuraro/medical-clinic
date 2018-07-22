@@ -5,6 +5,7 @@ import Model.Appointment;
 import Model.AppointmentType;
 import Model.Doctor;
 import Model.Patient;
+import Utils.Constants;
 import java.util.Date;
 import javax.swing.JButton;
 
@@ -37,9 +38,9 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
         
         dateFormattedTextField.setValue(model.getAppoinmentDate());
         hourFormattedTextField.setValue(model.getAppointmentHour());
-        appointmentTypeComboBox.setSelectedItem((AppointmentType)model.getAppointmentType());
-        doctorComboBox.setSelectedItem((Doctor)model.getDoctor());
-        patientComboBox.setSelectedItem((Patient)model.getPatient());
+        appointmentTypeComboBox.setSelectedItem(model.getAppointmentType());
+        doctorComboBox.setSelectedItem(model.getDoctor());
+        patientComboBox.setSelectedItem(model.getPatient());
     }
 
     @Override
@@ -55,7 +56,11 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
 
     @Override
     public void clear() {
-        
+        dateFormattedTextField.setValue(null);
+        hourFormattedTextField.setValue(null);
+        appointmentTypeComboBox.setSelectedIndex(Constants.SELECTED_NONE);
+        doctorComboBox.setSelectedIndex(Constants.SELECTED_NONE);
+        patientComboBox.setSelectedIndex(Constants.SELECTED_NONE);
     }
     
     @SuppressWarnings("unchecked")
@@ -63,12 +68,11 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        MedicalClinicPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MedicalClinicPU").createEntityManager();
-        doctorQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager.createQuery("SELECT d FROM Doctor d");
+        doctorQuery = java.beans.Beans.isDesignTime() ? null : Utils.EntityManagerSingleton.getInstance().getEntityManager().createQuery("SELECT d FROM Doctor d");
         doctorList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : doctorQuery.getResultList();
-        patientQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager.createQuery("SELECT p FROM Patient p");
+        patientQuery = java.beans.Beans.isDesignTime() ? null : Utils.EntityManagerSingleton.getInstance().getEntityManager().createQuery("SELECT p FROM Patient p");
         patientList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : patientQuery.getResultList();
-        appointmentTypeQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager.createQuery("SELECT a FROM AppointmentType a");
+        appointmentTypeQuery = java.beans.Beans.isDesignTime() ? null : Utils.EntityManagerSingleton.getInstance().getEntityManager().createQuery("SELECT a FROM AppointmentType a");
         appointmentTypeList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : appointmentTypeQuery.getResultList();
         idLabel = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
@@ -257,7 +261,6 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager MedicalClinicPUEntityManager;
     private javax.swing.JButton addButton;
     private javax.swing.JComboBox<String> appointmentTypeComboBox;
     private javax.swing.JLabel appointmentTypeLabel;

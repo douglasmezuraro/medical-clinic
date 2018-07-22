@@ -59,8 +59,7 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        MedicalClinicPUEntityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MedicalClinicPU").createEntityManager();
-        patientQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager.createQuery("SELECT p FROM Patient p");
+        patientQuery = java.beans.Beans.isDesignTime() ? null : Utils.EntityManagerSingleton.getInstance().getEntityManager().createQuery("SELECT p FROM Patient p");
         patientList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : patientQuery.getResultList();
         idLabel = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
@@ -178,7 +177,6 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager MedicalClinicPUEntityManager;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel diagnosisLabel;
     private javax.swing.JTextField diagnosisTextField;

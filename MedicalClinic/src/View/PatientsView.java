@@ -63,6 +63,7 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         contactTextField.setText(Constants.EMPTY_STRING);
         birthFormattedField.setText(Constants.EMPTY_STRING);
         addressTextField.setText(Constants.EMPTY_STRING);
+        agreementComboBox.setSelectedIndex(Constants.SELECTED_NONE);
     }
 
     @SuppressWarnings("unchecked")
@@ -70,8 +71,7 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        MedicalClinicPUEntityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MedicalClinicPU").createEntityManager();
-        agreementQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager0.createQuery("SELECT a FROM Agreement a");
+        agreementQuery = java.beans.Beans.isDesignTime() ? null : Utils.EntityManagerSingleton.getInstance().getEntityManager().createQuery("SELECT a FROM Agreement a");
         agreementList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : agreementQuery.getResultList();
         idLabel = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
@@ -226,7 +226,6 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.persistence.EntityManager MedicalClinicPUEntityManager0;
     private javax.swing.JButton addButton;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTextField;

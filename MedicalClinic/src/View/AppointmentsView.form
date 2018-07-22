@@ -2,16 +2,11 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.persistence.EntityManager" name="MedicalClinicPUEntityManager">
-      <Properties>
-        <Property name="persistenceUnit" type="java.lang.String" value="MedicalClinicPU"/>
-      </Properties>
-    </Component>
     <Component class="javax.persistence.Query" name="doctorQuery">
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT d FROM Doctor d"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="MedicalClinicPUEntityManager"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Utils.EntityManagerSingleton.getInstance().getEntityManager()" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -28,8 +23,8 @@
     <Component class="javax.persistence.Query" name="patientQuery">
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT p FROM Patient p"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="MedicalClinicPUEntityManager"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Utils.EntityManagerSingleton.getInstance().getEntityManager()" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -46,8 +41,8 @@
     <Component class="javax.persistence.Query" name="appointmentTypeQuery">
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT a FROM AppointmentType a"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="MedicalClinicPUEntityManager"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Utils.EntityManagerSingleton.getInstance().getEntityManager()" type="code"/>
         </Property>
       </Properties>
     </Component>
