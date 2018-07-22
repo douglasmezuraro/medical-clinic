@@ -17,16 +17,16 @@ public class PatientsController {
     }
     
     public final void bindListeners() {
-        view.getSearchButton().addActionListener((actionListener) -> {
+        view.getRetrieveButton().addActionListener((actionListener) -> {
             model = secretary.findPatient(view.getId());
             view.modelToView(model);
+            controlButtons();
         });      
         
         view.getRemoveButton().addActionListener((actionListener) -> {
-            if(model != null) {
-                secretary.removePatient(model);
-                view.clearView();
-            }
+            secretary.removePatient(model);
+            view.clearView();
+            controlButtons();
         });
         
         view.getEditButton().addActionListener((actionListener) -> {
@@ -36,11 +36,18 @@ public class PatientsController {
         view.getNewButton().addActionListener((actionListener) -> {
             model = secretary.newPatient();
             secretary.addPatient(view.viewToModel(model));
+            controlButtons();
         });
     }
     
     public void showView() {
         view.setVisible(true);
+        controlButtons();
+    }
+    
+    public void controlButtons() {
+        view.getEditButton().setEnabled(model != null);
+        view.getRemoveButton().setEnabled(model != null);
     }
     
 }
