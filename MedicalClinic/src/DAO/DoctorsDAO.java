@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Doctor;
+import Actors.Doctor;
 
 public class DoctorsDAO extends DAO<Doctor> {
     

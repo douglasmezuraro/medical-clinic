@@ -1,6 +1,7 @@
-package Model;
+package Actors;
 
 import DAO.PatientsDAO;
+import Model.Patient;
 
 public class Secretary {
   

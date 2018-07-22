@@ -1,6 +1,5 @@
 package View;
 
-import Utils.EntityManagerSingleton;
 import Controller.PatientsController;
 import DAO.PatientsDAO;
 import Model.Patient;
@@ -21,6 +20,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        jComboBox1 = new javax.swing.JComboBox<>();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -28,6 +28,11 @@ public class Main extends javax.swing.JFrame {
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jComboBox1.setMaximumRowCount(2);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Secretário" }));
+        desktopPane.add(jComboBox1);
+        jComboBox1.setBounds(10, 10, 160, 20);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cadastros");
@@ -98,16 +103,6 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new Main().setVisible(true);
         });
-        
-        Patient p = new Patient();
-        p.setName("Douglas");
-        p.setLastName("Mezuraro");
-        p.setContact("Teste");
-        p.setAddress("Rua teste");
-        p.setBirth(Date.from(Instant.now()));
-        
-        PatientsDAO dao = new PatientsDAO();
-        dao.add(p);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -115,6 +110,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     // End of variables declaration//GEN-END:variables

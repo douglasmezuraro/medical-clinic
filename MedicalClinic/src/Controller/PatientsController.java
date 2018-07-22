@@ -1,7 +1,8 @@
 package Controller;
 
+import Actors.ActorType;
 import Model.Patient;
-import Model.Secretary;
+import Actors.Secretary;
 import View.PatientsView;
 
 public class PatientsController {
