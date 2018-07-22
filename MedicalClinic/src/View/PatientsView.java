@@ -263,5 +263,9 @@ public class PatientsView extends javax.swing.JFrame {
     public Long getId() {
         return Model.Base.parseId(IdTextField.getText());
     }
+    
+    public void setId(Long id) {
+        IdTextField.setText(id.toString());
+    }
 
 }
