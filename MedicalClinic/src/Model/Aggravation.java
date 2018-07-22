@@ -1,10 +1,8 @@
 package Model;
 
-import java.util.List;
-import javax.persistence.CascadeType;
+import Utils.Constants;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
@@ -24,27 +22,11 @@ public class Aggravation extends Base {
     @Column(nullable = false)
     private boolean heartDicease;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Allergy> allergies;
+    @Column(length = Constants.LONG_DESCRIPTION)
+    private String allergies;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Surgery> surgeries;
-
-    public List<Allergy> getAllergies() {
-        return allergies;
-    }
-
-    public void setAllergies(List<Allergy> allergies) {
-        this.allergies = allergies;
-    }
-
-    public List<Surgery> getSurgeries() {
-        return surgeries;
-    }
-
-    public void setSurgeries(List<Surgery> surgeries) {
-        this.surgeries = surgeries;
-    }
+    @Column(length = Constants.LONG_DESCRIPTION)
+    private String surgeries;
     
     public boolean isSmoker() {
         return smoker;
@@ -68,6 +50,14 @@ public class Aggravation extends Base {
 
     public void setHeartDicease(boolean heartDicease) {
         this.heartDicease = heartDicease;
+    }
+    
+    public String getAllergies() {
+        return allergies;
+    }
+
+    public String getSurgeries() {
+        return surgeries;
     }
 
 }
