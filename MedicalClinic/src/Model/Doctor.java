@@ -1,7 +1,6 @@
 package Model;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
+import DAO.PatientRecordsDAO;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -11,14 +10,30 @@ import javax.persistence.Transient;
 public class Doctor extends User {
 
     @Transient
-    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
+    private PatientRecordsDAO patientRecordsDAO;
 
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.addPropertyChangeListener(listener);
+    public Doctor() {
+        patientRecordsDAO = new PatientRecordsDAO();
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.removePropertyChangeListener(listener);
+    public PatientRecord newPatientRecord() {
+        return new PatientRecord();
+    }
+    
+    public void addPatientRecord(PatientRecord patientRecord) {
+        patientRecordsDAO.add(patientRecord);
+    }
+    
+    public void updatePatientRecord(PatientRecord patientRecord) {
+        patientRecordsDAO.update(patientRecord);
+    }
+    
+    public void removePatientRecord(PatientRecord patientRecord) {
+        patientRecordsDAO.remove(patientRecord);
+    }
+    
+    public PatientRecord findPatientRecord(Long id) {
+        return patientRecordsDAO.find(id);
     }
 
 }

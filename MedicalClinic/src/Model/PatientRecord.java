@@ -3,12 +3,16 @@ package Model;
 import Utils.Constants;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "PATIENTRECORDS")
 public class PatientRecord extends Base {
 
+    @OneToOne
+    private Patient patient;
+    
     @Column(length = Constants.LONG_DESCRIPTION)
     private String symptoms;
     
@@ -16,8 +20,16 @@ public class PatientRecord extends Base {
     private String diagnosis;
     
     @Column(length = Constants.LONG_DESCRIPTION)
-    private String treatmentPrescription;
+    private String treatment;
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }    
+    
     public String getSymptoms() {
         return symptoms;
     }
@@ -34,12 +46,12 @@ public class PatientRecord extends Base {
         this.diagnosis = diagnosis;
     }
 
-    public String getTreatmentPrescription() {
-        return treatmentPrescription;
+    public String getTreatment() {
+        return treatment;
     }
 
-    public void setTreatmentPrescription(String treatmentPrescription) {
-        this.treatmentPrescription = treatmentPrescription;
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
     }
 
 }

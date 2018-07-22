@@ -1,7 +1,9 @@
 package View;
 
 import Controller.AppointmentsController;
+import Controller.PatientRecordsController;
 import Controller.PatientsController;
+import Model.Doctor;
 import Model.Secretary;
 
 public class Main extends javax.swing.JFrame {
@@ -35,6 +37,7 @@ public class Main extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         patientsMenuItem = new javax.swing.JMenuItem();
         appointmentsMenuItem = new javax.swing.JMenuItem();
+        patientRecordsMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -71,6 +74,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         fileMenu.add(appointmentsMenuItem);
+
+        patientRecordsMenuItem.setText("Prontuários");
+        patientRecordsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientRecordsMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(patientRecordsMenuItem);
 
         menuBar.add(fileMenu);
 
@@ -111,6 +122,11 @@ public class Main extends javax.swing.JFrame {
         controller.showView();
     }//GEN-LAST:event_appointmentsMenuItemActionPerformed
 
+    private void patientRecordsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientRecordsMenuItemActionPerformed
+        PatientRecordsController controller = new PatientRecordsController(new Doctor());
+        controller.showView();
+    }//GEN-LAST:event_patientRecordsMenuItemActionPerformed
+
     public static void setLookAndFeel(String name) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -146,6 +162,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem patientRecordsMenuItem;
     private javax.swing.JMenuItem patientsMenuItem;
     // End of variables declaration//GEN-END:variables
 
