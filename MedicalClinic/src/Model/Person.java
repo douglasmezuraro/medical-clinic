@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import Utils.Constants;
+import java.time.Instant;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -42,7 +43,7 @@ public abstract class Person extends Base {
     }
 
     public Date getBirth() {
-        return birth;
+        return birth == null ? Date.from(Instant.now()) : birth;
     }
 
     public void setBirth(Date birth) {

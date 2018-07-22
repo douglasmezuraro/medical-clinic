@@ -14,6 +14,10 @@ public class Secretary {
     }
     
     // Pacientes
+    public Patient newPatient() {
+        return new Patient();
+    }
+    
     public void addPatient(Patient patient) {
         patientsDAO.add(patient);
     }

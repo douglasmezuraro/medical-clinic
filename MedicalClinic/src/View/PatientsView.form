@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.persistence.EntityManager" name="MedicalClinicPUEntityManager0">
+      <Properties>
+        <Property name="persistenceUnit" type="java.lang.String" value="MedicalClinicPU"/>
+      </Properties>
+    </Component>
+    <Component class="javax.persistence.Query" name="agreementQuery">
+      <Properties>
+        <Property name="query" type="java.lang.String" value="SELECT a FROM Agreement a"/>
+        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
+          <ComponentRef name="MedicalClinicPUEntityManager0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="java.util.List" name="agreementList">
+      <Properties>
+        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
+          <ComponentRef name="agreementQuery"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Model.Agreement&gt;"/>
+      </AuxValues>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -53,8 +78,6 @@
                           <Component id="EditButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="RemoveButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="SaveButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -65,7 +88,7 @@
                               <Component id="LastNameLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="IdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="NameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="Agreement" min="-2" max="-2" attributes="0"/>
+                              <Component id="AgreementLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -78,7 +101,7 @@
                                   <Component id="IdTextField" min="-2" pref="108" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jComboBox1" max="32767" attributes="0"/>
+                              <Component id="AgreementComboBox" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -121,8 +144,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Agreement" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="AgreementComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="AgreementLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="79" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -130,7 +153,6 @@
                       <Component id="NewButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="EditButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="RemoveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="SaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -185,22 +207,21 @@
         </Component>
         <Component class="javax.swing.JTextField" name="IdTextField">
         </Component>
-        <Component class="javax.swing.JLabel" name="Agreement">
+        <Component class="javax.swing.JLabel" name="AgreementLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Conv&#xea;nio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="AgreementComboBox">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+          </AccessibilityProperties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="agreementList" target="AgreementComboBox" targetPath="elements" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -223,11 +244,6 @@
         <Component class="javax.swing.JButton" name="RemoveButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Remover"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="SaveButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
         </Component>
       </SubComponents>

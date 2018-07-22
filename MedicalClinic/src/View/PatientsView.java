@@ -1,5 +1,6 @@
 package View;
 
+import Model.Agreement;
 import Utils.Constants;
 import Model.Patient;
 import javax.swing.JButton;
@@ -11,8 +12,10 @@ public class PatientsView extends javax.swing.JFrame {
     }
     
     public void modelToView(Patient model) {
-        if(model == null)
+        if(model == null) {
+            clearView();
             return;
+        }
         
         IdTextField.setText(model.getId().toString());
         NameTextField.setText(model.getName());
@@ -20,6 +23,7 @@ public class PatientsView extends javax.swing.JFrame {
         ContactTextField.setText(model.getContact());
         BirthFormattedField.setText(model.getBirth().toString());
         AddressTextField.setText(model.getAddress());
+        AgreementComboBox.setSelectedItem(model.getAgreement());
     }
 
     public Patient viewToModel(Patient model) {
@@ -27,6 +31,7 @@ public class PatientsView extends javax.swing.JFrame {
         model.setLastName(LastNameTextField.getText());
         model.setContact(ContactTextField.getText());
         model.setAddress(AddressTextField.getText());
+        model.setAgreement((Agreement)AgreementComboBox.getSelectedItem());
 
         return model;
     }
@@ -43,7 +48,11 @@ public class PatientsView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        MedicalClinicPUEntityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MedicalClinicPU").createEntityManager();
+        agreementQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager0.createQuery("SELECT a FROM Agreement a");
+        agreementList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : agreementQuery.getResultList();
         EditorPanel = new javax.swing.JPanel();
         NameLabel = new javax.swing.JLabel();
         NameTextField = new javax.swing.JTextField();
@@ -57,13 +66,12 @@ public class PatientsView extends javax.swing.JFrame {
         ContactTextField = new javax.swing.JTextField();
         IdLabel = new javax.swing.JLabel();
         IdTextField = new javax.swing.JTextField();
-        Agreement = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        AgreementLabel = new javax.swing.JLabel();
+        AgreementComboBox = new javax.swing.JComboBox<>();
         SearchButton = new javax.swing.JButton();
         NewButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
         RemoveButton = new javax.swing.JButton();
-        SaveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,9 +89,12 @@ public class PatientsView extends javax.swing.JFrame {
 
         IdLabel.setText("Código");
 
-        Agreement.setText("Convênio");
+        AgreementLabel.setText("Convênio");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AgreementComboBox.setToolTipText("");
+
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, agreementList, AgreementComboBox);
+        bindingGroup.addBinding(jComboBoxBinding);
 
         SearchButton.setText("Consultar");
 
@@ -92,8 +103,6 @@ public class PatientsView extends javax.swing.JFrame {
         EditButton.setText("Editar");
 
         RemoveButton.setText("Remover");
-
-        SaveButton.setText("Salvar");
 
         javax.swing.GroupLayout EditorPanelLayout = new javax.swing.GroupLayout(EditorPanel);
         EditorPanel.setLayout(EditorPanelLayout);
@@ -110,8 +119,6 @@ public class PatientsView extends javax.swing.JFrame {
                         .addComponent(EditButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RemoveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SaveButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(EditorPanelLayout.createSequentialGroup()
                         .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -121,7 +128,7 @@ public class PatientsView extends javax.swing.JFrame {
                             .addComponent(LastNameLabel)
                             .addComponent(IdLabel)
                             .addComponent(NameLabel)
-                            .addComponent(Agreement))
+                            .addComponent(AgreementLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
@@ -132,7 +139,7 @@ public class PatientsView extends javax.swing.JFrame {
                             .addGroup(EditorPanelLayout.createSequentialGroup()
                                 .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(AgreementComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         EditorPanelLayout.setVerticalGroup(
@@ -164,17 +171,18 @@ public class PatientsView extends javax.swing.JFrame {
                     .addComponent(ContactLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Agreement))
+                    .addComponent(AgreementComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AgreementLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchButton)
                     .addComponent(NewButton)
                     .addComponent(EditButton)
-                    .addComponent(RemoveButton)
-                    .addComponent(SaveButton))
+                    .addComponent(RemoveButton))
                 .addContainerGap())
         );
+
+        AgreementComboBox.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,13 +198,16 @@ public class PatientsView extends javax.swing.JFrame {
             .addComponent(EditorPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        bindingGroup.bind();
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddressLabel;
     private javax.swing.JTextField AddressTextField;
-    private javax.swing.JLabel Agreement;
+    private javax.swing.JComboBox<String> AgreementComboBox;
+    private javax.swing.JLabel AgreementLabel;
     private javax.swing.JFormattedTextField BirthFormattedField;
     private javax.swing.JLabel BirthLabel;
     private javax.swing.JLabel ContactLabel;
@@ -207,13 +218,15 @@ public class PatientsView extends javax.swing.JFrame {
     private javax.swing.JTextField IdTextField;
     private javax.swing.JLabel LastNameLabel;
     private javax.swing.JTextField LastNameTextField;
+    private javax.persistence.EntityManager MedicalClinicPUEntityManager0;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JTextField NameTextField;
     private javax.swing.JButton NewButton;
     private javax.swing.JButton RemoveButton;
-    private javax.swing.JButton SaveButton;
     private javax.swing.JButton SearchButton;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private java.util.List<Model.Agreement> agreementList;
+    private javax.persistence.Query agreementQuery;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
     public JButton getEditButton() {
@@ -227,11 +240,7 @@ public class PatientsView extends javax.swing.JFrame {
     public JButton getRemoveButton() {
         return RemoveButton;
     }
-
-    public JButton getSaveButton() {
-        return SaveButton;
-    }
-
+    
     public JButton getSearchButton() {
         return SearchButton;
     }

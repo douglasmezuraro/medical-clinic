@@ -1,6 +1,5 @@
 package Controller;
 
-import Actors.ActorType;
 import Model.Patient;
 import Actors.Secretary;
 import View.PatientsView;
@@ -32,6 +31,11 @@ public class PatientsController {
         
         view.getEditButton().addActionListener((actionListener) -> {
             secretary.updatePatient(view.viewToModel(model));
+        });
+        
+        view.getNewButton().addActionListener((actionListener) -> {
+            model = secretary.newPatient();
+            secretary.addPatient(view.viewToModel(model));
         });
     }
     
