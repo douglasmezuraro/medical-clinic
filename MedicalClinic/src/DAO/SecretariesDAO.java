@@ -1,6 +1,6 @@
 package DAO;
 
-import Actors.Secretary;
+import Model.Secretary;
 
 public class SecretariesDAO extends DAO<Secretary> {
     
@@ -10,7 +10,10 @@ public class SecretariesDAO extends DAO<Secretary> {
 
     @Override
     public void seed() {
-       
+        if(!this.isEmpty()) return;
+        Secretary model = new Secretary();
+        model.setName("Secretário");
+        this.add(model);       
     }
     
 }

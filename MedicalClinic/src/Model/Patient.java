@@ -12,10 +12,10 @@ import javax.persistence.Table;
 @Table(name = "PATIENTS")
 public class Patient extends Person {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Aggravation aggravation;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private List<PatientRecord> records;
     
     @OneToOne

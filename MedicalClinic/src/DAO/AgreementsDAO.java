@@ -2,7 +2,7 @@ package DAO;
 
 import Model.Agreement;
 
-public class AgreementsDAO extends DAO {
+public class AgreementsDAO extends DAO<Agreement> {
 
     public AgreementsDAO() {
         super(Agreement.class);

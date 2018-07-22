@@ -1,6 +1,6 @@
 package DAO;
 
-import Actors.Doctor;
+import Model.Doctor;
 
 public class DoctorsDAO extends DAO<Doctor> {
     
@@ -9,6 +9,11 @@ public class DoctorsDAO extends DAO<Doctor> {
     } 
     
     @Override
-    public void seed() {}
+    public void seed() {
+        if(!this.isEmpty()) return;
+        Doctor model = new Doctor();
+        model.setName("Médico");
+        this.add(model);
+    }
     
 }

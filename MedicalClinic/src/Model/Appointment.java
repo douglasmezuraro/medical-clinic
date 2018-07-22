@@ -1,36 +1,45 @@
 package Model;
 
-import Actors.Doctor;
-import java.sql.Time;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+@Entity
+@Table(name = "APPOINTMENTS")
 public class Appointment extends Base {
 
-    private Date data;
-    private Time hour;
+    @Temporal(TemporalType.DATE)
+    private Date appoinmentDate;
+    
+    @Temporal(TemporalType.TIME)
+    private Date appointmentHour;
+    
+    @OneToOne
     private Doctor doctor;
+    
+    @OneToOne
     private Patient patient;
+    
+    @OneToOne
     private AppointmentType appointmentType;
 
-    public Appointment() {
-        doctor = new Doctor();
-        patient = new Patient();
-    }
-    
-    public Date getData() {
-        return data;
+    public Date getAppoinmentDate() {
+        return appoinmentDate;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setAppoinmentDate(Date appoinmentDate) {
+        this.appoinmentDate = appoinmentDate;
     }
 
-    public Time getHour() {
-        return hour;
+    public Date getAppointmentHour() {
+        return appointmentHour;
     }
 
-    public void setHour(Time hour) {
-        this.hour = hour;
+    public void setAppointmentHour(Date appointmentHour) {
+        this.appointmentHour = appointmentHour;
     }
 
     public Doctor getDoctor() {

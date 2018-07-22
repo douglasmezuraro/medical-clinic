@@ -1,7 +1,7 @@
 package View;
 
+import Controller.AppointmentsController;
 import Controller.PatientsController;
-import DAO.AgreementsDAO;
 
 public class Main extends javax.swing.JFrame {
 
@@ -18,7 +18,10 @@ public class Main extends javax.swing.JFrame {
      *  Popula elementos iniciais no banco de dados
      */
     public static void seed() {
-        new AgreementsDAO().seed();
+        new DAO.AgreementsDAO().seed();
+        new DAO.AppointmentTypeDAO().seed();
+        new DAO.DoctorsDAO().seed();
+        new DAO.SecretariesDAO().seed();
     }
 
     @SuppressWarnings("unchecked")
@@ -29,11 +32,19 @@ public class Main extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
+        patientsMenuItem = new javax.swing.JMenuItem();
+        appointmentsMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clínica Médica");
+        setLocationByPlatform(true);
+        setName(""); // NOI18N
+
+        desktopPane.setBackground(new java.awt.Color(240, 240, 240));
+        desktopPane.setToolTipText("");
+        desktopPane.setName(""); // NOI18N
 
         jComboBox1.setMaximumRowCount(2);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Secretário" }));
@@ -43,14 +54,22 @@ public class Main extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cadastros");
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Pacientes");
-        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        patientsMenuItem.setMnemonic('o');
+        patientsMenuItem.setText("Pacientes");
+        patientsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItemActionPerformed(evt);
+                patientsMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(openMenuItem);
+        fileMenu.add(patientsMenuItem);
+
+        appointmentsMenuItem.setText("Consultas");
+        appointmentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentsMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(appointmentsMenuItem);
 
         menuBar.add(fileMenu);
 
@@ -76,13 +95,20 @@ public class Main extends javax.swing.JFrame {
             .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
         );
 
+        getAccessibleContext().setAccessibleDescription("Clínica Médica");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+    private void patientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsMenuItemActionPerformed
         PatientsController controller = new PatientsController();
         controller.showView();
-    }//GEN-LAST:event_openMenuItemActionPerformed
+    }//GEN-LAST:event_patientsMenuItemActionPerformed
+
+    private void appointmentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsMenuItemActionPerformed
+        AppointmentsController controller = new AppointmentsController();
+        controller.showView();
+    }//GEN-LAST:event_appointmentsMenuItemActionPerformed
 
     public static void setLookAndFeel(String name) {
         try {
@@ -113,12 +139,13 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem appointmentsMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JMenuItem patientsMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }

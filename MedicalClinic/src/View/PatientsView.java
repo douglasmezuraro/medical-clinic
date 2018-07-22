@@ -10,6 +10,9 @@ public class PatientsView extends javax.swing.JFrame {
     public PatientsView() {
         initComponents();
         initComponentProperties();
+        
+        // Centraliza o formulário
+        this.setLocationRelativeTo(null);
     }
 
     public void modelToView(Patient model) {
@@ -74,7 +77,7 @@ public class PatientsView extends javax.swing.JFrame {
         RemoveButton = new javax.swing.JButton();
         RetrieveButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         NameLabel.setText("Nome");
 
@@ -198,6 +201,9 @@ public class PatientsView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(EditorPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        getAccessibleContext().setAccessibleName("Cadastro de Pacientes");
+        getAccessibleContext().setAccessibleDescription("Cadastro de Pacientes");
 
         bindingGroup.bind();
 
