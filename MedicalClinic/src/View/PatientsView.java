@@ -6,24 +6,25 @@ import Model.Patient;
 import javax.swing.JButton;
 
 public class PatientsView extends javax.swing.JFrame {
-    
+
     public PatientsView() {
         initComponents();
+        initComponentProperties();
     }
-    
+
     public void modelToView(Patient model) {
-        if(model == null) {
+        if (model == null) {
             clearView();
             return;
         }
-        
+
         IdTextField.setText(model.getId().toString());
         NameTextField.setText(model.getName());
         LastNameTextField.setText(model.getLastName());
         ContactTextField.setText(model.getContact());
-        BirthFormattedField.setText(model.getBirth().toString());
+        BirthFormattedField.setValue(model.getBirth());
         AddressTextField.setText(model.getAddress());
-        AgreementComboBox.setSelectedItem(model.getAgreement());
+        AgreementComboBox.setSelectedItem((Agreement) model.getAgreement());
     }
 
     public Patient viewToModel(Patient model) {
@@ -31,7 +32,7 @@ public class PatientsView extends javax.swing.JFrame {
         model.setLastName(LastNameTextField.getText());
         model.setContact(ContactTextField.getText());
         model.setAddress(AddressTextField.getText());
-        model.setAgreement((Agreement)AgreementComboBox.getSelectedItem());
+        model.setAgreement((Agreement) AgreementComboBox.getSelectedItem());
 
         return model;
     }
@@ -42,7 +43,7 @@ public class PatientsView extends javax.swing.JFrame {
         LastNameTextField.setText(Constants.EMPTY_STRING);
         ContactTextField.setText(Constants.EMPTY_STRING);
         BirthFormattedField.setText(Constants.EMPTY_STRING);
-        AddressTextField.setText(Constants.EMPTY_STRING);        
+        AddressTextField.setText(Constants.EMPTY_STRING);
     }
 
     @SuppressWarnings("unchecked")
@@ -203,6 +204,20 @@ public class PatientsView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentProperties() {
+        AgreementComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Agreement) {
+                    Agreement agreement = (Agreement)value;
+                    setText(agreement.getName());
+                }
+                return this;
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddressLabel;
     private javax.swing.JTextField AddressTextField;
@@ -240,13 +255,13 @@ public class PatientsView extends javax.swing.JFrame {
     public JButton getRemoveButton() {
         return RemoveButton;
     }
-    
+
     public JButton getSearchButton() {
         return SearchButton;
     }
-    
+
     public Long getId() {
         return Model.Base.parseId(IdTextField.getText());
     }
-    
+
 }
