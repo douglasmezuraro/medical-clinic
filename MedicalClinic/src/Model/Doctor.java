@@ -8,7 +8,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "DOCTORS")
-public class Doctor extends Person {
+public class Doctor extends User {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);

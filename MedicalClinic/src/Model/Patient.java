@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "PATIENTS")
-public class Patient extends Person {
+public class Patient extends User {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
