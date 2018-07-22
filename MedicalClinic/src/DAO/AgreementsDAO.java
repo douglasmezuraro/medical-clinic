@@ -11,9 +11,12 @@ public class AgreementsDAO extends DAO {
     @Override
     public void seed() {
         if(!isEmpty()) return;
-        for(String name: Agreement.seed()) {
+      
+        String[] values = {"Particular", "Plano de saúde"};
+        
+        for(String value: values) {
             Agreement model = new Agreement();
-            model.setName(name);
+            model.setName(value);
             this.add(model);
         }
     }
