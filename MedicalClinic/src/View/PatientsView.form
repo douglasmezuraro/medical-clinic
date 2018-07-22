@@ -52,205 +52,184 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="EditorPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="birthLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="contactLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="lastNameLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="idLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="nameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="agreementLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="addressTextField" pref="318" max="32767" attributes="0"/>
+                          <Component id="nameTextField" max="32767" attributes="0"/>
+                          <Component id="lastNameTextField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="contactTextField" alignment="1" max="32767" attributes="0"/>
+                          <Component id="agreementComboBox" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="idTextField" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="retrieveButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="birthFormattedField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="addButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="editButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="removeButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="EditorPanel" alignment="1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="idLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="idTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="retrieveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lastNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="birthFormattedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="birthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="contactTextField" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="contactLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="agreementComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="agreementLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addButton" alignment="3" max="32767" attributes="0"/>
+                  <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="removeButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="EditorPanel">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="NewButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="EditButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="RemoveButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="BirthLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="AddressLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="ContactLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="LastNameLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="IdLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="NameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="AgreementLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="AddressTextField" pref="422" max="32767" attributes="0"/>
-                              <Component id="NameTextField" max="32767" attributes="0"/>
-                              <Component id="LastNameTextField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="ContactTextField" alignment="1" max="32767" attributes="0"/>
-                              <Component id="BirthFormattedField" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="IdTextField" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="RetrieveButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="AgreementComboBox" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="IdTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="IdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="RetrieveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="NameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="LastNameLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="LastNameTextField" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="BirthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BirthFormattedField" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="AddressTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AddressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ContactTextField" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="ContactLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="AgreementComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AgreementLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="EditButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="RemoveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NewButton" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="NameLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nome"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="NameTextField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="LastNameLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&#xda;ltimo nome"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="LastNameTextField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="BirthLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nascimento"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="BirthFormattedField">
-          <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="AddressLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="AddressTextField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="ContactLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Contato"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="ContactTextField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="IdLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="IdTextField">
-        </Component>
-        <Component class="javax.swing.JLabel" name="AgreementLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Conv&#xea;nio"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="AgreementComboBox">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-          </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
-          </AccessibilityProperties>
-          <BindingProperties>
-            <BindingProperty name="elements" source="agreementList" target="AgreementComboBox" targetPath="elements" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="NewButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="EditButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Editar"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="RemoveButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Remover"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="RetrieveButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Consultar"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
+    <Component class="javax.swing.JLabel" name="idLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="idTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="nameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nameTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lastNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xda;ltimo nome"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="lastNameTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="birthLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nascimento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="birthFormattedField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+          <Format format="dd/MM/yyyy" subtype="-1" type="1"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="contactLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contato"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="contactTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="agreementLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Conv&#xea;nio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="agreementComboBox">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+      </AccessibilityProperties>
+      <BindingProperties>
+        <BindingProperty name="elements" source="agreementList" target="agreementComboBox" targetPath="elements" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="retrieveButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Consultar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="editButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Editar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="removeButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Remover"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -33,7 +33,7 @@ public class PatientsController {
             secretary.updatePatient(view.viewToModel(model));
         });
         
-        view.getNewButton().addActionListener((actionListener) -> {
+        view.getAddButton().addActionListener((actionListener) -> {
             model = secretary.newPatient();
             secretary.addPatient(view.viewToModel(model));
             view.setId(model.getId());

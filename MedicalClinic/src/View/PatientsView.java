@@ -21,32 +21,32 @@ public class PatientsView extends javax.swing.JFrame {
             return;
         }
 
-        IdTextField.setText(model.getId().toString());
-        NameTextField.setText(model.getName());
-        LastNameTextField.setText(model.getLastName());
-        ContactTextField.setText(model.getContact());
-        BirthFormattedField.setValue(model.getBirth());
-        AddressTextField.setText(model.getAddress());
-        AgreementComboBox.setSelectedItem((Agreement) model.getAgreement());
+        idTextField.setText(model.getId().toString());
+        nameTextField.setText(model.getName());
+        lastNameTextField.setText(model.getLastName());
+        contactTextField.setText(model.getContact());
+        birthFormattedField.setValue(model.getBirth());
+        addressTextField.setText(model.getAddress());
+        agreementComboBox.setSelectedItem((Agreement) model.getAgreement());
     }
 
     public Patient viewToModel(Patient model) {
-        model.setName(NameTextField.getText());
-        model.setLastName(LastNameTextField.getText());
-        model.setContact(ContactTextField.getText());
-        model.setAddress(AddressTextField.getText());
-        model.setAgreement((Agreement) AgreementComboBox.getSelectedItem());
+        model.setName(nameTextField.getText());
+        model.setLastName(lastNameTextField.getText());
+        model.setContact(contactTextField.getText());
+        model.setAddress(addressTextField.getText());
+        model.setAgreement((Agreement) agreementComboBox.getSelectedItem());
 
         return model;
     }
 
     public void clearView() {
-        IdTextField.setText(Constants.EMPTY_STRING);
-        NameTextField.setText(Constants.EMPTY_STRING);
-        LastNameTextField.setText(Constants.EMPTY_STRING);
-        ContactTextField.setText(Constants.EMPTY_STRING);
-        BirthFormattedField.setText(Constants.EMPTY_STRING);
-        AddressTextField.setText(Constants.EMPTY_STRING);
+        idTextField.setText(Constants.EMPTY_STRING);
+        nameTextField.setText(Constants.EMPTY_STRING);
+        lastNameTextField.setText(Constants.EMPTY_STRING);
+        contactTextField.setText(Constants.EMPTY_STRING);
+        birthFormattedField.setText(Constants.EMPTY_STRING);
+        addressTextField.setText(Constants.EMPTY_STRING);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,136 +57,55 @@ public class PatientsView extends javax.swing.JFrame {
         MedicalClinicPUEntityManager0 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MedicalClinicPU").createEntityManager();
         agreementQuery = java.beans.Beans.isDesignTime() ? null : MedicalClinicPUEntityManager0.createQuery("SELECT a FROM Agreement a");
         agreementList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : agreementQuery.getResultList();
-        EditorPanel = new javax.swing.JPanel();
-        NameLabel = new javax.swing.JLabel();
-        NameTextField = new javax.swing.JTextField();
-        LastNameLabel = new javax.swing.JLabel();
-        LastNameTextField = new javax.swing.JTextField();
-        BirthLabel = new javax.swing.JLabel();
-        BirthFormattedField = new javax.swing.JFormattedTextField();
-        AddressLabel = new javax.swing.JLabel();
-        AddressTextField = new javax.swing.JTextField();
-        ContactLabel = new javax.swing.JLabel();
-        ContactTextField = new javax.swing.JTextField();
-        IdLabel = new javax.swing.JLabel();
-        IdTextField = new javax.swing.JTextField();
-        AgreementLabel = new javax.swing.JLabel();
-        AgreementComboBox = new javax.swing.JComboBox<>();
-        NewButton = new javax.swing.JButton();
-        EditButton = new javax.swing.JButton();
-        RemoveButton = new javax.swing.JButton();
-        RetrieveButton = new javax.swing.JButton();
+        idLabel = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        lastNameLabel = new javax.swing.JLabel();
+        lastNameTextField = new javax.swing.JTextField();
+        birthLabel = new javax.swing.JLabel();
+        birthFormattedField = new javax.swing.JFormattedTextField();
+        addressLabel = new javax.swing.JLabel();
+        addressTextField = new javax.swing.JTextField();
+        contactLabel = new javax.swing.JLabel();
+        contactTextField = new javax.swing.JTextField();
+        agreementLabel = new javax.swing.JLabel();
+        agreementComboBox = new javax.swing.JComboBox<>();
+        retrieveButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        NameLabel.setText("Nome");
+        idLabel.setText("Código");
 
-        LastNameLabel.setText("Último nome");
+        nameLabel.setText("Nome");
 
-        BirthLabel.setText("Nascimento");
+        lastNameLabel.setText("Último nome");
 
-        BirthFormattedField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
+        birthLabel.setText("Nascimento");
 
-        AddressLabel.setText("Endereço");
+        birthFormattedField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
-        ContactLabel.setText("Contato");
+        addressLabel.setText("Endereço");
 
-        IdLabel.setText("Código");
+        contactLabel.setText("Contato");
 
-        AgreementLabel.setText("Convênio");
+        agreementLabel.setText("Convênio");
 
-        AgreementComboBox.setToolTipText("");
+        agreementComboBox.setToolTipText("");
 
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, agreementList, AgreementComboBox);
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, agreementList, agreementComboBox);
         bindingGroup.addBinding(jComboBoxBinding);
 
-        NewButton.setText("Cadastrar");
+        retrieveButton.setText("Consultar");
 
-        EditButton.setText("Editar");
+        addButton.setText("Cadastrar");
 
-        RemoveButton.setText("Remover");
+        editButton.setText("Editar");
 
-        RetrieveButton.setText("Consultar");
-
-        javax.swing.GroupLayout EditorPanelLayout = new javax.swing.GroupLayout(EditorPanel);
-        EditorPanel.setLayout(EditorPanelLayout);
-        EditorPanelLayout.setHorizontalGroup(
-            EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EditorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(EditorPanelLayout.createSequentialGroup()
-                        .addComponent(NewButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EditButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RemoveButton)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(EditorPanelLayout.createSequentialGroup()
-                        .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BirthLabel)
-                            .addComponent(AddressLabel)
-                            .addComponent(ContactLabel)
-                            .addComponent(LastNameLabel)
-                            .addComponent(IdLabel)
-                            .addComponent(NameLabel)
-                            .addComponent(AgreementLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AddressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                            .addComponent(NameTextField)
-                            .addComponent(LastNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ContactTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BirthFormattedField)
-                            .addGroup(EditorPanelLayout.createSequentialGroup()
-                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(RetrieveButton)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(AgreementComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        EditorPanelLayout.setVerticalGroup(
-            EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditorPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IdLabel)
-                    .addComponent(RetrieveButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LastNameLabel)
-                    .addComponent(LastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BirthLabel)
-                    .addComponent(BirthFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddressLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ContactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ContactLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AgreementComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgreementLabel))
-                .addGap(108, 108, 108)
-                .addGroup(EditorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditButton)
-                    .addComponent(RemoveButton)
-                    .addComponent(NewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        AgreementComboBox.getAccessibleContext().setAccessibleName("");
+        removeButton.setText("Remover");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,13 +113,79 @@ public class PatientsView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(EditorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(birthLabel)
+                            .addComponent(addressLabel)
+                            .addComponent(contactLabel)
+                            .addComponent(lastNameLabel)
+                            .addComponent(idLabel)
+                            .addComponent(nameLabel)
+                            .addComponent(agreementLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                            .addComponent(nameTextField)
+                            .addComponent(lastNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(contactTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(agreementComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(retrieveButton)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(birthFormattedField)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(removeButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(EditorPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idLabel)
+                    .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(retrieveButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lastNameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(birthFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(birthLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(contactLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(agreementComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agreementLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(editButton)
+                    .addComponent(removeButton))
+                .addContainerGap())
         );
+
+        agreementComboBox.getAccessibleContext().setAccessibleName("");
 
         getAccessibleContext().setAccessibleName("Cadastro de Pacientes");
         getAccessibleContext().setAccessibleDescription("Cadastro de Pacientes");
@@ -211,7 +196,7 @@ public class PatientsView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void initComponentProperties() {
-        AgreementComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+        agreementComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
             @Override
             public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -225,53 +210,52 @@ public class PatientsView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AddressLabel;
-    private javax.swing.JTextField AddressTextField;
-    private javax.swing.JComboBox<String> AgreementComboBox;
-    private javax.swing.JLabel AgreementLabel;
-    private javax.swing.JFormattedTextField BirthFormattedField;
-    private javax.swing.JLabel BirthLabel;
-    private javax.swing.JLabel ContactLabel;
-    private javax.swing.JTextField ContactTextField;
-    private javax.swing.JButton EditButton;
-    private javax.swing.JPanel EditorPanel;
-    private javax.swing.JLabel IdLabel;
-    private javax.swing.JTextField IdTextField;
-    private javax.swing.JLabel LastNameLabel;
-    private javax.swing.JTextField LastNameTextField;
     private javax.persistence.EntityManager MedicalClinicPUEntityManager0;
-    private javax.swing.JLabel NameLabel;
-    private javax.swing.JTextField NameTextField;
-    private javax.swing.JButton NewButton;
-    private javax.swing.JButton RemoveButton;
-    private javax.swing.JButton RetrieveButton;
+    private javax.swing.JButton addButton;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextField addressTextField;
+    private javax.swing.JComboBox<String> agreementComboBox;
+    private javax.swing.JLabel agreementLabel;
     private java.util.List<Model.Agreement> agreementList;
     private javax.persistence.Query agreementQuery;
+    private javax.swing.JFormattedTextField birthFormattedField;
+    private javax.swing.JLabel birthLabel;
+    private javax.swing.JLabel contactLabel;
+    private javax.swing.JTextField contactTextField;
+    private javax.swing.JButton editButton;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JLabel lastNameLabel;
+    private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JButton removeButton;
+    private javax.swing.JButton retrieveButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
     public JButton getEditButton() {
-        return EditButton;
+        return editButton;
     }
 
-    public JButton getNewButton() {
-        return NewButton;
+    public JButton getAddButton() {
+        return addButton;
     }
 
     public JButton getRemoveButton() {
-        return RemoveButton;
+        return removeButton;
     }
 
     public JButton getRetrieveButton() {
-        return RetrieveButton;
+        return retrieveButton;
     }
 
     public Long getId() {
-        return Model.Base.parseId(IdTextField.getText());
+        return Model.Base.parseId(idTextField.getText());
     }
     
     public void setId(Long id) {
-        IdTextField.setText(id.toString());
+        idTextField.setText(id.toString());
     }
 
 }
