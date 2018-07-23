@@ -1,5 +1,6 @@
 package Model;
 
+import DAO.AggravationsDAO;
 import DAO.PatientRecordsDAO;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -11,6 +12,9 @@ public class Doctor extends User {
 
     @Transient
     private PatientRecordsDAO patientRecordsDAO;
+    
+    @Transient
+    private AggravationsDAO aggravationsDAO;
 
     public Doctor() {
         patientRecordsDAO = new PatientRecordsDAO();
@@ -35,5 +39,25 @@ public class Doctor extends User {
     public PatientRecord findPatientRecord(Long id) {
         return patientRecordsDAO.find(id);
     }
-
+    
+    public Aggravation newAggravation() {
+        return new Aggravation();
+    }
+    
+    public void addAggravation(Aggravation aggravation) {
+        aggravationsDAO.add(aggravation);
+    }
+    
+    public void updateAggravation(Aggravation aggravation) {
+        aggravationsDAO.update(aggravation);
+    }
+    
+    public void removeAggravation(Aggravation aggravation) {
+        aggravationsDAO.remove(aggravation);
+    }
+    
+    public Aggravation findAggravation(Long patientId) {
+        return aggravationsDAO.find(patientId);
+    }
+    
 }

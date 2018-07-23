@@ -7,7 +7,7 @@ import Model.Doctor;
 import Model.Secretary;
 
 public class Main extends javax.swing.JFrame {
-
+    
     public Main() {
         initComponents();
         
@@ -32,7 +32,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        userComboBox = new javax.swing.JComboBox<>();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         patientsMenuItem = new javax.swing.JMenuItem();
@@ -50,10 +50,10 @@ public class Main extends javax.swing.JFrame {
         desktopPane.setToolTipText("");
         desktopPane.setName(""); // NOI18N
 
-        jComboBox1.setMaximumRowCount(2);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Secretário" }));
-        desktopPane.add(jComboBox1);
-        jComboBox1.setBounds(10, 10, 160, 20);
+        userComboBox.setMaximumRowCount(2);
+        userComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Secretário" }));
+        desktopPane.add(userComboBox);
+        userComboBox.setBounds(10, 10, 160, 20);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cadastros");
@@ -113,7 +113,13 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsMenuItemActionPerformed
-        PatientsController controller = new PatientsController(new Secretary());
+        // TODO : Refatorar para algo melhor
+        PatientsController controller;
+        if(userComboBox.getSelectedIndex() == 0)
+            controller = new PatientsController(new Doctor());
+        else
+            controller = new PatientsController(new Secretary());
+        
         controller.showView();
     }//GEN-LAST:event_patientsMenuItemActionPerformed
 
@@ -126,7 +132,7 @@ public class Main extends javax.swing.JFrame {
         PatientRecordsController controller = new PatientRecordsController(new Doctor());
         controller.showView();
     }//GEN-LAST:event_patientRecordsMenuItemActionPerformed
-
+    
     public static void setLookAndFeel(String name) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -160,10 +166,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem patientRecordsMenuItem;
     private javax.swing.JMenuItem patientsMenuItem;
+    private javax.swing.JComboBox<String> userComboBox;
     // End of variables declaration//GEN-END:variables
 
 }

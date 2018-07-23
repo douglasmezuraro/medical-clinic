@@ -1,14 +1,21 @@
 package Model;
 
 import Utils.Constants;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "AGGRAVATIONS")
-public class Aggravation extends Base {
+public class Aggravation implements Serializable {
+    
+    @Id
+    @OneToOne
+    private Patient patient;
 
     @Type(type = "org.hibernate.type.NumericBooleanType")
     @Column(nullable = false)
@@ -27,6 +34,14 @@ public class Aggravation extends Base {
     
     @Column(length = Constants.LONG_DESCRIPTION)
     private String surgeries;
+    
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
     
     public boolean isSmoker() {
         return smoker;
@@ -56,8 +71,16 @@ public class Aggravation extends Base {
         return allergies;
     }
 
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+    
     public String getSurgeries() {
         return surgeries;
+    }
+    
+    public void setSurgeries(String surgeries) {
+        this.surgeries = surgeries;
     }
 
 }

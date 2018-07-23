@@ -43,6 +43,14 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         birthFormattedField.setValue(model.getBirth());
         addressTextField.setText(model.getAddress());
         agreementComboBox.setSelectedItem((Agreement) model.getAgreement());
+        
+        if(model.getAggravation() != null) {
+            smokeCheckBox.setSelected(model.getAggravation().isSmoker());
+            drinkCheckBox.setSelected(model.getAggravation().isDrinker());
+            heartDiceaseCheckBox.setSelected(model.getAggravation().hasHeartDicease());
+            allergiesTextField.setText(model.getAggravation().getAllergies());
+            surgeriesTextField.setText(model.getAggravation().getSurgeries());
+        }
     }
 
     @Override
@@ -53,6 +61,14 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         model.setAddress(addressTextField.getText());
         model.setBirth((Date)birthFormattedField.getValue());
         model.setAgreement((Agreement) agreementComboBox.getSelectedItem());
+        
+        if(model.getAggravation() != null) {
+            model.getAggravation().setDrinker(drinkCheckBox.isSelected());
+            model.getAggravation().setSmoker(smokeCheckBox.isSelected());
+            model.getAggravation().setHeartDicease(heartDiceaseCheckBox.isSelected());
+            model.getAggravation().setAllergies(allergiesTextField.getText());
+            model.getAggravation().setSurgeries(surgeriesTextField.getText());
+        }
 
         return model;
     }

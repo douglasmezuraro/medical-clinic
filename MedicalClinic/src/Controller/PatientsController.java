@@ -42,7 +42,27 @@ public class PatientsController {
             });
         }
         else if(getDoctor() != null) {
-        
+            view.getRetrieveButton().addActionListener((actionListener) -> {
+                model.setAggravation(getDoctor().findAggravation(view.getId()));
+                view.modelToView(model);
+                controlView();
+            });      
+
+            view.getRemoveButton().addActionListener((actionListener) -> {
+                getDoctor().removeAggravation(model.getAggravation());
+                view.clear();
+                controlView();
+            });
+
+            view.getEditButton().addActionListener((actionListener) -> {
+                getDoctor().updateAggravation(view.viewToModel(model).getAggravation());
+            });
+
+            view.getAddButton().addActionListener((actionListener) -> {
+                model.setAggravation(getDoctor().newAggravation());
+                getDoctor().addAggravation(view.viewToModel(model).getAggravation());
+                controlView();
+            });
         }
     }
     
