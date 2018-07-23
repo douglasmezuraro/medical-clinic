@@ -11,13 +11,14 @@ import javax.persistence.Transient;
 public class Doctor extends User {
 
     @Transient
-    private PatientRecordsDAO patientRecordsDAO;
+    private final PatientRecordsDAO patientRecordsDAO;
     
     @Transient
-    private AggravationsDAO aggravationsDAO;
+    private final AggravationsDAO aggravationsDAO;
 
     public Doctor() {
         patientRecordsDAO = new PatientRecordsDAO();
+        aggravationsDAO = new AggravationsDAO();
     }
 
     public PatientRecord newPatientRecord() {
