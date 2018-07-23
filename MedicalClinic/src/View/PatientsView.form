@@ -278,15 +278,88 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="373" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="smokeCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="drinkCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="heartDiceaseCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="surgeriesLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="allergiesLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="allergiesTextField" max="32767" attributes="0"/>
+                                  <Component id="surgeriesTextField" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="smokeCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="drinkCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="heartDiceaseCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="allergiesTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="allergiesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="surgeriesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="surgeriesTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="94" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="smokeCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fuma?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="drinkCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bebe?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="heartDiceaseCheckBox">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de doen&#xe7;a cardi&#xe1;ca?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="allergiesLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alergias"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="allergiesTextField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="surgeriesLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cirurgias"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="surgeriesTextField">
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
