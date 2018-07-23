@@ -6,6 +6,8 @@ import Utils.Constants;
 import Model.Patient;
 import java.util.Date;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
 
@@ -75,6 +77,12 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         agreementList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : agreementQuery.getResultList();
         idLabel = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
+        retrieveButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
+        panesTabbedPane = new javax.swing.JTabbedPane();
+        patientDataPane = new javax.swing.JPanel();
         nameLabel = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
         lastNameLabel = new javax.swing.JLabel();
@@ -87,14 +95,19 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         contactTextField = new javax.swing.JTextField();
         agreementLabel = new javax.swing.JLabel();
         agreementComboBox = new javax.swing.JComboBox<>();
-        retrieveButton = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
-        removeButton = new javax.swing.JButton();
+        aggravationPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         idLabel.setText("Código");
+
+        retrieveButton.setText("Consultar");
+
+        addButton.setText("Cadastrar");
+
+        editButton.setText("Editar");
+
+        removeButton.setText("Remover");
 
         nameLabel.setText("Nome");
 
@@ -115,13 +128,75 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, agreementList, agreementComboBox);
         bindingGroup.addBinding(jComboBoxBinding);
 
-        retrieveButton.setText("Consultar");
+        javax.swing.GroupLayout patientDataPaneLayout = new javax.swing.GroupLayout(patientDataPane);
+        patientDataPane.setLayout(patientDataPaneLayout);
+        patientDataPaneLayout.setHorizontalGroup(
+            patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientDataPaneLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(agreementLabel)
+                    .addComponent(contactLabel)
+                    .addComponent(nameLabel)
+                    .addComponent(lastNameLabel)
+                    .addComponent(birthLabel)
+                    .addComponent(addressLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(agreementComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addressTextField)
+                    .addComponent(birthFormattedField)
+                    .addComponent(lastNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                    .addComponent(nameTextField)
+                    .addComponent(contactTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        patientDataPaneLayout.setVerticalGroup(
+            patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientDataPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lastNameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(birthFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(birthLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contactLabel)
+                    .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(patientDataPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(agreementComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agreementLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        addButton.setText("Cadastrar");
+        agreementComboBox.getAccessibleContext().setAccessibleName("");
 
-        editButton.setText("Editar");
+        panesTabbedPane.addTab("Dados", patientDataPane);
 
-        removeButton.setText("Remover");
+        javax.swing.GroupLayout aggravationPaneLayout = new javax.swing.GroupLayout(aggravationPane);
+        aggravationPane.setLayout(aggravationPaneLayout);
+        aggravationPaneLayout.setHorizontalGroup(
+            aggravationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 373, Short.MAX_VALUE)
+        );
+        aggravationPaneLayout.setVerticalGroup(
+            aggravationPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 172, Short.MAX_VALUE)
+        );
+
+        panesTabbedPane.addTab("Agravamentos", aggravationPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,34 +205,21 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panesTabbedPane)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(birthLabel)
-                            .addComponent(addressLabel)
-                            .addComponent(contactLabel)
-                            .addComponent(lastNameLabel)
-                            .addComponent(idLabel)
-                            .addComponent(nameLabel)
-                            .addComponent(agreementLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addressTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                            .addComponent(nameTextField)
-                            .addComponent(lastNameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(contactTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(agreementComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(idLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(retrieveButton)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(birthFormattedField)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(addButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeButton)
+                                .addComponent(retrieveButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addButton)
+                                .addGap(2, 2, 2)
+                                .addComponent(editButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeButton)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -170,38 +232,15 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
                     .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(retrieveButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lastNameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(birthFormattedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(birthLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addressLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contactLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agreementComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agreementLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editButton)
-                    .addComponent(removeButton))
+                .addComponent(panesTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(editButton)
+                        .addComponent(removeButton))
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        agreementComboBox.getAccessibleContext().setAccessibleName("");
 
         getAccessibleContext().setAccessibleName("Cadastro de Pacientes");
         getAccessibleContext().setAccessibleDescription("Cadastro de Pacientes");
@@ -229,6 +268,7 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     private javax.swing.JButton addButton;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTextField;
+    private javax.swing.JPanel aggravationPane;
     private javax.swing.JComboBox<String> agreementComboBox;
     private javax.swing.JLabel agreementLabel;
     private java.util.List<Model.Agreement> agreementList;
@@ -244,6 +284,8 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JTabbedPane panesTabbedPane;
+    private javax.swing.JPanel patientDataPane;
     private javax.swing.JButton removeButton;
     private javax.swing.JButton retrieveButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
@@ -263,6 +305,18 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
 
     public JButton getRetrieveButton() {
         return retrieveButton;
+    }
+
+    public JTabbedPane getPanes() {
+        return panesTabbedPane;
+    }
+
+    public JPanel getAggravationPane() {
+        return aggravationPane;
+    }
+
+    public JPanel getPatientDataPane() {
+        return patientDataPane;
     }
 
 }
