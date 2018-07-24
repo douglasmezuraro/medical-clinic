@@ -3,6 +3,9 @@ package Controller;
 import Model.Doctor;
 import Model.Secretary;
 import View.PrincipalView;
+import View.ReportsDoctorView;
+import View.ReportsSecretaryView;
+
 
 public final class PrincipalController {
     
@@ -21,6 +24,16 @@ public final class PrincipalController {
     }
     
     public void bindListeners() {
+        view.getSecretaryReportsMenuItem().addActionListener((ae) -> {
+            ReportsSecretaryView view = new ReportsSecretaryView();
+            view.setVisible(true);
+        });
+        
+            view.getDoctorReportsMenuItem().addActionListener((ae) -> {
+            ReportsDoctorView view = new ReportsDoctorView();
+            view.setVisible(true);
+        });
+        
         view.getPatientsMenuItem().addActionListener((listener) -> {
             PatientsController patientsController = new PatientsController(secretary);
         });

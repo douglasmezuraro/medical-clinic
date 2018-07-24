@@ -95,6 +95,11 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
         treatmentLabel.setText("Tratamento");
 
         retrieveButton.setText("Consultar");
+        retrieveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retrieveButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Cadastrar");
 
@@ -178,6 +183,10 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void retrieveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_retrieveButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
