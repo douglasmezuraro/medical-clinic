@@ -119,6 +119,11 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
         bindingGroup.addBinding(jComboBoxBinding);
 
         retrieveButton.setText("Consultar");
+        retrieveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retrieveButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Cadastrar");
 
@@ -205,6 +210,10 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void retrieveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_retrieveButtonActionPerformed
 
     private void initComponentProperties() {
         doctorComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {

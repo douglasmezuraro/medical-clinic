@@ -57,9 +57,11 @@ public class PrincipalView extends javax.swing.JFrame {
         SecretariesMenu = new javax.swing.JMenu();
         patientsMenuItem = new javax.swing.JMenuItem();
         appointmentsMenuItem = new javax.swing.JMenuItem();
+        secretaryReportsMenuItem = new javax.swing.JMenuItem();
         doctorMenu = new javax.swing.JMenu();
         patientRecordsMenuItem = new javax.swing.JMenuItem();
         aggravationsMenuItem = new javax.swing.JMenuItem();
+        doctorReportsMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Médica");
@@ -85,10 +87,25 @@ public class PrincipalView extends javax.swing.JFrame {
 
         patientsMenuItem.setMnemonic('o');
         patientsMenuItem.setText("Pacientes");
+        patientsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientsMenuItemActionPerformed(evt);
+            }
+        });
         SecretariesMenu.add(patientsMenuItem);
 
         appointmentsMenuItem.setText("Consultas");
+        appointmentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentsMenuItemActionPerformed(evt);
+            }
+        });
         SecretariesMenu.add(appointmentsMenuItem);
+
+        secretaryReportsMenuItem.setText("Relatórios");
+        secretaryReportsMenuItem.setActionCommand("SecretaryReportsMenuItem");
+        secretaryReportsMenuItem.setAutoscrolls(true);
+        SecretariesMenu.add(secretaryReportsMenuItem);
 
         menuBar.add(SecretariesMenu);
 
@@ -100,7 +117,16 @@ public class PrincipalView extends javax.swing.JFrame {
 
         aggravationsMenuItem.setMnemonic('a');
         aggravationsMenuItem.setText("Agravamentos");
+        aggravationsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aggravationsMenuItemActionPerformed(evt);
+            }
+        });
         doctorMenu.add(aggravationsMenuItem);
+
+        doctorReportsMenuItem.setText("Relatórios");
+        doctorReportsMenuItem.setActionCommand("DoctorReportsMenuItem");
+        doctorMenu.add(doctorReportsMenuItem);
 
         menuBar.add(doctorMenu);
 
@@ -121,6 +147,26 @@ public class PrincipalView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void patientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_patientsMenuItemActionPerformed
+
+    private void appointmentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_appointmentsMenuItemActionPerformed
+
+    private void aggravationsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggravationsMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aggravationsMenuItemActionPerformed
+
+    public JMenuItem getDoctorReportsMenuItem() {
+        return doctorReportsMenuItem;
+    }
+
+    public JMenuItem getSecretaryReportsMenuItem() {
+        return secretaryReportsMenuItem;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu SecretariesMenu;
@@ -129,10 +175,12 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu doctorMenu;
     private javax.swing.JRadioButton doctorRadioButton;
+    private javax.swing.JMenuItem doctorReportsMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem patientRecordsMenuItem;
     private javax.swing.JMenuItem patientsMenuItem;
     private javax.swing.JRadioButton secretaryRadioButton;
+    private javax.swing.JMenuItem secretaryReportsMenuItem;
     private javax.swing.ButtonGroup userButtonGroup;
     // End of variables declaration//GEN-END:variables
 
