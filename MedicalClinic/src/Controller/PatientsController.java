@@ -4,7 +4,7 @@ import Model.Patient;
 import Model.Secretary;
 import View.PatientsView;
 
-public class PatientsController {
+public final class PatientsController {
     
     private final PatientsView view;
     private final Secretary secretary;
@@ -12,7 +12,11 @@ public class PatientsController {
     
     public PatientsController(Secretary secretary) {
         this.secretary = secretary;
-        view = new PatientsView();        
+        view = new PatientsView();  
+        view.setVisible(true);
+        view.clear();
+        bindListeners();
+        controlView();        
     }
     
     public final void bindListeners() {
@@ -39,14 +43,7 @@ public class PatientsController {
             controlView();
         });
     }
-    
-    public void showView() {
-        view.setVisible(true);
-        view.clear();
-        bindListeners();
-        controlView();
-    }
-    
+   
     private void controlView() {      
         view.getEditButton().setEnabled(model != null);
         view.getRemoveButton().setEnabled(model != null);            

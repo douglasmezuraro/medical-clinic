@@ -4,7 +4,7 @@ import Model.Doctor;
 import Model.PatientRecord;
 import View.PatientRecordsView;
 
-public class PatientRecordsController {
+public final class PatientRecordsController {
  
     private final PatientRecordsView view;
     private final Doctor doctor;
@@ -13,6 +13,10 @@ public class PatientRecordsController {
     public PatientRecordsController(Doctor doctor) {
         this.doctor = doctor;
         view = new PatientRecordsView();
+        view.setVisible(true);
+        view.clear();
+        bindListeners();
+        controlView();
     }
     
     public final void bindListeners() {
@@ -38,13 +42,6 @@ public class PatientRecordsController {
             view.setId(model.getId());
             controlView();
         });
-    }
-    
-    public void showView() {
-        view.setVisible(true);
-        view.clear();
-        bindListeners();
-        controlView();
     }
     
     public void controlView() {

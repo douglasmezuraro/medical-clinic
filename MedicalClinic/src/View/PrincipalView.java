@@ -1,30 +1,41 @@
 package View;
 
-import Controller.AggravationsController;
-import Controller.AppointmentsController;
-import Controller.PatientRecordsController;
-import Controller.PatientsController;
-import Model.Doctor;
-import Model.Secretary;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
-public class MainView extends javax.swing.JFrame {
+public class PrincipalView extends javax.swing.JFrame {
     
-    public MainView() {
+    public PrincipalView() {
         initComponents();
         
         // Maximiza o form
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-        
-        seed();
     }
-    
-    public static void seed() {
-        new DAO.AgreementsDAO().seed();
-        new DAO.AppointmentTypeDAO().seed();
-        new DAO.DoctorsDAO().seed();
-        new DAO.SecretariesDAO().seed();
+   
+    public JMenu getSecretariesMenu() {
+        return SecretariesMenu;
     }
 
+    public JMenuItem getAggravationsMenuItem() {
+        return aggravationsMenuItem;
+    }
+
+    public JMenuItem getAppointmentsMenuItem() {
+        return appointmentsMenuItem;
+    }
+
+    public JMenu getDoctorMenu() {
+        return doctorMenu;
+    }
+
+    public JMenuItem getPatientRecordsMenuItem() {
+        return patientRecordsMenuItem;
+    }
+
+    public JMenuItem getPatientsMenuItem() {
+        return patientsMenuItem;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -70,19 +81,9 @@ public class MainView extends javax.swing.JFrame {
 
         patientsMenuItem.setMnemonic('o');
         patientsMenuItem.setText("Pacientes");
-        patientsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patientsMenuItemActionPerformed(evt);
-            }
-        });
         SecretariesMenu.add(patientsMenuItem);
 
         appointmentsMenuItem.setText("Consultas");
-        appointmentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                appointmentsMenuItemActionPerformed(evt);
-            }
-        });
         SecretariesMenu.add(appointmentsMenuItem);
 
         menuBar.add(SecretariesMenu);
@@ -91,20 +92,10 @@ public class MainView extends javax.swing.JFrame {
         doctorMenu.setText("Médico");
 
         patientRecordsMenuItem.setText("Prontuários");
-        patientRecordsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patientRecordsMenuItemActionPerformed(evt);
-            }
-        });
         doctorMenu.add(patientRecordsMenuItem);
 
         aggravationsMenuItem.setMnemonic('a');
-        aggravationsMenuItem.setText("About");
-        aggravationsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aggravationsMenuItemActionPerformed(evt);
-            }
-        });
+        aggravationsMenuItem.setText("Agravamentos");
         doctorMenu.add(aggravationsMenuItem);
 
         menuBar.add(doctorMenu);
@@ -127,58 +118,10 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void patientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsMenuItemActionPerformed
-        // TODO : Refatorar para algo melhor
-        PatientsController controller = new PatientsController(new Secretary());
-        controller.showView();
-    }//GEN-LAST:event_patientsMenuItemActionPerformed
-
-    private void appointmentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentsMenuItemActionPerformed
-        AppointmentsController controller = new AppointmentsController(new Secretary());
-        controller.showView();
-    }//GEN-LAST:event_appointmentsMenuItemActionPerformed
-
-    private void patientRecordsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientRecordsMenuItemActionPerformed
-        PatientRecordsController controller = new PatientRecordsController(new Doctor());
-        controller.showView();
-    }//GEN-LAST:event_patientRecordsMenuItemActionPerformed
-
-    private void aggravationsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggravationsMenuItemActionPerformed
-        AggravationsController controller = new AggravationsController(new Doctor());
-        controller.showView();
-    }//GEN-LAST:event_aggravationsMenuItemActionPerformed
-
     private void doctorRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorRadioButtonActionPerformed
         secretaryRadioButton.setEnabled(false);
     }//GEN-LAST:event_doctorRadioButtonActionPerformed
     
-    public static void setLookAndFeel(String name) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if (name.equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
-    
-    public static void main(String args[]) {
-        setLookAndFeel("Windows");
-  
-        java.awt.EventQueue.invokeLater(() -> {
-            new MainView().setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu SecretariesMenu;
     private javax.swing.JMenuItem aggravationsMenuItem;

@@ -4,7 +4,7 @@ import Model.Doctor;
 import Model.Patient;
 import View.AggravationsView;
 
-public class AggravationsController {
+public final class AggravationsController {
     
     private final AggravationsView view;
     private final Doctor doctor;
@@ -13,6 +13,10 @@ public class AggravationsController {
     public AggravationsController(Doctor doctor) {
         this.doctor = doctor;
         view = new AggravationsView();
+        view.setVisible(true);
+        view.clear();
+        bindListeners();
+        controlView();
     }
     
     public final void bindListeners() {
@@ -39,14 +43,7 @@ public class AggravationsController {
             controlView();
         });
     }    
-    
-    public void showView() {
-        view.setVisible(true);
-        view.clear();
-        bindListeners();
-        controlView();
-    }
-    
+
     public void controlView() {
         view.getAddButton().setEnabled((model != null) && (model.getAggravation() == null));
         view.getEditButton().setEnabled((model != null) && (model.getAggravation() != null));

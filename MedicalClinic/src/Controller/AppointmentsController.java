@@ -4,7 +4,7 @@ import Model.Appointment;
 import Model.Secretary;
 import View.AppointmentsView;
 
-public class AppointmentsController {
+public final class AppointmentsController {
     
     private final AppointmentsView view;
     private final Secretary secretary;
@@ -13,6 +13,10 @@ public class AppointmentsController {
     public AppointmentsController(Secretary secretary) {
         this.secretary = secretary;
         view = new AppointmentsView();
+        view.setVisible(true);
+        view.clear();
+        bindListeners();
+        controView();        
     }
     
     public final void bindListeners() {
@@ -38,13 +42,6 @@ public class AppointmentsController {
             view.setId(model.getId());
             controView();
         });
-    }
-    
-    public void showView() {
-        view.setVisible(true);
-        view.clear();
-        bindListeners();
-        controView();
     }
     
     public void controView() {
