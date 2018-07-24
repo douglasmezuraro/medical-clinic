@@ -19,13 +19,13 @@ public class AppointmentsController {
         view.getRetrieveButton().addActionListener((actionListener) -> {
             model = secretary.findAppointment(view.getId());
             view.modelToView(model);
-            controlButtons();
+            controView();
         });      
         
         view.getRemoveButton().addActionListener((actionListener) -> {
             secretary.removeAppointment(model);
             view.clear();
-            controlButtons();
+            controView();
         });
         
         view.getEditButton().addActionListener((actionListener) -> {
@@ -36,7 +36,7 @@ public class AppointmentsController {
             model = secretary.newAppointment();
             secretary.addAppointment(view.viewToModel(model));
             view.setId(model.getId());
-            controlButtons();
+            controView();
         });
     }
     
@@ -44,10 +44,10 @@ public class AppointmentsController {
         view.setVisible(true);
         view.clear();
         bindListeners();
-        controlButtons();
+        controView();
     }
     
-    public void controlButtons() {
+    public void controView() {
         view.getEditButton().setEnabled(model != null);
         view.getRemoveButton().setEnabled(model != null);
     }

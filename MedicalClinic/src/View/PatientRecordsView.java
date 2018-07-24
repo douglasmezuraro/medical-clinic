@@ -11,6 +11,9 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
     public PatientRecordsView() {
         initComponents();
         initComponentsProperties();
+        
+        // Centraliza o form
+        this.setLocationRelativeTo(null);
     }
 
     @Override

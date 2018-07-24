@@ -1,44 +1,44 @@
 package Controller;
 
 import Model.Doctor;
-import Model.PatientRecord;
-import View.PatientRecordsView;
+import Model.Patient;
+import View.AggravationsView;
 
-public class PatientRecordsController {
- 
-    private final PatientRecordsView view;
-    private final Doctor doctor;
-    private PatientRecord model;
+public class AggravationsController {
     
-    public PatientRecordsController(Doctor doctor) {
+    private final AggravationsView view;
+    private final Doctor doctor;
+    private Patient model;
+    
+    public AggravationsController(Doctor doctor) {
         this.doctor = doctor;
-        view = new PatientRecordsView();
+        view = new AggravationsView();
     }
     
     public final void bindListeners() {
         view.getRetrieveButton().addActionListener((actionListener) -> {
-            model = doctor.findPatientRecord(view.getId());
+            model = doctor.findPatient(view.getId());
             view.modelToView(model);
             controlView();
         });      
         
         view.getRemoveButton().addActionListener((actionListener) -> {
-            doctor.removePatientRecord(model);
+            doctor.removeAggravation(model.getAggravation());
             view.clear();
             controlView();
         });
         
         view.getEditButton().addActionListener((actionListener) -> {
-            doctor.updatePatientRecord(view.viewToModel(model));
+            doctor.updateAggravation(view.viewToModel(model).getAggravation());
         });
         
         view.getAddButton().addActionListener((actionListener) -> {
-            model = doctor.newPatientRecord();
-            doctor.addPatientRecord(view.viewToModel(model));
+            model.setAggravation(doctor.newAggravation());
+            doctor.addAggravation(view.viewToModel(model).getAggravation());
             view.setId(model.getId());
             controlView();
         });
-    }
+    }    
     
     public void showView() {
         view.setVisible(true);
@@ -48,8 +48,9 @@ public class PatientRecordsController {
     }
     
     public void controlView() {
-        view.getEditButton().setEnabled(model != null);
-        view.getRemoveButton().setEnabled(model != null);
+        view.getAddButton().setEnabled((model != null) && (model.getAggravation() == null));
+        view.getEditButton().setEnabled((model != null) && (model.getAggravation() != null));
+        view.getRemoveButton().setEnabled((model != null) && (model.getAggravation() != null));
     }
     
 }

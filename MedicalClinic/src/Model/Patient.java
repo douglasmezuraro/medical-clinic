@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "PATIENTS")
 public class Patient extends User {
     
-    @OneToOne(mappedBy = "patient")
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Aggravation aggravation;
     
     @OneToOne

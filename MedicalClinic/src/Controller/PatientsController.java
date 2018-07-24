@@ -1,6 +1,5 @@
 package Controller;
 
-import Model.Doctor;
 import Model.Patient;
 import Model.Secretary;
 import View.PatientsView;
@@ -8,62 +7,37 @@ import View.PatientsView;
 public class PatientsController {
     
     private final PatientsView view;
-    private final Object user;
+    private final Secretary secretary;
     private Patient model;
     
-    public PatientsController(Object user) {
-        this.user = user;
+    public PatientsController(Secretary secretary) {
+        this.secretary = secretary;
         view = new PatientsView();        
     }
     
     public final void bindListeners() {
-        if(getSecretary() != null) {
-            view.getRetrieveButton().addActionListener((actionListener) -> {
-                model = getSecretary().findPatient(view.getId());
-                view.modelToView(model);
-                controlView();
-            });      
+        view.getRetrieveButton().addActionListener((actionListener) -> {
+            model = secretary.findPatient(view.getId());
+            view.modelToView(model);
+            controlView();
+        });      
 
-            view.getRemoveButton().addActionListener((actionListener) -> {
-                getSecretary().removePatient(model);
-                view.clear();
-                controlView();
-            });
+        view.getRemoveButton().addActionListener((actionListener) -> {
+            secretary.removePatient(model);
+            view.clear();
+            controlView();
+        });
 
-            view.getEditButton().addActionListener((actionListener) -> {
-                getSecretary().updatePatient(view.viewToModel(model));
-            });
+        view.getEditButton().addActionListener((actionListener) -> {
+            secretary.updatePatient(view.viewToModel(model));
+        });
 
-            view.getAddButton().addActionListener((actionListener) -> {
-                model = getSecretary().newPatient();
-                getSecretary().addPatient(view.viewToModel(model));
-                view.setId(model.getId());
-                controlView();
-            });
-        }
-        else if(getDoctor() != null) {
-            view.getRetrieveButton().addActionListener((actionListener) -> {
-                model.setAggravation(getDoctor().findAggravation(view.getId()));
-                view.modelToView(model);
-                controlView();
-            });      
-
-            view.getRemoveButton().addActionListener((actionListener) -> {
-                getDoctor().removeAggravation(model.getAggravation());
-                view.clear();
-                controlView();
-            });
-
-            view.getEditButton().addActionListener((actionListener) -> {
-                getDoctor().updateAggravation(view.viewToModel(model).getAggravation());
-            });
-
-            view.getAddButton().addActionListener((actionListener) -> {
-                model.setAggravation(getDoctor().newAggravation());
-                getDoctor().addAggravation(view.viewToModel(model).getAggravation());
-                controlView();
-            });
-        }
+        view.getAddButton().addActionListener((actionListener) -> {
+            model = secretary.newPatient();
+            secretary.addPatient(view.viewToModel(model));
+            view.setId(model.getId());
+            controlView();
+        });
     }
     
     public void showView() {
@@ -75,22 +49,7 @@ public class PatientsController {
     
     private void controlView() {      
         view.getEditButton().setEnabled(model != null);
-        view.getRemoveButton().setEnabled(model != null);       
-        
-        if(getSecretary() == null)
-            view.getPanes().remove(view.getPatientDataPane());
-     
-        if(getDoctor() == null)             
-            view.getPanes().remove(view.getAggravationPane());        
+        view.getRemoveButton().setEnabled(model != null);            
     }
-    
-    
-    private Secretary getSecretary() {
-        return user instanceof Secretary ? (Secretary) user : null;
-    }
-    
-    private Doctor getDoctor() {
-        return user instanceof Doctor ? (Doctor) user : null;
-    }    
-    
+
 }

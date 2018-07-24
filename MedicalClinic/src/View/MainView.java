@@ -1,14 +1,15 @@
 package View;
 
+import Controller.AggravationsController;
 import Controller.AppointmentsController;
 import Controller.PatientRecordsController;
 import Controller.PatientsController;
 import Model.Doctor;
 import Model.Secretary;
 
-public class Main extends javax.swing.JFrame {
+public class MainView extends javax.swing.JFrame {
     
-    public Main() {
+    public MainView() {
         initComponents();
         
         // Maximiza o form
@@ -17,9 +18,6 @@ public class Main extends javax.swing.JFrame {
         seed();
     }
     
-    /**
-     *  Popula elementos iniciais no banco de dados
-     */
     public static void seed() {
         new DAO.AgreementsDAO().seed();
         new DAO.AppointmentTypeDAO().seed();
@@ -31,15 +29,17 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        userButtonGroup = new javax.swing.ButtonGroup();
         desktopPane = new javax.swing.JDesktopPane();
-        userComboBox = new javax.swing.JComboBox<>();
+        doctorRadioButton = new javax.swing.JRadioButton();
+        secretaryRadioButton = new javax.swing.JRadioButton();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        SecretariesMenu = new javax.swing.JMenu();
         patientsMenuItem = new javax.swing.JMenuItem();
         appointmentsMenuItem = new javax.swing.JMenuItem();
+        doctorMenu = new javax.swing.JMenu();
         patientRecordsMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        aggravationsMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Médica");
@@ -50,13 +50,23 @@ public class Main extends javax.swing.JFrame {
         desktopPane.setToolTipText("");
         desktopPane.setName(""); // NOI18N
 
-        userComboBox.setMaximumRowCount(2);
-        userComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Secretário" }));
-        desktopPane.add(userComboBox);
-        userComboBox.setBounds(10, 10, 160, 20);
+        userButtonGroup.add(doctorRadioButton);
+        doctorRadioButton.setText("Médico");
+        doctorRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorRadioButtonActionPerformed(evt);
+            }
+        });
+        desktopPane.add(doctorRadioButton);
+        doctorRadioButton.setBounds(10, 10, 59, 23);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Cadastros");
+        userButtonGroup.add(secretaryRadioButton);
+        secretaryRadioButton.setText("Secretário");
+        desktopPane.add(secretaryRadioButton);
+        secretaryRadioButton.setBounds(10, 30, 75, 23);
+
+        SecretariesMenu.setMnemonic('f');
+        SecretariesMenu.setText("Secretário");
 
         patientsMenuItem.setMnemonic('o');
         patientsMenuItem.setText("Pacientes");
@@ -65,7 +75,7 @@ public class Main extends javax.swing.JFrame {
                 patientsMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(patientsMenuItem);
+        SecretariesMenu.add(patientsMenuItem);
 
         appointmentsMenuItem.setText("Consultas");
         appointmentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +83,12 @@ public class Main extends javax.swing.JFrame {
                 appointmentsMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(appointmentsMenuItem);
+        SecretariesMenu.add(appointmentsMenuItem);
+
+        menuBar.add(SecretariesMenu);
+
+        doctorMenu.setMnemonic('h');
+        doctorMenu.setText("Médico");
 
         patientRecordsMenuItem.setText("Prontuários");
         patientRecordsMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -81,18 +96,18 @@ public class Main extends javax.swing.JFrame {
                 patientRecordsMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(patientRecordsMenuItem);
+        doctorMenu.add(patientRecordsMenuItem);
 
-        menuBar.add(fileMenu);
+        aggravationsMenuItem.setMnemonic('a');
+        aggravationsMenuItem.setText("About");
+        aggravationsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aggravationsMenuItemActionPerformed(evt);
+            }
+        });
+        doctorMenu.add(aggravationsMenuItem);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Ajuda");
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
-
-        menuBar.add(helpMenu);
+        menuBar.add(doctorMenu);
 
         setJMenuBar(menuBar);
 
@@ -114,12 +129,7 @@ public class Main extends javax.swing.JFrame {
 
     private void patientsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientsMenuItemActionPerformed
         // TODO : Refatorar para algo melhor
-        PatientsController controller;
-        if(userComboBox.getSelectedIndex() == 0)
-            controller = new PatientsController(new Doctor());
-        else
-            controller = new PatientsController(new Secretary());
-        
+        PatientsController controller = new PatientsController(new Secretary());
         controller.showView();
     }//GEN-LAST:event_patientsMenuItemActionPerformed
 
@@ -132,6 +142,15 @@ public class Main extends javax.swing.JFrame {
         PatientRecordsController controller = new PatientRecordsController(new Doctor());
         controller.showView();
     }//GEN-LAST:event_patientRecordsMenuItemActionPerformed
+
+    private void aggravationsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggravationsMenuItemActionPerformed
+        AggravationsController controller = new AggravationsController(new Doctor());
+        controller.showView();
+    }//GEN-LAST:event_aggravationsMenuItemActionPerformed
+
+    private void doctorRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorRadioButtonActionPerformed
+        secretaryRadioButton.setEnabled(false);
+    }//GEN-LAST:event_doctorRadioButtonActionPerformed
     
     public static void setLookAndFeel(String name) {
         try {
@@ -142,13 +161,13 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
     
@@ -156,20 +175,22 @@ public class Main extends javax.swing.JFrame {
         setLookAndFeel("Windows");
   
         java.awt.EventQueue.invokeLater(() -> {
-            new Main().setVisible(true);
+            new MainView().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenu SecretariesMenu;
+    private javax.swing.JMenuItem aggravationsMenuItem;
     private javax.swing.JMenuItem appointmentsMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenu doctorMenu;
+    private javax.swing.JRadioButton doctorRadioButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem patientRecordsMenuItem;
     private javax.swing.JMenuItem patientsMenuItem;
-    private javax.swing.JComboBox<String> userComboBox;
+    private javax.swing.JRadioButton secretaryRadioButton;
+    private javax.swing.ButtonGroup userButtonGroup;
     // End of variables declaration//GEN-END:variables
 
 }
