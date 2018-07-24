@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PATIENTS")
-public class Patient extends User {
+public class Patient extends Person {
     
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Aggravation aggravation;

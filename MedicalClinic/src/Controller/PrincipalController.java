@@ -16,6 +16,8 @@ public final class PrincipalController {
         view = new PrincipalView();
         view.setVisible(true);
         bindListeners();
+        view.getDoctorRadioButton().setSelected(true);
+        controlView();
     }
     
     public void bindListeners() {
@@ -34,6 +36,19 @@ public final class PrincipalController {
         view.getAggravationsMenuItem().addActionListener((listener) -> {
             AggravationsController aggravationsController = new AggravationsController(doctor);
         });
+        
+        view.getDoctorRadioButton().addActionListener((listener) -> {
+            controlView();
+        });
+        
+        view.getSecretaryRadioButton().addActionListener((listener) -> {
+            controlView();
+        });
+    }
+    
+    public void controlView() {
+        view.getSecretariesMenu().setEnabled(view.getSecretaryRadioButton().isSelected());
+        view.getDoctorMenu().setEnabled(view.getDoctorRadioButton().isSelected());
     }
 
 }

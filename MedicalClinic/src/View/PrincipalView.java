@@ -2,6 +2,7 @@ package View;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
 
 public class PrincipalView extends javax.swing.JFrame {
     
@@ -35,6 +36,14 @@ public class PrincipalView extends javax.swing.JFrame {
     public JMenuItem getPatientsMenuItem() {
         return patientsMenuItem;
     }
+
+    public JRadioButton getDoctorRadioButton() {
+        return doctorRadioButton;
+    }
+
+    public JRadioButton getSecretaryRadioButton() {
+        return secretaryRadioButton;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -63,11 +72,6 @@ public class PrincipalView extends javax.swing.JFrame {
 
         userButtonGroup.add(doctorRadioButton);
         doctorRadioButton.setText("Médico");
-        doctorRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctorRadioButtonActionPerformed(evt);
-            }
-        });
         desktopPane.add(doctorRadioButton);
         doctorRadioButton.setBounds(10, 10, 59, 23);
 
@@ -117,10 +121,6 @@ public class PrincipalView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void doctorRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorRadioButtonActionPerformed
-        secretaryRadioButton.setEnabled(false);
-    }//GEN-LAST:event_doctorRadioButtonActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu SecretariesMenu;
