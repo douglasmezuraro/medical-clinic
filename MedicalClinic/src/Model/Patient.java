@@ -10,8 +10,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PATIENTS")
 public class Patient extends Person {
-    
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+
+    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
     private Aggravation aggravation;
     
     @OneToOne

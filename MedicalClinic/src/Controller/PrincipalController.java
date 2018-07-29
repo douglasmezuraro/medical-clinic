@@ -3,15 +3,14 @@ package Controller;
 import Model.Doctor;
 import Model.Secretary;
 import View.PrincipalView;
-import View.ReportsDoctorView;
 import View.ReportsSecretaryView;
-
 
 public final class PrincipalController {
     
     private final Doctor doctor;
     private final Secretary secretary;
     private final PrincipalView view;    
+    
     
     public PrincipalController() {
         doctor = new Doctor();
@@ -24,37 +23,32 @@ public final class PrincipalController {
     }
     
     public void bindListeners() {
-        view.getSecretaryReportsMenuItem().addActionListener((ae) -> {
+        view.getSecretaryReportsMenuItem().addActionListener((event) -> {
             ReportsSecretaryView view = new ReportsSecretaryView();
             view.setVisible(true);
         });
-        
-            view.getDoctorReportsMenuItem().addActionListener((ae) -> {
-            ReportsDoctorView view = new ReportsDoctorView();
-            view.setVisible(true);
-        });
-        
-        view.getPatientsMenuItem().addActionListener((listener) -> {
+       
+        view.getPatientsMenuItem().addActionListener((event) -> {
             PatientsController patientsController = new PatientsController(secretary);
         });
         
-        view.getAppointmentsMenuItem().addActionListener((listener) -> {
+        view.getAppointmentsMenuItem().addActionListener((event) -> {
             AppointmentsController appointmentsController = new AppointmentsController(secretary);
         });
         
-        view.getPatientRecordsMenuItem().addActionListener((listener) -> {
+        view.getPatientRecordsMenuItem().addActionListener((event) -> {
             PatientRecordsController patientRecordsController = new PatientRecordsController(doctor);
         });
         
-        view.getAggravationsMenuItem().addActionListener((listener) -> {
+        view.getAggravationsMenuItem().addActionListener((event) -> {
             AggravationsController aggravationsController = new AggravationsController(doctor);
         });
         
-        view.getDoctorRadioButton().addActionListener((listener) -> {
+        view.getDoctorRadioButton().addActionListener((event) -> {
             controlView();
         });
         
-        view.getSecretaryRadioButton().addActionListener((listener) -> {
+        view.getSecretaryRadioButton().addActionListener((event) -> {
             controlView();
         });
     }

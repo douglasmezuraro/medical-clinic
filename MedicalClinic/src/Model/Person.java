@@ -65,9 +65,11 @@ public abstract class Person extends Base {
     public void setContact(String contact) {
         this.contact = contact;
     }
-    
+     
     public String getFullName() {
-        return String.format("%s %s", name, lastName);
+        return String.format("%s %s", 
+            name == null ? Constants.EMPTY_STRING : name, 
+            lastName == null ? Constants.EMPTY_STRING: lastName);
     }
       
 }

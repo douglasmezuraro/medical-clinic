@@ -26,5 +26,11 @@ public class EntityManagerSingleton {
     public EntityManager getEntityManager() {
         return entityManager;
     }
+    
+    @Override
+    protected void finalize() throws Throwable {
+        entityManager.close();
+        super.finalize();
+    }
      
 }

@@ -19,35 +19,20 @@ public final class AggravationsController {
         controlView();
     }
     
-    public final void bindListeners() {
-        view.getRetrieveButton().addActionListener((actionListener) -> {
-            model = doctor.findPatient(view.getId());
+    public final void bindListeners() {      
+        view.getRetrieveButton().addActionListener((event) -> {
+            model = doctor.findPatient(view.getId());           
             view.modelToView(model);
             controlView();
-        });      
-        
-        view.getRemoveButton().addActionListener((actionListener) -> {
-            doctor.removeAggravation(model.getAggravation());
-            view.clear();
-            controlView();
         });
         
-        view.getEditButton().addActionListener((actionListener) -> {
+        view.getEditButton().addActionListener((event) -> {
             doctor.updateAggravation(view.viewToModel(model).getAggravation());
-        });
-        
-        view.getAddButton().addActionListener((actionListener) -> {
-            model.setAggravation(doctor.newAggravation());
-            doctor.addAggravation(view.viewToModel(model).getAggravation());
-            view.setId(model.getId());
-            controlView();
-        });
+        }); 
     }    
 
     public void controlView() {
-        view.getAddButton().setEnabled((model != null) && (model.getAggravation() == null));
-        view.getEditButton().setEnabled((model != null) && (model.getAggravation() != null));
-        view.getRemoveButton().setEnabled((model != null) && (model.getAggravation() != null));
+        view.getEditButton().setEnabled(model != null);
     }
     
 }

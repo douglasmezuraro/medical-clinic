@@ -1,6 +1,5 @@
 package View;
 
-import Interface.IView;
 import Model.Patient;
 import Model.PatientRecord;
 import Utils.Constants;
@@ -11,11 +10,35 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
     public PatientRecordsView() {
         initComponents();
         initComponentsProperties();
-        
-        // Centraliza o form
         this.setLocationRelativeTo(null);
     }
 
+    @Override
+    public Long getId() {
+        return Model.Base.parseId(idTextField.getText());
+    }
+
+    @Override
+    public void setId(Long id) {
+        idTextField.setText(id.toString());
+    }
+    
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public JButton getRemoveButton() {
+        return removeButton;
+    }
+
+    public JButton getRetrieveButton() {
+        return retrieveButton;
+    }    
+    
     @Override
     public void modelToView(PatientRecord model) {
         if(model == null) {
@@ -45,18 +68,22 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
         symptomsTextField.setText(Constants.EMPTY_STRING);
         diagnosisTextField.setText(Constants.EMPTY_STRING);
         treatmentTextField.setText(Constants.EMPTY_STRING);
-    }
+    }    
 
-    @Override
-    public Long getId() {
-        return Model.Base.parseId(idTextField.getText());
+    private void initComponentsProperties() {
+        patientComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Patient) {
+                    Patient patient = (Patient) value;
+                    setText(patient.getName());
+                }
+                return this;
+            }
+        });
     }
-
-    @Override
-    public void setId(Long id) {
-        idTextField.setText(id.toString());
-    }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -207,35 +234,5 @@ public class PatientRecordsView extends javax.swing.JFrame implements IView<Pati
     private javax.swing.JTextField treatmentTextField;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
-
-    private void initComponentsProperties() {
-        patientComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
-            @Override
-            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof Patient) {
-                    Patient patient = (Patient) value;
-                    setText(patient.getName());
-                }
-                return this;
-            }
-        });
-    }
-
-    public JButton getAddButton() {
-        return addButton;
-    }
-
-    public JButton getEditButton() {
-        return editButton;
-    }
-
-    public JButton getRemoveButton() {
-        return removeButton;
-    }
-
-    public JButton getRetrieveButton() {
-        return retrieveButton;
-    }
     
 }

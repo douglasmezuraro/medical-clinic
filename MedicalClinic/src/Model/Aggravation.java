@@ -2,6 +2,7 @@ package Model;
 
 import Utils.Constants;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import org.hibernate.annotations.Type;
 public class Aggravation implements Serializable {
     
     @Id
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Patient patient;
 
     @Type(type = "org.hibernate.type.NumericBooleanType")

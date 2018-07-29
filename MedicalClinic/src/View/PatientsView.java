@@ -1,6 +1,5 @@
 package View;
 
-import Interface.IView;
 import Model.Agreement;
 import Utils.Constants;
 import Model.Patient;
@@ -12,8 +11,6 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     public PatientsView() {
         initComponents();
         initComponentProperties();
-        
-        // Centraliza o formulário
         this.setLocationRelativeTo(null);
     }
 
@@ -26,6 +23,22 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     public void setId(Long id) {
         idTextField.setText(id.toString());
     }    
+    
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public JButton getRemoveButton() {
+        return removeButton;
+    }
+
+    public JButton getRetrieveButton() {
+        return retrieveButton;
+    }
     
     @Override
     public void modelToView(Patient model) {
@@ -65,6 +78,20 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         addressTextField.setText(Constants.EMPTY_STRING);
         agreementComboBox.setSelectedIndex(Constants.SELECTED_NONE);
     }
+    
+    private void initComponentProperties() {
+        agreementComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Agreement) {
+                    Agreement agreement = (Agreement)value;
+                    setText(agreement.getName());
+                }
+                return this;
+            }
+        });
+    }    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -116,11 +143,6 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         bindingGroup.addBinding(jComboBoxBinding);
 
         retrieveButton.setText("Consultar");
-        retrieveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                retrieveButtonActionPerformed(evt);
-            }
-        });
 
         addButton.setText("Cadastrar");
 
@@ -216,24 +238,6 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void retrieveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_retrieveButtonActionPerformed
-
-    private void initComponentProperties() {
-        agreementComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
-            @Override
-            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof Agreement) {
-                    Agreement agreement = (Agreement)value;
-                    setText(agreement.getName());
-                }
-                return this;
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JLabel addressLabel;
@@ -257,21 +261,5 @@ public class PatientsView extends javax.swing.JFrame implements IView<Patient> {
     private javax.swing.JButton retrieveButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
-
-    public JButton getEditButton() {
-        return editButton;
-    }
-
-    public JButton getAddButton() {
-        return addButton;
-    }
-
-    public JButton getRemoveButton() {
-        return removeButton;
-    }
-
-    public JButton getRetrieveButton() {
-        return retrieveButton;
-    }
 
 }

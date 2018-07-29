@@ -21,7 +21,6 @@ public class Secretary extends Person {
         appointmentsDAO = new AppointmentsDAO();
     }
     
-    // Pacientes
     public Patient newPatient() {
         return new Patient();
     }
@@ -42,7 +41,6 @@ public class Secretary extends Person {
         return patientsDAO.find(id);
     }
     
-    // Consultas
     public Appointment newAppointment() {
         return new Appointment();
     }

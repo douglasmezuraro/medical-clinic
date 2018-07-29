@@ -3,8 +3,6 @@ package Model;
 import DAO.AggravationsDAO;
 import DAO.PatientRecordsDAO;
 import DAO.PatientsDAO;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -12,9 +10,6 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "DOCTORS")
 public class Doctor extends User {
-
-    @Transient
-    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     @Transient
     private final PatientsDAO patientsDAO;
@@ -70,13 +65,5 @@ public class Doctor extends User {
     public Patient findPatient(Long id) {
         return patientsDAO.find(id);
     }
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.addPropertyChangeListener(listener);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.removePropertyChangeListener(listener);
-    }
-    
+  
 }

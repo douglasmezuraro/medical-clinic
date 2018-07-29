@@ -20,23 +20,23 @@ public final class PatientsController {
     }
     
     public final void bindListeners() {
-        view.getRetrieveButton().addActionListener((actionListener) -> {
+        view.getRetrieveButton().addActionListener((event) -> {
             model = secretary.findPatient(view.getId());
             view.modelToView(model);
             controlView();
         });      
 
-        view.getRemoveButton().addActionListener((actionListener) -> {
+        view.getRemoveButton().addActionListener((event) -> {
             secretary.removePatient(model);
             view.clear();
             controlView();
         });
 
-        view.getEditButton().addActionListener((actionListener) -> {
+        view.getEditButton().addActionListener((event) -> {
             secretary.updatePatient(view.viewToModel(model));
         });
 
-        view.getAddButton().addActionListener((actionListener) -> {
+        view.getAddButton().addActionListener((event) -> {
             model = secretary.newPatient();
             secretary.addPatient(view.viewToModel(model));
             view.setId(model.getId());

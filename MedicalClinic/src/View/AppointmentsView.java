@@ -1,6 +1,5 @@
 package View;
 
-import Interface.IView;
 import Model.Appointment;
 import Model.AppointmentType;
 import Model.Doctor;
@@ -14,8 +13,6 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
     public AppointmentsView() {
         initComponents();
         initComponentProperties();
-        
-        // Centraliza o form
         this.setLocationRelativeTo(null);
     }
     
@@ -29,6 +26,22 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
         idTextField.setText(id.toString());
     }    
     
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public JButton getAddButton() {
+        return addButton;
+    }
+
+    public JButton getRemoveButton() {
+        return removeButton;
+    }
+
+    public JButton getRetrieveButton() {
+        return retrieveButton;
+    }
+    
     @Override
     public void modelToView(Appointment model) {
         if(model == null) {
@@ -36,7 +49,7 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
             return;
         }
         
-        dateFormattedTextField.setValue(model.getAppoinmentDate());
+        dateFormattedTextField.setValue(model.getAppointmentDate());
         hourFormattedTextField.setValue(model.getAppointmentHour());
         appointmentTypeComboBox.setSelectedItem(model.getAppointmentType());
         doctorComboBox.setSelectedItem(model.getDoctor());
@@ -45,7 +58,7 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
 
     @Override
     public Appointment viewToModel(Appointment model) {
-        model.setAppoinmentDate((Date)dateFormattedTextField.getValue());
+        model.setAppointmentDate((Date)dateFormattedTextField.getValue());
         model.setAppointmentHour((Date)hourFormattedTextField.getValue());
         model.setAppointmentType((AppointmentType)appointmentTypeComboBox.getSelectedItem());
         model.setDoctor((Doctor)doctorComboBox.getSelectedItem());
@@ -62,6 +75,44 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
         doctorComboBox.setSelectedIndex(Constants.SELECTED_NONE);
         patientComboBox.setSelectedIndex(Constants.SELECTED_NONE);
     }
+    
+    private void initComponentProperties() {
+        doctorComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Doctor) {
+                    Doctor doctor = (Doctor)value;
+                    setText(doctor.getName());
+                }
+                return this;
+            }
+        });
+        
+        patientComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Patient) {
+                    Patient patient = (Patient)value;
+                    setText(patient.getName());
+                }
+                return this;
+            }
+        });
+        
+        appointmentTypeComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof AppointmentType) {
+                    AppointmentType appointmentType = (AppointmentType)value;
+                    setText(appointmentType.getDescription());
+                }
+                return this;
+            }
+        });
+    }    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -119,11 +170,6 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
         bindingGroup.addBinding(jComboBoxBinding);
 
         retrieveButton.setText("Consultar");
-        retrieveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                retrieveButtonActionPerformed(evt);
-            }
-        });
 
         addButton.setText("Cadastrar");
 
@@ -210,64 +256,6 @@ public class AppointmentsView extends javax.swing.JFrame implements IView<Appoin
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void retrieveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_retrieveButtonActionPerformed
-
-    private void initComponentProperties() {
-        doctorComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
-            @Override
-            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof Doctor) {
-                    Doctor doctor = (Doctor)value;
-                    setText(doctor.getName());
-                }
-                return this;
-            }
-        });
-        
-        patientComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
-            @Override
-            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof Patient) {
-                    Patient patient = (Patient)value;
-                    setText(patient.getName());
-                }
-                return this;
-            }
-        });
-        
-        appointmentTypeComboBox.setRenderer(new javax.swing.DefaultListCellRenderer() {
-            @Override
-            public java.awt.Component getListCellRendererComponent(javax.swing.JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof AppointmentType) {
-                    AppointmentType appointmentType = (AppointmentType)value;
-                    setText(appointmentType.getDescription());
-                }
-                return this;
-            }
-        });
-    }
-    
-    public JButton getEditButton() {
-        return editButton;
-    }
-
-    public JButton getAddButton() {
-        return addButton;
-    }
-
-    public JButton getRemoveButton() {
-        return removeButton;
-    }
-
-    public JButton getRetrieveButton() {
-        return retrieveButton;
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

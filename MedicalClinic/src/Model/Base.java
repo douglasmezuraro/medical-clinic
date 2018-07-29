@@ -1,6 +1,7 @@
 package Model;
 
 import Utils.Constants;
+import Utils.Utils;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -21,10 +22,7 @@ public abstract class Base implements Serializable {
     }
     
     public static Long parseId(String value) {
-        if(value == null || value.equalsIgnoreCase(Constants.EMPTY_STRING))
-           return Constants.DEFAULT_ID;
-       
-       return Long.parseLong(value);
+       return Utils.isNullOrEmpty(value) ? Constants.DEFAULT_ID : Long.parseLong(value);
     } 
     
 }

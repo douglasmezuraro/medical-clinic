@@ -1,6 +1,5 @@
 package View;
 
-import Interface.IView;
 import Model.Patient;
 import Utils.Constants;
 import javax.swing.JButton;
@@ -9,8 +8,6 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
 
     public AggravationsView() {
         initComponents();
-        
-        // Centraliza o form
         this.setLocationRelativeTo(null);        
     }
 
@@ -59,6 +56,14 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
         idTextField.setText(id.toString());
     }    
     
+    public JButton getEditButton() {
+        return editButton;
+    }
+
+    public JButton getRetrieveButton() {
+        return retrieveButton;
+    }        
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -75,9 +80,7 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
         drinkCheckBox = new javax.swing.JCheckBox();
         heartDiceaseCheckBox = new javax.swing.JCheckBox();
         retrieveButton = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
-        removeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,24 +102,12 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
 
         retrieveButton.setText("Consultar");
 
-        addButton.setText("Cadastrar");
-
         editButton.setText("Editar");
-
-        removeButton.setText("Remover");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(removeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -140,12 +131,9 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(drinkCheckBox)
-                                .addComponent(smokeCheckBox))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(heartDiceaseCheckBox)))
+                            .addComponent(smokeCheckBox)
+                            .addComponent(drinkCheckBox)
+                            .addComponent(heartDiceaseCheckBox))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -153,6 +141,10 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(allergiesTextField)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(editButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,19 +172,15 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
                 .addComponent(drinkCheckBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(heartDiceaseCheckBox)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addButton)
-                    .addComponent(editButton)
-                    .addComponent(removeButton))
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18)
+                .addComponent(editButton)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
     private javax.swing.JLabel allergiesLabel;
     private javax.swing.JTextField allergiesTextField;
     private javax.swing.JCheckBox drinkCheckBox;
@@ -202,27 +190,10 @@ public class AggravationsView extends javax.swing.JFrame implements IView<Patien
     private javax.swing.JTextField idTextField;
     private javax.swing.JLabel patientNameLabel;
     private javax.swing.JTextField patientNameTextField;
-    private javax.swing.JButton removeButton;
     private javax.swing.JButton retrieveButton;
     private javax.swing.JCheckBox smokeCheckBox;
     private javax.swing.JLabel surgeriesLabel;
     private javax.swing.JTextField surgeriesTextField;
     // End of variables declaration//GEN-END:variables
-    
-    public JButton getEditButton() {
-        return editButton;
-    }
 
-    public JButton getAddButton() {
-        return addButton;
-    }
-
-    public JButton getRemoveButton() {
-        return removeButton;
-    }
-
-    public JButton getRetrieveButton() {
-        return retrieveButton;
-    }    
-    
 }

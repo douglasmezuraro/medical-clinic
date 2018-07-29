@@ -20,23 +20,23 @@ public final class AppointmentsController {
     }
     
     public final void bindListeners() {
-        view.getRetrieveButton().addActionListener((actionListener) -> {
+        view.getRetrieveButton().addActionListener((event) -> {
             model = secretary.findAppointment(view.getId());
             view.modelToView(model);
             controView();
         });      
         
-        view.getRemoveButton().addActionListener((actionListener) -> {
+        view.getRemoveButton().addActionListener((event) -> {
             secretary.removeAppointment(model);
             view.clear();
             controView();
         });
         
-        view.getEditButton().addActionListener((actionListener) -> {
+        view.getEditButton().addActionListener((event) -> {
             secretary.updateAppointment(view.viewToModel(model));
         });
         
-        view.getAddButton().addActionListener((actionListener) -> {
+        view.getAddButton().addActionListener((event) -> {
             model = secretary.newAppointment();
             secretary.addAppointment(view.viewToModel(model));
             view.setId(model.getId());
